@@ -17,7 +17,8 @@ class OutletModel extends CI_Model
     {
         $data = array(
             'outlet' => $this->input->post('outlet', true),
-            'password' => $this->input->post('password', true)
+            'password' => $this->input->post('password', true),
+            'alamat' => $this->input->post('alamat', true)
         );
 
         $data2 = array(
@@ -32,7 +33,8 @@ class OutletModel extends CI_Model
     {
         $data = array(
             'outlet' => $this->input->post('outlet', true),
-            'password' => $this->input->post('password', true)
+            'password' => $this->input->post('password', true),
+            'alamat' => $this->input->post('alamat', true)
         );
         $this->db->where('id', $id);
         $this->db->update('kasir_outlet', $data);

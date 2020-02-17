@@ -34,11 +34,13 @@ class Cart extends CI_Controller {
 
     public function laporan_pdf($outlet){
         $data['data'] = $this->model->pdfGetProduk($outlet);   
+        $data['details'] = $this->model->pdfGetDetails($outlet);   
+        $data['alamat'] = $this->model->pdfGetAlamat($outlet);   
     
         $this->load->library('pdf');
     
         $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "laporan-petanikode.pdf";
+        $this->pdf->filename = "laporan.pdf";
         $this->pdf->load_view('laporan_pdf', $data);    
     }
 

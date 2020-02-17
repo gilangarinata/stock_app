@@ -55,6 +55,38 @@ function pdfGetProduk($outlet)
     return $this->db->get_where('kasir_dashboard_keranjang',$info)->result_array();
 }
 
+function pdfGetDetails($outlet)
+{
+
+    $datas = array(
+        'outlet'=>$outlet
+    );
+
+    $cartid = 0;
+    $cart_id = $this->db->order_by("id","desc");
+    $cart_id = $this->db->limit(1);
+    $cart_id = $this->db->get_where('kasir_helper_idcart',$datas)->result_array();
+    
+    foreach($cart_id as $idcart){
+       $cartid = $idcart["id_cart"];
+    }
+
+    $info = array(
+        'cart_id' => $cartid-1,
+        'outlet' => $outlet
+    );
+
+    return $this->db->get_where('kasir_dashboard_pembayaran',$info)->result_array();
+}
+
+function pdfGetAlamat($outlet)
+{
+    $info = array(
+        'outlet' => $outlet
+    );
+    return $this->db->get_where('kasir_outlet',$info)->result_array();
+}
+
 
 
 function addPembayaran($outlet)
@@ -80,6 +112,8 @@ function addPembayaran($outlet)
         'kembali' => $this->input->post("kembali"),
         'tanggal' => $this->input->post("tanggal"),
         'outlet' => $outlet,                 
+        'shift' => $this->input->post("shift"),
+        'nama' => $this->input->post("nama")
     );
 
     $this->db->insert("kasir_dashboard_pembayaran",$data);

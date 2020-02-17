@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Jakarta');
 $jml = 0;
 foreach ($jumlah_produk as $jumlah) :
     $jml = $jml + $jumlah['jumlah'];
@@ -120,9 +121,26 @@ endforeach
                         Tanggal
                     </span>
                     
-                    <input readonly="readonly" id="tanggal" name="tanggal" type="text" value="<?= date("d-m-Y")." ".date("h:i:sa") ?>" class="form-control">
+                    <input readonly="readonly" id="tanggal" name="tanggal" type="text" value="<?= date("d/m/Y")." ".date("H:i:s") ?>" class="form-control">
 
 
+                    <hr />
+
+                    <span>
+                        Nama Kasir
+                    </span>
+                    
+                    <input name="nama" type="text" class="form-control">
+                    <hr />
+
+                    <span>
+                        Shift
+                    </span>
+                    
+                    <select name="shift">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    </select>
                     <hr />
 
                 </span>

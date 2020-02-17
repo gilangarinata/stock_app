@@ -46,6 +46,8 @@
                                     <th>Jumlah Bayar</th>
                                     <th>Kembali</th>
                                     <th>Metode Pembayaran</th>
+                                    <th>Shift</th>
+                                    <th>Nama Kasir</th>
                                     <th>Outlet</th>
                                 </tr>
                             </thead>
@@ -72,6 +74,8 @@
                                         <td class="center"><?= $produk['jumlah_bayar'] ?></td>
                                         <td class="center"><?= $produk['kembali'] ?></td>
                                         <td class="center"><?= $produk['metode_pembayaran'] ?></td>
+                                        <td class="center"><?= $produk['shift'] ?></td>
+                                        <td class="center"><?= $produk['nama'] ?></td>
                                         <td class="center"><?= $produk['outlet'] ?></td>
 
                                     </tr>

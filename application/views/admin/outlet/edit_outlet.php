@@ -7,6 +7,7 @@
                 <?php foreach($outlet as $outlet): ?>
                 <div class="form-group"><label>Outlet</label> <input value="<?= $outlet['outlet'] ?>"  name="outlet" type="text" class="form-control"></div>
                 <div class="form-group"><label>Passoword</label> <input value="<?= $outlet['password'] ?>"  name="password" type="text" class="form-control"></div>
+                <div class="form-group"><label>Alamat</label> <input value="<?= $outlet['alamat'] ?>"  name="alamat" type="text" class="form-control"></div>
 
                 <?php endforeach ?>
             </div>

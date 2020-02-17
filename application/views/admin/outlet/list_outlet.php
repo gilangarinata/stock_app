@@ -32,6 +32,7 @@
                                     <th>No</th>
                                     <th>Outlet</th>
                                     <th>Password</th>
+                                    <th>alamat</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,6 +42,7 @@
                                         <td><?= $i ?></td>
                                         <td><?= $outlet['outlet'] ?></td>
                                         <td><?= $outlet['password'] ?></td>
+                                        <td><?= $outlet['alamat'] ?></td>
 
                                         <td class="center">
                                             <a href="<?= base_url() ?>admin/outlet/delete/<?= $outlet['id'] ?>"><button class="btn btn-danger btn-circle btn-outline" type="button"><i class="fa fa-trash"></i></button></a>

@@ -5,7 +5,37 @@
 <html>
 <body>
 
-<h2>Struk Pembelian</h2>
+<h2 style="text-align:center" >Susu Maktam</h2>
+
+<?php foreach($alamat as $alamat): ?>
+<h3 style="text-align:center" ><?= $alamat['alamat'] ?></h3>
+<?php endforeach ?>
+
+<br>
+=====================================================================
+<?php foreach($details as $details): ?>
+<table>
+  <tr>
+    <th>Tanggal</th>
+    <th><?= $details['tanggal'] ?></th>
+  </tr>
+  <tr>
+    <th>Nama Kasir</th>
+    <th><?= $details['nama'] ?></th>
+  </tr>
+  <tr>
+    <th>Outlet</th>
+    <th><?= $details['outlet'] ?></th>
+  </tr>
+  <tr>
+    <th>Shift</th>
+    <th><?= $details['shift'] ?></th>
+  </tr>
+</table>
+<?php endforeach ?>
+
+
+========================================================================
 
 <table style="width:100%">
   <tr>
@@ -20,19 +50,27 @@
   <tr>
     <td><?= $data['nama_produk'] ?></td>
     <td><?= $data['jumlah'] ?></td>
-    <td><?= $data['harga'] ?></td>
-    <td><?= $data['total'] ?></td>
+    <td><?= rupiah($data['harga']) ?></td>
+    <td><?= rupiah($data['total']) ?></td>
   </tr>
   <?php endforeach ?>
 </table>
 <br><br>
-<h2>Grand Total : <?= $totals ?> </h2>
+============================================================
+
+<h3>Grand Total : <?= rupiah($totals) ?> </h3>
 
 </body>
 </html>
 
  <?php 
 
+function rupiah($angka){
+	
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+ 
+}
 //echo $dataku->nama;
 // foreach($dataku as $data){
 //     echo $data;
