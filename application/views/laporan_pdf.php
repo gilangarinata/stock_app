@@ -17,18 +17,22 @@
 <table>
   <tr>
     <th>Tanggal</th>
+    <th>:</th>
     <th><?= $details['tanggal'] ?></th>
   </tr>
   <tr>
     <th>Nama Kasir</th>
+    <th>:</th>
     <th><?= $details['nama'] ?></th>
   </tr>
   <tr>
     <th>Outlet</th>
+    <th>:</th>
     <th><?= $details['outlet'] ?></th>
   </tr>
   <tr>
     <th>Shift</th>
+    <th>:</th>
     <th><?= $details['shift'] ?></th>
   </tr>
 </table>

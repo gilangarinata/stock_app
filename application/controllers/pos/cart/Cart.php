@@ -15,14 +15,21 @@ class Cart extends CI_Controller {
         $outlet = $this->session->userdata('outlet');
         $data['cart'] = $this->model->getCartList($outlet);
         $data['jumlah_produk'] = $this->PosModel->getJumlahProduk($outlet);
+        $data['namas'] = $this->session->userdata('nama');
+        $data['shifts'] = $this->session->userdata('shift');
 
         $this->load->view("pos/templates/header_cart",$data);
         $this->load->view("pos/cart",$data);
         $this->load->view("pos/templates/footer");
 
         if(isset($_POST['submit'])){
+            $this->session->set_userdata('nama',$this->input->post("nama"));
+            $this->session->set_userdata('shift',$this->input->post("shift"));
+            
             $this->model->addPembayaran($outlet);
             redirect('pos/cart/cart/laporan_pdf/'.$outlet);
+
+
         }
 
     }

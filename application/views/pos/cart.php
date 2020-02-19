@@ -7,6 +7,8 @@ endforeach
 ?>
 
 
+
+
 <div class="row">
     <div class="col-md-9">
 
@@ -130,7 +132,9 @@ endforeach
                         Nama Kasir
                     </span>
                     
-                    <input name="nama" type="text" class="form-control">
+
+
+                    <input name="nama" value="<?= $this->session->userdata("nama") ?>" type="text" class="form-control">
                     <hr />
 
                     <span>
@@ -138,9 +142,11 @@ endforeach
                     </span>
                     
                     <select name="shift">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                        <option value="1" <?= $this->session->userdata("shift") == 1 ? "selected" : "" ?>>1</option>
+                        <option value="2" <?= $this->session->userdata("shift") == 2 ? "selected" : "" ?>>2</option>
                     </select>
+
+
                     <hr />
 
                 </span>
