@@ -1,52 +1,59 @@
 <pre>
-
-
 <!DOCTYPE html>
 <html>
 <body>
 
-<h2 style="text-align:center" >Susu Maktam</h2>
+<h1 style="text-align:center" >Susu Maktam</h1>
 
 <?php foreach($alamat as $alamat): ?>
-<h3 style="text-align:center" ><?= $alamat['alamat'] ?></h3>
+<h2 style="text-align:center" ><?= $alamat['alamat'] ?></h2>
 <?php endforeach ?>
 
 <br>
-=====================================================================
-<?php foreach($details as $details): ?>
-<table>
+
+<?php foreach($details as $details): 
+  $jumlah_bayar=$details['jumlah_bayar'];
+  $kembali = $details['kembali'];
+  $metode = $details['metode_pembayaran'];
+
+  ?>
+
+<font size="20">
+  <table >
   <tr>
-    <th>Tanggal</th>
-    <th>:</th>
-    <th><?= $details['tanggal'] ?></th>
+    <td>Tanggal</td>
+    <td>:</td>
+    <td><?= $details['tanggal'] ?></td>
   </tr>
   <tr>
-    <th>Nama Kasir</th>
-    <th>:</th>
-    <th><?= $details['nama'] ?></th>
+    <td>Nama Kasir</td>
+    <td>:</td>
+    <td><?= $details['nama'] ?></td>
   </tr>
   <tr>
-    <th>Outlet</th>
-    <th>:</th>
-    <th><?= $details['outlet'] ?></th>
+    <td>Outlet</td>
+    <td>:</td>
+    <td><?= $details['outlet'] ?></td>
   </tr>
   <tr>
-    <th>Shift</th>
-    <th>:</th>
-    <th><?= $details['shift'] ?></th>
+    <td>Shift</td>
+    <td>:</td>
+    <td><?= $details['shift'] ?></td>
   </tr>
 </table>
+
+</font>
 <?php endforeach ?>
 
 
-========================================================================
-
-<table style="width:100%">
+--------------------------------------------------------------
+<font size="20">
+<table style="widtd:100%">
   <tr>
-    <th>Nama Barang</th>
-    <th>Jumlah</th> 
-    <th>Harga</th>
-    <th>Total</th>
+    <td>Nama Barang</td>
+    <td>Jumlah</td> 
+    <td>Harga</td>
+    <td>Total</td>
   </tr>
   <?php $totals=0; foreach($data as $data): 
     $totals = $totals + $data['total'];
@@ -60,9 +67,30 @@
   <?php endforeach ?>
 </table>
 <br><br>
-============================================================
 
-<h3>Grand Total : <?= rupiah($totals) ?> </h3>
+  </font>
+--------------------------------------------------------------
+<font size="20">
+<table>
+  <tr>
+    <td>Grand Total </td>
+    <td>:</td>
+    <td><?= rupiah($totals) ?></td>
+  </tr>
+
+  <tr>
+    <td>Jumlah Bayar </td>
+    <td>:</td>
+    <td><?= rupiah($jumlah_bayar)." (".$metode.")" ?></td>
+  </tr>
+
+  <tr>
+    <td>Kembali </td>
+    <td>:</td>
+    <td><?= rupiah($kembali)?></td>
+  </tr>
+</table>
+
 
 </body>
 </html>
@@ -82,4 +110,5 @@ function rupiah($angka){
 
 
 ?>
+</font>
 </pre>

@@ -17,6 +17,7 @@ class Pos extends CI_Controller {
         
         $data['susu'] = $this->model->getSusuList();
         $data['produklain'] = $this->model->getProdukLainList();
+        $data['kategoriproduklain'] = $this->model->getKategoriProdukLainList();
         $data['jumlah_produk'] = $this->model->getJumlahProduk($outlet);
 
         $this->load->view("pos/templates/header",$data);

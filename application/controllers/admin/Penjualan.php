@@ -14,6 +14,16 @@ class Penjualan extends CI_Controller{
         $data['produk'] = $this->model->getPenjualanList();
         $data['cart'] = $this->model->getCartList();
 
+        if(isset($_POST['submit'])){
+            $data['produk'] = $this->model->getPenjualanListFilter();
+            $data['cart'] = $this->model->getCartList();
+
+            // $this->load->view("admin/templates/header");
+            // $this->load->view("admin/penjualan/list_penjualan", $data);
+            // $this->load->view("admin/templates/footer");
+
+        }
+
 
         $this->load->view("admin/templates/header");
         $this->load->view("admin/penjualan/list_penjualan", $data);

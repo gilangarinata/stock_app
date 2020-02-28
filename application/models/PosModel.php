@@ -11,6 +11,11 @@ class PosModel extends CI_Model {
         return $this->db->get('kasir_maktam_produklain')->result_array();
     }
 
+    function getKategoriProdukLainList()
+    {
+        return $this->db->get('kasir_maktam_produklain_kategori')->result_array();
+    }
+
     function getJumlahProduk($outlet)
     {
         $datas = array(
