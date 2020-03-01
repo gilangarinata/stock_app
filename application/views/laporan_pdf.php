@@ -18,8 +18,8 @@
 
   ?>
 
-<font size="20">
-  <table >
+<font size="28">
+  <table>
   <tr>
     <td>Tanggal</td>
     <td>:</td>
@@ -47,22 +47,22 @@
 
 
 --------------------------------------------------------------
-<font size="20">
-<table style="widtd:100%">
+<font size="28">
+<table style="widtd:100%;" >
   <tr>
-    <td>Nama Barang</td>
-    <td>Jumlah</td> 
-    <td>Harga</td>
-    <td>Total</td>
+    <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
+    <td style="text-align: center; vertical-align: middle;">Jumlah</td> 
+    <td style="text-align: center; vertical-align: middle;">Harga</td>
+    <td style="text-align: center; vertical-align: middle;">Total</td>
   </tr>
   <?php $totals=0; foreach($data as $data): 
     $totals = $totals + $data['total'];
     ?>
   <tr>
-    <td><?= $data['nama_produk'] ?></td>
-    <td><?= $data['jumlah'] ?></td>
-    <td><?= rupiah($data['harga']) ?></td>
-    <td><?= rupiah($data['total']) ?></td>
+    <td style="text-align: center; vertical-align: middle;"><?= $data['nama_produk'] ?></td>
+    <td style="text-align: center; vertical-align: middle;"><?= $data['jumlah'] ?></td>
+    <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['harga']) ?></td>
+    <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['total']) ?></td>
   </tr>
   <?php endforeach ?>
 </table>
@@ -70,7 +70,7 @@
 
   </font>
 --------------------------------------------------------------
-<font size="20">
+<font size="28">
 <table>
   <tr>
     <td>Grand Total </td>
@@ -99,7 +99,7 @@
 
 function rupiah($angka){
 	
-	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	$hasil_rupiah = "  " . number_format($angka,0,',','.');
 	return $hasil_rupiah;
  
 }
