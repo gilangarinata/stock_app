@@ -12,6 +12,8 @@
             <div class="col-sm-6">
                 <div class="form-group"><label>Harga</label> <input value="<?= $produk['harga'] ?>" name="harga" type="number" placeholder="Harga" class="form-control"></div>
                 <div class="form-group"><label>Kategori</label> <input disabled value="<?= $produk['kategori'] ?>" name="kategori" type="text" placeholder="Kategori" class="form-control"></div>
+                <div class="form-group"><label>Gambar</label><span class="input-group-addon btn btn-default btn-file"><input type="file" name="image"></span></div>
+
                 <?php endforeach ?>
                 <div>
                     <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit" name="submit"><strong>Simpan</strong></button>
