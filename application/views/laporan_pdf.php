@@ -48,7 +48,7 @@
 
 --------------------------------------------------------------
 <font size="28">
-<table style="widtd:100%;" >
+<table style="width:100%;" >
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
     <td style="text-align: center; vertical-align: middle;">Jumlah</td> 
