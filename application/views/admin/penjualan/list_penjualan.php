@@ -27,14 +27,14 @@
                 <?php $arr = array();
                 $nm = array();
                 $harga = array();
-                $total = array();
+                $jumlah = array();
                 $a = 0;
                 foreach ($cart as $cart) : ?>
                     <?php
                     $arr[$a] = $cart['cart_id'];
                     $nm[$a] = $cart['nama_produk'];
                     $harga[$a] = $cart['harga'];
-                    $total[$a] = $cart['jumlah'];
+                    $jumlah[$a] = $cart['jumlah'];
                     ?>
                 <?php $a++;
                 endforeach ?>
@@ -72,9 +72,11 @@
                                         <td><?= $produk['tanggal'] ?></td>
                                         <td>
                                             <?php
+                                            $ty = 0;
                                             for ($r = 0; $r < sizeof($arr); $r++) {
                                                 if ($arr[$r] == $produk['cart_id']) {
-                                                    echo str_replace("%20"," ",$nm[$r])  . " (" . $total[$r] . ") " . $harga[$r] . "<br>";
+                                                    $ty++;
+                                                    echo $ty.". ". str_replace("%20"," ",$nm[$r])  . " (" . $jumlah[$r] . ") " . $harga[$r] . "<br>";
                                                 }
                                             }
 

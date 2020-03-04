@@ -44,7 +44,7 @@
                                 foreach ($produk as $produk) : $i++; ?>
                                     <tr class="gradeX">
                                         <td><?= $i ?></td>
-                                        <td><?= $produk['nama_produk'] ?> (<?= $produk['es'] ?>)</td>
+                                        <td><?= $produk['nama_produk'] ?></td>
                                         <td><?= $produk['deskripsi'] ?></td>
                                         <td class="center"><?= $produk['harga'] ?></td>
                                         <td class="center"><?= $produk['kategori'] ?></td>

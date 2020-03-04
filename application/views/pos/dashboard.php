@@ -73,11 +73,11 @@
                                             <?php $i = 0;
                                             foreach ($produklain as $produk) : $i++; ?>
 
-                                                <?php if ($produk['es'] == $kategori['nama_produk']) : ?>
+                                                <?php if ($produk['kategori'] == $kategori['nama_produk']) : ?>
 
                                                     <tr class="gradeX">
                                                         <td><?= $i ?></td>
-                                                        <td><?= $produk['nama_produk'] ?> (<?= $produk['es'] ?>)</td>
+                                                        <td><?= $produk['nama_produk'] ?></td>
                                                         <td><?= $produk['deskripsi'] ?></td>
                                                         <td class="center"><?= $produk['harga'] ?></td>
                                                         <td class="center"><?= $produk['kategori'] ?></td>

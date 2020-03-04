@@ -11,15 +11,23 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group"><label>Harga</label> <input value="<?= $produk['harga'] ?>" name="harga" type="number" placeholder="Harga" class="form-control"></div>
-                <div class="form-group"><label>Kategori</label> <input disabled value="<?= $produk['kategori'] ?>" name="kategori" type="text" placeholder="Kategori" class="form-control"></div>
+                <div class="form-group"><label>Kategori</label>
+                    <select class="form-control" id="cars" name="kategori">
+                        <?php foreach ($kategori as $kategori) : ?>
+                            <option <?= $kategori['nama_produk']==$produk['kategori'] ? 'selected' : '' ?> value="<?= $kategori['nama_produk'] ?>"><?= $kategori['nama_produk'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+
+                </div>
+
                 <div class="form-group"><label>Gambar</label><span class="input-group-addon btn btn-default btn-file"><input type="file" name="image"></span></div>
 
                 <?php endforeach ?>
                 <div>
                     <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit" name="submit"><strong>Simpan</strong></button>
-                    <div class="i-checks"><label> <input type="radio" checked="" value="Dingin" name="es"> <i></i> Dingin </label></div>
+                    <!-- <div class="i-checks"><label> <input type="radio" checked="" value="Dingin" name="es"> <i></i> Dingin </label></div>
                     <div class="i-checks"><label> <input type="radio" value="Hangat" name="es"> <i></i> Hangat </label></div>
-                  </div>
+                  </div> -->
             </div>
         </form>
     </div>

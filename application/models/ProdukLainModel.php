@@ -24,8 +24,7 @@ class ProdukLainModel extends CI_Model
             'nama_produk' => $this->input->post('nama_produk', true),
             'deskripsi' => $this->input->post('deskripsi', true),
             'harga' => $this->input->post('harga', true),
-            'kategori' => "Produk Lain",
-            'es' => $this->input->post('es', true),
+            'kategori' => $this->input->post('kategori', true),
             'gambar' => $this->_uploadImage(),
             
         );
@@ -52,8 +51,7 @@ class ProdukLainModel extends CI_Model
             'nama_produk' => $this->input->post('nama_produk', true),
             'deskripsi' => $this->input->post('deskripsi', true),
             'harga' => $this->input->post('harga', true),
-            'kategori' => "Produk Lain",
-            'es' => $this->input->post('es', true),
+            'kategori' => $this->input->post('kategori', true),
             'gambar' => $gambar
         );
         $this->db->where('id', $id);
