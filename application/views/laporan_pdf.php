@@ -47,7 +47,7 @@
 
 
 --------------------------------------------------------------
-<font size="24">
+<font size="22">
 <table style="width:100%;" >
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
@@ -59,7 +59,7 @@
     $totals = $totals + $data['total'];
     ?>
   <tr>
-    <td style="text-align: center; vertical-align: middle;"><?= $data['nama_produk'] ?></td>
+    <td style="text-align: center; vertical-align: middle;"><?= str_replace("%20"," ",$data['nama_produk']) ?></td>
     <td style="text-align: center; vertical-align: middle;"><?= $data['jumlah'] ?></td>
     <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['harga']) ?></td>
     <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['total']) ?></td>
