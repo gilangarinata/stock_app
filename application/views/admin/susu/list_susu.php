@@ -25,7 +25,8 @@
                     
                 </div>
                 <div class="ibox-content">
-                <a href="<?= base_url('admin/listsusu/create') ?>"><button class="btn btn-primary" type="button"><i class="fa fa-plus"></i>&nbsp;Tambah</button></a>
+                <a href="<?= base_url('admin/listsusu/create') ?>"><button class="btn btn-primary" type="button"><i class="fa fa-plus"></i>&nbsp;Tambah Produk</button></a>
+                <a href="<?= base_url('admin/listsusu/addcategory') ?>"><button class="btn btn-primary" type="button"><i class="fa fa-plus"></i>&nbsp;Tambah Kategori</button></a>
                     
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover dataTables-example">

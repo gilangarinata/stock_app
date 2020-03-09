@@ -42,18 +42,24 @@ class ProdukLainModel extends CI_Model
     function editProduk($id)
     {
         if (!empty($_FILES["image"]["name"])) {
-            $gambar = $this->_uploadImage();   
+            $gambar = $this->_uploadImage();
+            $data = array(
+                'nama_produk' => $this->input->post('nama_produk', true),
+                'deskripsi' => $this->input->post('deskripsi', true),
+                'harga' => $this->input->post('harga', true),
+                'kategori' => $this->input->post('kategori', true),
+                'gambar' => $gambar
+            );
         }else{
-            $gambar = "old image";
+            $data = array(
+                'nama_produk' => $this->input->post('nama_produk', true),
+                'deskripsi' => $this->input->post('deskripsi', true),
+                'harga' => $this->input->post('harga', true),
+                'kategori' => $this->input->post('kategori', true)
+            );
         }
 
-        $data = array(
-            'nama_produk' => $this->input->post('nama_produk', true),
-            'deskripsi' => $this->input->post('deskripsi', true),
-            'harga' => $this->input->post('harga', true),
-            'kategori' => $this->input->post('kategori', true),
-            'gambar' => $gambar
-        );
+
         $this->db->where('id', $id);
         $this->db->update('kasir_maktam_produklain', $data);
     }

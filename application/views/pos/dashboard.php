@@ -37,7 +37,7 @@
                                                 <td class="center"><?= $produk['kategori'] ?></td>
                                                 <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                 <td class="center">
-                                                    <a href="<?= base_url() ?>pos/pos/addproduksusu/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
+                                                    <a href="<?= base_url() ?>pos/pos/addproduksusu/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>/<?= $produk['kategori'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
                                                 </td>
 
                                             </tr>
@@ -83,7 +83,7 @@
                                                         <td class="center"><?= $produk['kategori'] ?></td>
                                                         <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                         <td class="center">
-                                                            <a href="<?= base_url() ?>pos/pos/addproduklain/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
+                                                            <a href="<?= base_url() ?>pos/pos/addproduklain/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>/<?= $produk['kategori'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>

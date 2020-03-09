@@ -35,6 +35,7 @@ class Listsusu extends CI_Controller
 
     public function edit($id)
     {
+        $data['kategori'] = $this->model->getKategori();
         $data['produk'] = $this->model->getProdukById($id);
         $this->load->view("admin/templates/header");
         $this->load->view("admin/susu/edit_susu", $data);
@@ -48,8 +49,9 @@ class Listsusu extends CI_Controller
 
     public function create()
     {
+        $data['kategori'] = $this->model->getKategori();
         $this->load->view('admin/templates/header');
-        $this->load->view('admin/susu/tambah_susu');
+        $this->load->view('admin/susu/tambah_susu',$data);
         $this->load->view('admin/templates/footer');
 
         if(isset($_POST['submit'])){
@@ -58,6 +60,25 @@ class Listsusu extends CI_Controller
         }
     }
 
+
+
+    public function addcategory()
+    {
+        $data['produk'] = $this->model->getKategori();
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/susu/tambah_kategori',$data);
+        $this->load->view('admin/templates/footer');
+
+        if(isset($_POST['submit'])){
+            $this->model->tambahKategori();
+            redirect('admin/listsusu/addcategory');
+        }
+    }
+
+    function deletecategory($id){
+        $this->model->deleteKategori($id);
+        redirect('admin/listsusu/addcategory');
+    }
 
 
 }

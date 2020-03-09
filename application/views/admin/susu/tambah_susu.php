@@ -9,7 +9,11 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group"><label>Harga</label> <input name="harga" type="number" placeholder="Harga" class="form-control"></div>
-                <div class="form-group"><label>Kategori</label> <input value="susu" disabled name="kategori" type="text" placeholder="Kategori" class="form-control"></div>
+                <select class="form-control" name="kategori">
+                    <?php foreach ($kategori as $kategori) : ?>
+                        <option value="<?= $kategori['nama_produk'] ?>"><?= $kategori['nama_produk'] ?></option>
+                    <?php endforeach ?>
+                </select>
 
                 <div class="form-group"><label>Gambar</label><span class="input-group-addon btn btn-default btn-file"><input type="file" name="image"></span></div>
 

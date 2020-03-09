@@ -19,7 +19,7 @@ class SusuModel extends CI_Model
             'nama_produk' => $this->input->post('nama_produk', true),
             'deskripsi' => $this->input->post('deskripsi', true),
             'harga' => $this->input->post('harga', true),
-            'kategori' => "Susu",
+            'kategori' => $this->input->post('kategori', true),
             'es' => $this->input->post('es', true),
             'gambar' => $this->_uploadImage(),
             
@@ -27,22 +27,48 @@ class SusuModel extends CI_Model
         $this->db->insert('kasir_maktam_susu', $data);
     }
 
+    function getKategori()
+    {
+        return $this->db->get('kasir_maktam_susu_kategori')->result_array();
+    }
+
+    function tambahKategori()
+    {
+        $data = array(
+            'nama_produk' => $this->input->post('nama_produk', true)            
+        );
+        $this->db->insert('kasir_maktam_susu_kategori', $data);
+    }
+
+    function deleteKategori($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->delete('kasir_maktam_susu_kategori');
+    }
+
     function editProduk($id)
     {
         if (!empty($_FILES["image"]["name"])) {
-            $gambar = $this->_uploadImage();   
+            $gambar = $this->_uploadImage();  
+            $data = array(
+                'nama_produk' => $this->input->post('nama_produk', true),
+                'deskripsi' => $this->input->post('deskripsi', true),
+                'harga' => $this->input->post('harga', true),
+                'kategori' => $this->input->post('kategori', true),
+                'es' => $this->input->post('es', true),
+                'gambar' => $gambar
+            ); 
         }else{
-            $gambar = "old image";
+            $data = array(
+                'nama_produk' => $this->input->post('nama_produk', true),
+                'deskripsi' => $this->input->post('deskripsi', true),
+                'harga' => $this->input->post('harga', true),
+                'kategori' => $this->input->post('kategori', true),
+                'es' => $this->input->post('es', true)
+            );
         }
 
-        $data = array(
-            'nama_produk' => $this->input->post('nama_produk', true),
-            'deskripsi' => $this->input->post('deskripsi', true),
-            'harga' => $this->input->post('harga', true),
-            'kategori' => "Susu",
-            'es' => $this->input->post('es', true),
-            'gambar' => $gambar
-        );
+
         $this->db->where('id', $id);
         $this->db->update('kasir_maktam_susu', $data);
     }

@@ -25,13 +25,15 @@ class Pos extends CI_Controller {
         $this->load->view("pos/templates/footer");
     }
 
-    function addproduksusu($id,$nama,$harga){
+    function addproduksusu($id,$nama,$harga,$kategori){
+        $nama = $nama." <br>(".$kategori.")";
         $outlet = $this->session->userdata('outlet');
         $this->model->addproduksusu($id,$nama,$harga,$outlet);
         redirect('pos/pos');
     }
 
-    function addproduklain($id,$nama,$harga){
+    function addproduklain($id,$nama,$harga,$kategori){
+        $nama = $nama." <br>(".$kategori.")";
         $outlet = $this->session->userdata('outlet');
         $this->model->addProdukLain($id,$nama,$harga,$outlet);
         redirect('pos/pos');
