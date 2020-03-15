@@ -44,6 +44,11 @@ class Outlet extends CI_Controller
         }
     }
 
+    function go($username){
+        $this->session->set_userdata('outlet',$username);
+        redirect('pos/pos');
+    }
+
     public function create()
     {
         $this->load->view('admin/templates/header');

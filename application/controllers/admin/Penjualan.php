@@ -1,6 +1,7 @@
 <?php
 
-class Penjualan extends CI_Controller{
+class Penjualan extends CI_Controller
+{
     public function __construct()
     {
         parent::__construct();
@@ -14,7 +15,7 @@ class Penjualan extends CI_Controller{
         $data['produk'] = $this->model->getPenjualanList();
         $data['cart'] = $this->model->getCartList();
 
-        if(isset($_POST['submit'])){
+        if (isset($_POST['submit'])) {
             $data['produk'] = $this->model->getPenjualanListFilter();
             $data['cart'] = $this->model->getCartList();
 
@@ -30,5 +31,28 @@ class Penjualan extends CI_Controller{
         $this->load->view("admin/templates/footer");
     }
 
+    public function analisis()
+    {
+        $data['produk'] = $this->model->getAnalisis();
+        $data['produk_outlet'] = $this->model->getAnalisisOutlet();
+        $data['outletz'] = $this->model->getOutlet();
+        $data['outletj'] = "all";
 
-} 
+        if (isset($_POST['submit'])) {
+            if ($this->input->post('outlet') == "all") {
+                $data['produk'] = $this->model->getAnalisis();
+                $data['outletz'] = $this->model->getOutlet();
+                $data['outletj'] = $this->input->post('outlet');
+            } else {
+                $data['produk'] = $this->model->getAnalisisListFilter();
+                $data['outletz'] = $this->model->getOutlet();
+                $data['outletj'] = $this->input->post('outlet');
+            }
+        }
+
+
+        $this->load->view("admin/templates/header");
+        $this->load->view("admin/penjualan/analisis", $data);
+        $this->load->view("admin/templates/footer");
+    }
+}

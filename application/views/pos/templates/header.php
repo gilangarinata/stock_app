@@ -27,27 +27,42 @@
 
 </head>
 
-<?php 
-$jml = 0; 
-foreach($jumlah_produk as $jumlah): 
-    $jml = $jml + $jumlah['jumlah'];    
-endforeach    
+<?php
+$jml = 0;
+foreach ($jumlah_produk as $jumlah) :
+    $jml = $jml + $jumlah['jumlah'];
+endforeach
 ?>
 
 <ul class="nav navbar-top-links navbar-right">
-                        <li class="dropdown">
-                            <a class="count-info" href="<?= base_url() ?>pos/cart/cart">
-                            Bayar
-                                <i class="fa fa-shopping-cart"></i> <span class="label label-primary"><?php if($jml!=0): ?><?= $jml ?><?php endif ?></span> 
-                                
-                            </a>
-                        </li>
+
+<li>
+        <a href="<?= base_url() ?>pos/pos/">
+            <i class="fa fa-home"></i> Home
+        </a>
+    </li>
+
+    <li>
+        <a href="<?= base_url() ?>pos/pos/penjualan">
+            <i class="fa fa-dollar"></i> Penjualan
+        </a>
+    </li>
 
 
-                        <li>
-                            <a href="<?= base_url() ?>pos/login">
-                                <i class="fa fa-sign-out"></i> Log out
-                            </a>
-                        </li>
-                    </ul>
+    <li class="dropdown">
+        <a class="count-info" href="<?= base_url() ?>pos/cart/cart">
+            Bayar
+            <i class="fa fa-shopping-cart"></i> <span class="label label-primary"><?php if ($jml != 0) : ?><?= $jml ?><?php endif ?></span>
+
+        </a>
+    </li>
+
+
+    <li>
+        <a href="<?= base_url() ?>pos/login">
+            <i class="fa fa-sign-out"></i> Log out
+        </a>
+    </li>
+</ul>
+
 <body style="background-color: #2e3944;">

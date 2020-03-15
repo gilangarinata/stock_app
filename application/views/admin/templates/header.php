@@ -39,6 +39,10 @@
                         <a href="<?= base_url() ?>admin/penjualan"><i class="fa fa-dollar"></i> <span class="nav-label">Penjualan</span></a>
                     </li>
 
+                    <li>
+                        <a href="<?= base_url() ?>admin/penjualan/analisis"><i class="fa fa-line-chart"></i> <span class="nav-label">Analisis Penjualan</span></a>
+                    </li>
+
 
                     <li>
                         <a href="<?= base_url() ?>admin/listsusu"><i class="fa fa-coffee"></i> <span class="nav-label">Susu</span></a>

@@ -47,7 +47,7 @@
 
 
 --------------------------------------------------------------
-<font size="22">
+<font size="20">
 <table style="width:100%;" >
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>

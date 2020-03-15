@@ -25,8 +25,31 @@ class Pos extends CI_Controller {
         $this->load->view("pos/templates/footer");
     }
 
-    function addproduksusu($id,$nama,$harga,$kategori){
-        $nama = $nama." <br>(".$kategori.")";
+    function penjualan(){
+
+        $outlet = $this->session->userdata('outlet');
+
+        $data['produk'] = $this->model->getPenjualanList($outlet);
+        $data['cart'] = $this->model->getCartList();
+
+
+        $data['susu'] = $this->model->getSusuList();
+        $data['produklain'] = $this->model->getProdukLainList();
+        $data['kategoriproduklain'] = $this->model->getKategoriProdukLainList();
+        $data['jumlah_produk'] = $this->model->getJumlahProduk($outlet);
+
+        if (isset($_POST['submit'])) {
+            $data['produk'] = $this->model->getPenjualanListFilter($outlet);
+            $data['cart'] = $this->model->getCartList();
+        }
+
+        $this->load->view("pos/templates/header",$data);
+        $this->load->view("pos/penjualan",$data);
+        $this->load->view("pos/templates/footer");
+    }
+
+    function addproduksusu($id,$nama,$harga,$kategori,$es){
+        $nama = $nama." ".$es." <br>(".$kategori.")";
         $outlet = $this->session->userdata('outlet');
         $this->model->addproduksusu($id,$nama,$harga,$outlet);
         redirect('pos/pos');

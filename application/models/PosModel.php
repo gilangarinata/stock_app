@@ -125,9 +125,30 @@ class PosModel extends CI_Model {
         }
     }
 
+    function getPenjualanList($outlet)
+    {
+        $datas = array(
+            'outlet'=>$outlet
+        );
+        return $this->db->get_where('kasir_dashboard_pembayaran',$datas)->result_array();
+    }
 
+    function getCartList()
+    {
+        return $this->db->get('kasir_dashboard_keranjang')->result_array();
+    }
 
+    function getPenjualanListFilter($outlet)
+    {
+        $datas = array(
+            'outlet'=>$outlet
+        );
+        $tgl = date('d/m/Y', strtotime($this->input->post('tanggal')));
 
+        $this->db->like('tanggal',$tgl);
+        $this->db->like('shift', $this->input->post('shift1'));
+        return $this->db->get_where('kasir_dashboard_pembayaran',$datas)->result_array();
+    }
 
     function addProdukLain($id,$nama,$harga,$outlet)
     {
