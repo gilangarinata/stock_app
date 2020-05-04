@@ -43,6 +43,10 @@
                         <a href="<?= base_url() ?>admin/penjualan/analisis"><i class="fa fa-line-chart"></i> <span class="nav-label">Analisis Penjualan</span></a>
                     </li>
 
+                    <li>
+                        <a href="<?= base_url() ?>admin/penjualan/rekap"><i class="fa fa-calendar"></i> <span class="nav-label">Rekap Harian</span></a>
+                    </li>
+
 
                     <li>
                         <a href="<?= base_url() ?>admin/listsusu"><i class="fa fa-coffee"></i> <span class="nav-label">Susu</span></a>

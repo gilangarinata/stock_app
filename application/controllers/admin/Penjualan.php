@@ -55,4 +55,19 @@ class Penjualan extends CI_Controller
         $this->load->view("admin/penjualan/analisis", $data);
         $this->load->view("admin/templates/footer");
     }
+
+    public function rekap()
+    {
+        $tgl = date("d/m/Y");
+        $data['produk'] = $this->model->getRekapHarian($tgl);
+
+        if (isset($_POST['submit'])) {
+            $date = date("d/m/Y",strtotime($this->input->post("tanggal")));
+            $data['produk'] = $this->model->getRekapHarian($date);
+        }
+
+        $this->load->view("admin/templates/header");
+        $this->load->view("admin/penjualan/rekap", $data);
+        $this->load->view("admin/templates/footer");
+    }
 }

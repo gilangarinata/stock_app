@@ -55,6 +55,8 @@ class PosModel extends CI_Model {
 
     function addproduksusu($id,$nama,$harga,$outlet)
     {
+        date_default_timezone_set('Asia/Jakarta');
+
         $datas = array(
             'outlet'=>$outlet
         );
@@ -111,7 +113,10 @@ class PosModel extends CI_Model {
             'gambar' => $gambar,
             'total' => $jumlah*$harga,
             'cart_id' => $cartid,
-            'outlet' => $outlet           
+            'outlet' => $outlet,
+            'tanggal' => date('d/m/Y'),
+            'bulan' => date('m/Y'),
+            'tahun' => date('Y'),       
         );
 
 
@@ -152,6 +157,8 @@ class PosModel extends CI_Model {
 
     function addProdukLain($id,$nama,$harga,$outlet)
     {
+        date_default_timezone_set('Asia/Jakarta');
+
         $datas = array(
             'outlet'=>$outlet
         );
@@ -165,14 +172,11 @@ class PosModel extends CI_Model {
            $cartid = $idcart["id_cart"];
         }
 
-
         $jumlah= 1;
 
         $deskripsi = "";
         $es = "";
         $gambar = "";
-
-
 
         $info2 = array(
             'id' => $id,
@@ -209,7 +213,10 @@ class PosModel extends CI_Model {
             'gambar' => $gambar,
             'total' => $jumlah*$harga,
             'cart_id' => $cartid,
-            'outlet' => $outlet          
+            'outlet' => $outlet,
+            'tanggal' => date('d/m/Y'),
+            'bulan' => date('m/Y'),
+            'tahun' => date('Y'),
         );
 
 

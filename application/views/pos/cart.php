@@ -52,7 +52,7 @@ endforeach
                                         <?= $cart['harga'] ?>
                                     </td>
                                     <td width="65">
-                                        <input id="jumlah<?= $i ?>" onkeydown="realtimeFct()" onkeypress="realtimeFct()" onkeyup="realtimeFct()" type="text" value="<?= $cart['jumlah'] ?>" class="form-control">
+                                        <input readonly id="jumlah<?= $i ?>" onkeydown="realtimeFct()" onkeypress="realtimeFct()" onkeyup="realtimeFct()" type="text" value="<?= $cart['jumlah'] ?>" class="form-control">
                                     </td>
                                     <td>
                                         <h4 id="total_item<?= $i ?>">
@@ -141,11 +141,27 @@ endforeach
                         Shift
                     </span>
                     
-                    <select name="shift">
+                    <select id="shift" name="shift">
                         <option value="1" <?= $this->session->userdata("shift") == 1 ? "selected" : "" ?>>1</option>
                         <option value="2" <?= $this->session->userdata("shift") == 2 ? "selected" : "" ?>>2</option>
                     </select>
 
+                    <hr />
+
+                    <div id="modals">
+                    <span>
+                        Modal
+                    </span>
+                    
+                    <input name="modal"  type="number" class="form-control">
+                    <hr />
+                    <span>
+                        Pengeluaran
+                    </span>
+                    
+                    <input name="pengeluaran"  type="number" class="form-control">
+                
+                    </div>
 
                     <hr />
 
@@ -182,6 +198,30 @@ endforeach
             totalall = totalall + total;
         }
         $("#totalall").val(totalall);
+    }
+
+selectFilter();
+    function selectFilter(){
+        
+
+        var val = $('#shift option:selected').val();
+
+        if(val=="2"){
+            $("#modals").show();
+        }else{
+            $("#modals").hide();
+        }
+
+        $('#shift').change(function(){
+            $(this).find("option:selected").each(function(){
+                var optionValue = $(this).attr("value");
+                if(optionValue=="2"){
+                    $("#modals").show();
+                }else{
+                    $("#modals").hide();
+                }
+            });
+        });
     }
 
     function kembaliSat(){

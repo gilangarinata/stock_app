@@ -20,26 +20,84 @@ class PenjualanModel extends CI_Model
         $jml = 0;
         $i = 0;
 
-        $this->db->distinct();
-        $this->db->select('nama_produk');
-        $produkArr = $this->db->get('kasir_dashboard_keranjang')->result_array();
+        $tanggal = $this->input->post("tanggal");
+        $bulan = $this->input->post("bulan");
+        $tahun = $this->input->post("tahun");
 
+        $formTgl = $tanggal."/".$bulan."/".$tahun;
+        $formBln = $bulan."/".$tahun;
+        $formThn = $tahun;
+
+        if(!empty($tahun)){
+            if(!empty($bulan)){
+                if(!empty($tanggal)){
+                    $datas = array(
+                        'tanggal'=> $formTgl
+                    );
+                }else{
+                    $datas = array(
+                        'bulan'=> $formBln
+                    );
+                }
+            }else{
+                $datas = array(
+                    'tahun'=> $formThn
+                );
+            }
+
+            $this->db->distinct();
+            $this->db->select('nama_produk');
+            $produkArr = $this->db->get_where('kasir_dashboard_keranjang',$datas)->result_array();
+
+        }else{
+            $this->db->distinct();
+            $this->db->select('nama_produk');
+            $produkArr = $this->db->get('kasir_dashboard_keranjang')->result_array();
+        }
+        
         $object = array();
 
-        foreach($produkArr as $produkArr){
-            $produk[$i] = $produkArr['nama_produk'];
-            
-            $datas = array(
-                'nama_produk'=> $produkArr['nama_produk']
-            );
 
-            $jmlArr = $this->db->get_where('kasir_dashboard_keranjang',$datas)->result_array();
+        foreach($produkArr as $produkArr){
+        
+            if(!empty($tahun)){
+                if(!empty($bulan)){
+                    if(!empty($tanggal)){
+                        $datas = array(
+                            'nama_produk'=> $produkArr['nama_produk'],
+                            'tanggal'=> $formTgl
+                        );
+                    }else{
+                        $datas = array(
+                            'nama_produk'=> $produkArr['nama_produk'],
+                            'bulan'=> $formBln
+                        );
+                    }
+                }else{
+                    $datas = array(
+                        'nama_produk'=> $produkArr['nama_produk'],
+                        'tahun'=> $formThn
+                    );
+                }
+    
+                $jmlArr = $this->db->get_where('kasir_dashboard_keranjang',$datas)->result_array();
+    
+            }else{
+                $datas = array(
+                    'nama_produk'=> $produkArr['nama_produk']
+                );
+
+                $jmlArr = $this->db->get_where('kasir_dashboard_keranjang',$datas)->result_array();
+            }
+
+            
 
             foreach($jmlArr as $jmlh){
                 $jml = $jml + (int)$jmlh['jumlah'];
             }
 
            $jumlah[$i] = $jml;
+           $produk[$i] = $produkArr['nama_produk'];
 
             $jml = 0;
             $i++;
@@ -98,6 +156,16 @@ class PenjualanModel extends CI_Model
         return $this->db->get('kasir_dashboard_pembayaran')->result_array();
     }
 
+    function getRekapHarian($tgl)
+    {
+
+        $data = array(
+            'tanggal_lengkap' => $tgl,
+        );
+
+        return $this->db->get_where('kasir_info_kasir', $data)->result_array();
+    }
+
     function getAnalisisListFilter()
     {
         $outlet = $this->input->post('outlet');
@@ -107,13 +175,52 @@ class PenjualanModel extends CI_Model
         $jml = 0;
         $i = 0;
 
-        $data = array(
-            'outlet'=> $outlet
-        );
+        $tanggal = $this->input->post("tanggal");
+        $bulan = $this->input->post("bulan");
+        $tahun = $this->input->post("tahun");
 
-        $this->db->distinct();
-        $this->db->select('nama_produk');
-        $produkArr = $this->db->get_where('kasir_dashboard_keranjang',$data)->result_array();
+        $formTgl = $tanggal."/".$bulan."/".$tahun;
+        $formBln = $bulan."/".$tahun;
+        $formThn = $tahun;
+
+
+        if(!empty($tahun)){
+            if(!empty($bulan)){
+                if(!empty($tanggal)){
+                    $datas = array(
+                        'outlet'=> $outlet,
+                        'tanggal'=> $formTgl
+                    );
+                }else{
+                    $datas = array(
+                        'outlet'=> $outlet,
+                        'bulan'=> $formBln
+                    );
+                }
+            }else{
+                $datas = array(
+                    'outlet'=> $outlet,
+                    'tahun'=> $formThn
+                );
+            }
+
+
+
+            $this->db->distinct();
+            $this->db->select('nama_produk');
+            $produkArr = $this->db->get_where('kasir_dashboard_keranjang',$datas)->result_array();
+
+        }else{
+            $datas = array(
+                'outlet'=> $outlet
+            );
+
+
+            $this->db->distinct();
+            $this->db->select('nama_produk');
+            $produkArr = $this->db->get_where('kasir_dashboard_keranjang',$datas)->result_array();
+        }
+        
 
         $object = array();
 

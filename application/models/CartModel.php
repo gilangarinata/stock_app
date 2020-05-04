@@ -129,5 +129,32 @@ function addPembayaran($outlet)
     $this->db->insert("kasir_helper_idcart",$data2);
 }
 
+function addKeterangan($outlet){
+    date_default_timezone_set('Asia/Jakarta');
 
+    $datas = array(
+        'tanggal_lengkap'=> date('d/m/Y')
+    );
+
+    $numrow = $this->db->get_where('kasir_info_kasir',$datas)->num_rows();
+
+    $data = array(
+        'modal' => $this->input->post("modal"),
+        'pengeluaran' => $this->input->post("pengeluaran"),
+        'tanggal' => date('d'),
+        'bulan' => date('m'),
+        'tahun' => date('Y'),
+        'jam' => date("H:i:s"),
+        'outlet' => $outlet,                 
+        'shift' => $this->input->post("shift"),
+        'nama' => $this->input->post("nama"),
+        'tanggal_lengkap' => date('d/m/Y')
+    );
+
+    if($numrow>0){
+        $this->db->update('kasir_info_kasir',$data);
+    }else{
+        $this->db->insert('kasir_info_kasir',$data);
+    }
+}
 }

@@ -27,9 +27,8 @@ class Cart extends CI_Controller {
             $this->session->set_userdata('shift',$this->input->post("shift"));
             
             $this->model->addPembayaran($outlet);
+            $this->model->addKeterangan($outlet);
             redirect('pos/cart/cart/laporan_pdf/'.$outlet);
-
-
         }
 
     }
