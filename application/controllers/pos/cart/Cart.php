@@ -25,6 +25,8 @@ class Cart extends CI_Controller {
         if(isset($_POST['submit'])){
             $this->session->set_userdata('nama',$this->input->post("nama"));
             $this->session->set_userdata('shift',$this->input->post("shift"));
+            $this->session->set_userdata('modal',$this->input->post("modal"));
+            $this->session->set_userdata('pengeluaran',$this->input->post("pengeluaran"));
             
             $this->model->addPembayaran($outlet);
             $this->model->addKeterangan($outlet);

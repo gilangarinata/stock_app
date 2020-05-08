@@ -153,13 +153,13 @@ endforeach
                         Modal
                     </span>
                     
-                    <input name="modal"  type="number" class="form-control">
+                    <input name="modal" value="<?= $this->session->userdata("modal") ?>"  type="number" class="form-control">
                     <hr />
                     <span>
                         Pengeluaran
                     </span>
                     
-                    <input name="pengeluaran"  type="number" class="form-control">
+                    <input name="pengeluaran"  value="<?= $this->session->userdata("pengeluaran") ?>" type="number" class="form-control">
                 
                     </div>
 
