@@ -35,7 +35,7 @@ endforeach
                                     <td class="desc">
                                         <h3>
                                             <a href="#" class="text-navy">
-                                                <?= $cart['nama_produk'] ?> 
+                                                <?= str_replace("%20"," ",$cart['nama_produk'])  ?> 
                                             </a>
                                         </h3>
                                         <p class="small">

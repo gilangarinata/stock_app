@@ -109,9 +109,115 @@
                                 <?php
                                 function toRupiah($value)
                                 {
-                                    return "" . number_format($value, 0, ".", ".");
+                                    return "Rp. " . number_format($value, 0, ".", ".");
                                 }
                                 ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group" id="data_1">
+                            <label class="font-normal">Tanggal</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input name="tanggal" type="date" class="form-control" value="">
+                            </div>
+                        </div>
+
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <tr>
+                                <td>
+                                    <div class="radio radio-info radio-inline">
+                                        <input type="radio" id="inlineRadio1" value="1" name="shift1" checked="">
+                                        <label for="inlineRadio1"> Shift 1 </label>
+                                    </div>
+                                </td>
+
+                                <td>
+
+                                </td>
+
+                                <td>
+                                    <div class="radio radio-inline">
+                                        <input type="radio" id="inlineRadio2" value="2" name="shift1">
+                                        <label for="inlineRadio2"> Shift 2 </label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" type="submit" name="submit"><strong>Filter</strong></button>
+
+                                </td>
+                            </tr>
+
+                    </form>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+
+                <div class="ibox-title">
+                    <h5>Total Modal dan Pengeluaran</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#">Config option 1</a>
+                            </li>
+                            <li><a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+
+
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal</th>
+                                    <th>Pendapatan</th>
+                                    <th>Modal</th>
+                                    <th>Pengeluaran</th>
+                                    <th>Total</th>
+                                    <th>Nama Kasir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 0;
+                                foreach ($modal as $modal) : $i++; 
+                                     ?>
+
+                                    <tr class="gradeX">
+                                        <td><?= $i ?></td>
+                                        <td><?= $modal['tanggal'] ?></td>
+                                        <td><?= $modal['modal'] ?></td>
+                                        <td><?= $modal['pengeluaran'] ?></td>
+                                        <td><?= $modal['modal']-$modal['pengeluaran'] ?></td>
+                                        <td><?= $modal['nama'] ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+
+
+
                             </tbody>
                         </table>
                     </div>

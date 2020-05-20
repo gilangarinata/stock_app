@@ -138,6 +138,14 @@ class PosModel extends CI_Model {
         return $this->db->get_where('kasir_dashboard_pembayaran',$datas)->result_array();
     }
 
+    function getModalList($outlet)
+    {
+        $datas = array(
+            'outlet'=>$outlet
+        );
+        return $this->db->get_where('kasir_info_kasir',$datas)->result_array();
+    }
+
     function getCartList()
     {
         return $this->db->get('kasir_dashboard_keranjang')->result_array();
