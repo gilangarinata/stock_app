@@ -23,21 +23,6 @@
                     </div>
                 </div>
 
-                <?php $arr = array();
-                $nm = array();
-                $harga = array();
-                $jumlah = array();
-                $a = 0;
-                foreach ($cart as $cart) : ?>
-                    <?php
-                    $arr[$a] = $cart['cart_id'];
-                    $nm[$a] = $cart['nama_produk'];
-                    $harga[$a] = $cart['harga'];
-                    $jumlah[$a] = $cart['jumlah'];
-                    ?>
-                <?php $a++;
-                endforeach ?>
-
 
 
                 <div class="ibox-content">
@@ -57,64 +42,19 @@
                             </thead>
                             <tbody>
 
-                            <?php 
-                                $tanggalModal = array();
-                                $tanggalProduk = array();
-                                $totalProduk = array();
-                                $modal = array();
-                                $pengeluaran = array();
-                                $nama = array();
-                                $total = array();
-                                $dt = array();
-                                $s = 0;
-                                $i= 0;
 
 
-                                $p = 0;
-                                foreach($saldo as $saldo) {
-                                    $tanggalModal[$p] = $saldo['tanggal_lengkap'];
-                                    $modal[$p] = $saldo['modal'];
-                                    $pengeluaran[$p] = $saldo['pengeluaran'];
-                                    $nama[$p] = $saldo['nama'];
-                                    $p++;
-                                }
-                                $o = 0;
-                                foreach($produk as $produk) {
-                                    $tanggalProduk[$o] = substr($produk['tanggal'],0,10);
-                                    $totalProduk[$o] = $produk['total'];
-                                    $o++;
-                                }
+                                    <?php $i=0; foreach($saldo as $saldo): ?>
+                                        <tr class="gradeX">
+                                            <td><?= $i+1 ?></td>
+                                            <td><?= $saldo['tanggal_lengkap'] ?></td>
+                                            <td><?= $saldo['pendapatan'] ?></td>
+                                            <td><?= $saldo['modal'] ?></td>
+                                            <td><?= $saldo['pengeluaran'] ?></td>
+                                            <td><?= $saldo['nama'] ?></td>
+                                        </tr>
+                                    <?php endforeach ?>
 
-
-
-                                for($s=0; $s<sizeof($tanggalModal); $s++){
-                                    $total[$s] = 0;
-                                    for($i; $i<sizeof($tanggalProduk); $i++){
-                                        if($tanggalProduk[$i]==$tanggalModal[$s]){
-                                            $total[$s] = $total[$s] + (int)$totalProduk[$i];
-                                        }
-                                    }
-                                }
-
-                                
-
-                            ?>
-
-
-                            <?php 
-
-                                for ($i=0; $i<sizeof($modal); $i++) : ; 
-                                     ?>
-                                    <tr class="gradeX">
-                                        <td><?= $i+1 ?></td>
-                                        <td><?= $tanggalModal[$i] ?></td>
-                                        <td><?= toRupiah($total[$i]) ?></td>
-                                        <td><?= toRupiah($modal[$i]) ?></td>
-                                        <td><?= toRupiah($pengeluaran[$i]) ?></td>
-                                        <td><?= toRupiah((int)$total[$i]+(int)$modal[$i]-$pengeluaran[$i]) ?></td>
-                                        <td><?= $nama[$i] ?></td>
-                                    </tr>
-                                <?php endfor ?>
 
 
                                 <?php

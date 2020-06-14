@@ -48,13 +48,6 @@ endforeach
         </a>
     </li>
 
-    <li>
-        <a href="<?= base_url() ?>pos/pos/saldo">
-            <i class="fa fa-dollar"></i> Saldo
-        </a>
-    </li>
-
-
     <li class="dropdown">
         <a class="count-info" href="<?= base_url() ?>pos/cart/cart">
             Bayar

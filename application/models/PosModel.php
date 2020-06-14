@@ -133,16 +133,29 @@ class PosModel extends CI_Model {
     function getPenjualanList($outlet)
     {
         $datas = array(
-            'outlet'=>$outlet
+            'outlet'=>$outlet,
         );
+        return $this->db->get_where('kasir_harian',$datas)->result_array();
+    }
+
+    function getDetailPenjualan($tanggal,$shift,$outlet)
+    {
+
+        $datas = array(
+            'outlet'=>$outlet,
+            'shift'=>$shift,
+        );
+        $this->db->like('tanggal', str_replace('-','/',$tanggal));
         return $this->db->get_where('kasir_dashboard_pembayaran',$datas)->result_array();
     }
 
-    function getModalList($outlet)
+    function getModalList($outlet,$tanggal)
     {
         $datas = array(
             'outlet'=>$outlet
         );
+
+        $this->db->like('tanggal_lengkap', str_replace('-','/',$tanggal));
         return $this->db->get_where('kasir_info_kasir',$datas)->result_array();
     }
 

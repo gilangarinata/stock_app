@@ -129,11 +129,45 @@ function addPembayaran($outlet)
     $this->db->insert("kasir_helper_idcart",$data2);
 }
 
+function addRekapHarian($outlet)
+{   
+    $data = array(
+        'kasir' => $this->input->post("nama"),
+        'tanggal' => substr($this->input->post("tanggal"),0,10),
+        'shift' => $this->input->post("shift"),
+        'outlet' => $outlet
+    );
+
+    $where = array(
+        'tanggal' => substr($this->input->post("tanggal"),0,10),
+        'shift' => $this->input->post("shift")
+    );
+
+    $data1 = array(
+        'tanggal' => substr($this->input->post("tanggal"),0,10),
+        'shift' => $this->input->post("shift"),
+        'outlet' => $outlet
+    );
+
+
+
+    if($this->db->get_where('kasir_harian',$data1)->num_rows() > 0 ) {
+        $this->db->where($where);
+        $this->db->update('kasir_harian',$data);
+    }else{
+        $this->db->insert('kasir_harian',$data);
+    }
+}
+
 function addKeterangan($outlet){
     date_default_timezone_set('Asia/Jakarta');
 
+    $shift = $this->input->post("shift");
+
     $datas = array(
-        'tanggal_lengkap'=> date('d/m/Y')
+        'tanggal_lengkap'=> substr($this->input->post("tanggal"),0,10),
+        'shift' => $shift,
+        'outlet' => $outlet
     );
 
     $numrow = $this->db->get_where('kasir_info_kasir',$datas)->num_rows();
@@ -148,13 +182,17 @@ function addKeterangan($outlet){
         'outlet' => $outlet,                 
         'shift' => $this->input->post("shift"),
         'nama' => $this->input->post("nama"),
-        'tanggal_lengkap' => date('d/m/Y')
+        'tanggal_lengkap' => substr($this->input->post("tanggal"),0,10)
     );
 
-    if($numrow>0){
-        $this->db->update('kasir_info_kasir',$data);
-    }else{
-        $this->db->insert('kasir_info_kasir',$data);
+
+    if((int)$shift == 2){
+        if($numrow>0){
+            $this->db->where($datas);
+            $this->db->update('kasir_info_kasir',$data);
+        }else{
+            $this->db->insert('kasir_info_kasir',$data);
+        }
     }
 }
 }

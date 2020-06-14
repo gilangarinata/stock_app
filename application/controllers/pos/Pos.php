@@ -30,9 +30,24 @@ class Pos extends CI_Controller {
         $outlet = $this->session->userdata('outlet');
 
         $data['produk'] = $this->model->getPenjualanList($outlet);
-        $data['modal'] = $this->model->getModalList($outlet);
-        $data['cart'] = $this->model->getCartList();
 
+        $data['susu'] = $this->model->getSusuList();
+        $data['produklain'] = $this->model->getProdukLainList();
+        $data['kategoriproduklain'] = $this->model->getKategoriProdukLainList();
+        $data['jumlah_produk'] = $this->model->getJumlahProduk($outlet);
+
+        $this->load->view("pos/templates/header",$data);
+        $this->load->view("pos/penjualan",$data);
+        $this->load->view("pos/templates/footer");
+    }
+
+
+    function detailPenjualan($tanggal,$shift){
+        $outlet = $this->session->userdata('outlet');
+
+        $data['modal'] = $this->model->getModalList($outlet,$tanggal);
+        $data['cart'] = $this->model->getCartList();
+        $data['produk'] = $this->model->getDetailPenjualan($tanggal,$shift,$outlet);
 
         $data['susu'] = $this->model->getSusuList();
         $data['produklain'] = $this->model->getProdukLainList();
@@ -45,7 +60,7 @@ class Pos extends CI_Controller {
         }
 
         $this->load->view("pos/templates/header",$data);
-        $this->load->view("pos/penjualan",$data);
+        $this->load->view("pos/detailpenjualan",$data);
         $this->load->view("pos/templates/footer");
     }
 
@@ -56,8 +71,6 @@ class Pos extends CI_Controller {
         $data['produk'] = $this->model->getPenjualanList($outlet);
         $data['saldo'] = $this->model->getModalList($outlet);
         $data['cart'] = $this->model->getCartList();
-
-
 
 
         $data['susu'] = $this->model->getSusuList();

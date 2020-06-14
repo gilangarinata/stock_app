@@ -30,10 +30,12 @@ class Cart extends CI_Controller {
             
             $this->model->addPembayaran($outlet);
             $this->model->addKeterangan($outlet);
+            $this->model->addRekapHarian($outlet);
+
             redirect('pos/cart/cart/laporan_pdf/'.$outlet);
         }
-
     }
+
 
     function delete($id){
         $this->model->delete($id);

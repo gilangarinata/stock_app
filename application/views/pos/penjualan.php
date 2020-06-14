@@ -23,20 +23,7 @@
                     </div>
                 </div>
 
-                <?php $arr = array();
-                $nm = array();
-                $harga = array();
-                $jumlah = array();
-                $a = 0;
-                foreach ($cart as $cart) : ?>
-                    <?php
-                    $arr[$a] = $cart['cart_id'];
-                    $nm[$a] = $cart['nama_produk'];
-                    $harga[$a] = $cart['harga'];
-                    $jumlah[$a] = $cart['jumlah'];
-                    ?>
-                <?php $a++;
-                endforeach ?>
+
 
 
 
@@ -47,112 +34,28 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Tanggal</th>
-                                    <th>Produk</th>
-                                    <th>Total</th>
-                                    <th>Jumlah Bayar</th>
-                                    <th>Kembali</th>
-                                    <th>Metode Pembayaran</th>
                                     <th>Shift</th>
-                                    <th>Nama Kasir</th>
-                                    <th>Outlet</th>
+                                    <th>Nama</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 0; $total=0; $jumlahBayar=0; $kembali=0;
-                                foreach ($produk as $produk) : $i++; 
-                                    $total = $total + (int)$produk['total'];
-                                    $jumlahBayar = $jumlahBayar + (int)$produk['jumlah_bayar'];
-                                    $kembali = $kembali + (int)$produk['kembali'];
-
-                                    $nama_produk = ""; ?>
+                                <?php $i=0; foreach ($produk as $produk) : $i++;?>
 
                                     <tr class="gradeX">
                                         <td><?= $i ?></td>
                                         <td><?= $produk['tanggal'] ?></td>
-                                        <td>
-                                            <?php
-                                            $ty = 0;
-                                            for ($r = 0; $r < sizeof($arr); $r++) {
-                                                if ($arr[$r] == $produk['cart_id']) {
-                                                    $ty++;
-                                                    echo $ty.". ". str_replace("%20"," ",$nm[$r])  . " (" . $jumlah[$r] . ") " . $harga[$r] . "<br>";
-                                                }
-                                            }
-
-                                            ?>
-
-                                        </td>
-                                        <td><?= $produk['total'] ?></td>
-                                        <td class="center"><?= $produk['jumlah_bayar'] ?></td>
-                                        <td class="center"><?= $produk['kembali'] ?></td>
-                                        <td class="center"><?= $produk['metode_pembayaran'] ?></td>
-                                        <td class="center"><?= $produk['shift'] ?></td>
-                                        <td class="center"><?= $produk['nama'] ?></td>
-                                        <td class="center"><?= $produk['outlet'] ?></td>
+                                    
+                                        <td><?= $produk['shift'] ?></td>
+                                        <td class="center"><?= $produk['kasir'] ?></td>
+                                        <td> <a href="<?= base_url() ?>pos/pos/detailpenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Detail</a> </td>
                                     </tr>
                                 <?php endforeach ?>
-
-                                <tr  class="gradeX">
-                                    <td><p style="color:white">100</p></td>
-                                    <td><b>Total</></td>
-                                    <td></td>
-                                    <td><b><?= toRupiah($total) ?></b></td>
-                                    <td class="center"><b><?= toRupiah($jumlahBayar) ?></b></td>
-                                    <td class="center"><b><?= toRupiah($kembali) ?></b></td>
-                                    <td class="center"></td>
-                                    <td class="center"></td>
-                                    <td class="center"></td>
-                                    <td class="center"></td>
-                                </tr>
-
-
-                                <?php
-                                function toRupiah($value)
-                                {
-                                    return "Rp. " . number_format($value, 0, ".", ".");
-                                }
-                                ?>
+             
                             </tbody>
                         </table>
                     </div>
 
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="form-group" id="data_1">
-                            <label class="font-normal">Tanggal</label>
-                            <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input name="tanggal" type="date" class="form-control" value="">
-                            </div>
-                        </div>
-
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
-                            <tr>
-                                <td>
-                                    <div class="radio radio-info radio-inline">
-                                        <input type="radio" id="inlineRadio1" value="1" name="shift1" checked="">
-                                        <label for="inlineRadio1"> Shift 1 </label>
-                                    </div>
-                                </td>
-
-                                <td>
-
-                                </td>
-
-                                <td>
-                                    <div class="radio radio-inline">
-                                        <input type="radio" id="inlineRadio2" value="2" name="shift1">
-                                        <label for="inlineRadio2"> Shift 2 </label>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <button class="btn btn-sm btn-primary" type="submit" name="submit"><strong>Filter</strong></button>
-
-                                </td>
-                            </tr>
-
-                    </form>
                     </table>
 
                 </div>
