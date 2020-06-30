@@ -159,6 +159,35 @@ class PosModel extends CI_Model {
         return $this->db->get_where('kasir_info_kasir',$datas)->result_array();
     }
 
+    function setModalPengeluaran($outlet,$tanggal)
+    {
+        $info = array(
+            'tanggal_lengkap' => str_replace('-','/',$tanggal),
+            'outlet' => $outlet,                 
+        );
+        $datas = array(
+            'modal' => $this->input->post("modal"),
+            'pengeluaran' => $this->input->post("pengeluaran"),
+            'tanggal' => date('d'),
+            'bulan' => date('m'),
+            'tahun' => date('Y'),
+            'jam' => date("H:i:s"),
+            'outlet' => $outlet,                 
+            'shift' => '2',
+            'nama' => "",
+            'tanggal_lengkap' => str_replace('-','/',$tanggal)
+        );
+
+
+        if($this->db->get_where('kasir_info_kasir',$info)->num_rows()>0){
+            $this->db->where('outlet', $outlet);
+            $this->db->where('tanggal_lengkap', str_replace('-','/',$tanggal));
+            $this->db->update('kasir_info_kasir', $datas);
+        }else{
+            $this->db->insert('kasir_info_kasir', $datas);
+        }
+    }
+
     function getCartList()
     {
         return $this->db->get('kasir_dashboard_keranjang')->result_array();

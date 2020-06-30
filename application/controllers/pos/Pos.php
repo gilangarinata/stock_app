@@ -55,8 +55,8 @@ class Pos extends CI_Controller {
         $data['jumlah_produk'] = $this->model->getJumlahProduk($outlet);
 
         if (isset($_POST['submit'])) {
-            $data['produk'] = $this->model->getPenjualanListFilter($outlet);
-            $data['cart'] = $this->model->getCartList();
+            $this->model->setModalPengeluaran($outlet,$tanggal);
+            redirect('pos/pos/detailpenjualan/'.$tanggal.'/'.$shift);
         }
 
         $this->load->view("pos/templates/header",$data);

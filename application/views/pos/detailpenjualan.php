@@ -118,7 +118,7 @@
                             </tbody>
                         </table>
                     </div>
-
+                    <form method="post" enctype="multipart/form-data">
                     <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
@@ -129,13 +129,12 @@
                                 <?php foreach($modal as $modal): ?>
                                 <tr>
                                     <th>Modal</th>
-                                    <th><?= toRupiah($modal['modal'])  ?></th>
-
+                                    <th><input name="modal" type="number" value="<?= $modal['modal']  ?>" class="form-control"></th>
                                 </tr>
 
                                 <tr>
                                     <th>Pengeluaran</th>
-                                    <th><?= toRupiah($modal['pengeluaran'])  ?></th>
+                                    <th><input name="pengeluaran" type="number" value="<?= $modal['pengeluaran']  ?>" class="form-control"></th>
                                 </tr>
 
                                 <tr>
@@ -147,6 +146,15 @@
                             </thead>
 
                     </table>
+
+                    <div class="m-t-sm">
+                    <div class="btn-group">
+                        <button type="submit" name="submit" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Simpan</button>
+                    </div>
+                </div>
+
+
+                    </form>
 
                 </div>
             </div>

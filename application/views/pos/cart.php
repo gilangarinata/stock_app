@@ -153,13 +153,13 @@ endforeach
                         Modal
                     </span>
                     
-                    <input name="modal" value="<?= $this->session->userdata("modal") ?>"  type="number" class="form-control">
+                    <input name="modal" value="0"  type="number" class="form-control">
                     <hr />
                     <span>
                         Pengeluaran
                     </span>
                     
-                    <input name="pengeluaran"  value="<?= $this->session->userdata("pengeluaran") ?>" type="number" class="form-control">
+                    <input name="pengeluaran"  value="0" type="number" class="form-control">
                 
                     </div>
 
@@ -207,7 +207,7 @@ selectFilter();
         var val = $('#shift option:selected').val();
 
         if(val=="2"){
-            $("#modals").show();
+            $("#modals").hide();
         }else{
             $("#modals").hide();
         }
@@ -216,7 +216,7 @@ selectFilter();
             $(this).find("option:selected").each(function(){
                 var optionValue = $(this).attr("value");
                 if(optionValue=="2"){
-                    $("#modals").show();
+                    $("#modals").hide();
                 }else{
                     $("#modals").hide();
                 }
