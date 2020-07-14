@@ -40,7 +40,7 @@
                     $i = 0;
                     $j = 0;
                     $k = 0;
-                    $tanggal_now;
+                    $tanggal_now = "";
 
                     foreach($outlet as $outlet){
                         $outlets[$i] = $outlet['outlet'];
@@ -73,7 +73,7 @@
 
                     foreach($modald as $mdl)
                     {
-                        $tanggal_now = $mdl['tanggal_lengkap'];
+                        $tanggal_now = $mdl['tanggal_lengkap'] != null ? $mdl['tanggal_lengkap'] : "";
                     }
 
                     foreach($modald as $mdl)
