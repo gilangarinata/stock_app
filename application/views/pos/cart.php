@@ -100,12 +100,37 @@ endforeach
                         <option value="Debit">Debit</option>
                     </select>
 
+
+                    <hr />
+
+                    <span>
+                        Diskon (%)
+                    </span>
+                    <input id="diskon" name="diskon" type="number" onkeyup="diskonSat()" value="0" class="form-control">
+
+
+                    <hr />
+
+                    <span>
+                        Pajak (%)
+                    </span>
+                    <input id="pajak" name="pajak" type="number" onkeyup="diskonSat()" value="<?= $this->session->userdata("pajak") != null ? $this->session->userdata("pajak") : "0" ?>" class="form-control">
+
+                    <hr />
+
+                    <span>
+                        Grand Total
+                    </span>
+                    <input readonly="readonly" id="grandtotal" name="grand_total" type="number" onkeyup="pajakSat()" value="" class="form-control">
+
+
                     <hr />
 
                     <span>
                         Jumlah Bayar
                     </span>
                     <input id="jumlah_bayar" name="jumlah_bayar" type="number" onkeyup="kembaliSat()" value="" class="form-control">
+
 
 
                     <hr />
@@ -116,8 +141,9 @@ endforeach
 
                     <input readonly="readonly" id="kembali" name="kembali" type="number" value="" class="form-control">
 
-
                     <hr />
+
+
 
                     <span>
                         Tanggal
@@ -184,11 +210,14 @@ endforeach
 <script src="<?= base_url() ?>assets/js/jquery-3.1.1.min.js"></script>
 <script>
     var length = "<?= $i ?>";
-    realtimeFct();
+    var totalall = 0;
+    var grandTotal = 0;
+    realtimeFct();        
+
 
     function realtimeFct() {
         var total = 0;
-        var totalall = 0;
+
         for (var i = 0; i < length; i++) {
             var harga = $('#harga' + i).text();
             var a = $('#jumlah' + i).val();
@@ -198,9 +227,11 @@ endforeach
             totalall = totalall + total;
         }
         $("#totalall").val(totalall);
+        grandTotal = totalall + (totalall*(Number($("#pajak").val()))/100);
+        $("#grandtotal").val(grandTotal);
     }
 
-selectFilter();
+    selectFilter();
     function selectFilter(){
         
 
@@ -225,7 +256,16 @@ selectFilter();
     }
 
     function kembaliSat(){
-            var kembali = Number($("#jumlah_bayar").val())-(Number($("#totalall").val()))
+            var kembali = Number($("#jumlah_bayar").val())-(Number($("#grandtotal").val()))
             $("#kembali").val(kembali)
-        }
+    }
+
+    function diskonSat(){
+            var diskon = totalall*(Number($("#diskon").val()))/100
+            var pajak = totalall*(Number($("#pajak").val()))/100
+            $("#grandtotal").val(totalall-diskon+pajak);
+    }
+
+
+
 </script>

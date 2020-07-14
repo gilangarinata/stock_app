@@ -12,19 +12,19 @@ class Penjualan extends CI_Controller
 
     public function index()
     {
+
         $data['produk'] = $this->model->getPenjualanList();
+        $data['modald'] = $this->model->getModalList();
+
         $data['cart'] = $this->model->getCartList();
+        $data['outlet'] = $this->model->getOutletList();
 
         if (isset($_POST['submit'])) {
             $data['produk'] = $this->model->getPenjualanListFilter();
+            $data['modald'] = $this->model->getModalListFilter();
+
             $data['cart'] = $this->model->getCartList();
-
-            // $this->load->view("admin/templates/header");
-            // $this->load->view("admin/penjualan/list_penjualan", $data);
-            // $this->load->view("admin/templates/footer");
-
         }
-
 
         $this->load->view("admin/templates/header");
         $this->load->view("admin/penjualan/list_penjualan", $data);

@@ -113,7 +113,10 @@ function addPembayaran($outlet)
         'tanggal' => $this->input->post("tanggal"),
         'outlet' => $outlet,                 
         'shift' => $this->input->post("shift"),
-        'nama' => $this->input->post("nama")
+        'nama' => $this->input->post("nama"),
+        'diskon' => $this->input->post("diskon"),
+        'pajak' => $this->input->post("pajak"),
+        'grand_total' => $this->input->post("grand_total")       
     );
 
     $this->db->insert("kasir_dashboard_pembayaran",$data);
@@ -186,13 +189,12 @@ function addKeterangan($outlet){
     );
 
 
-    if((int)$shift == 2){
         if($numrow>0){
             $this->db->where($datas);
             $this->db->update('kasir_info_kasir',$data);
         }else{
             $this->db->insert('kasir_info_kasir',$data);
         }
-    }
+    
 }
 }

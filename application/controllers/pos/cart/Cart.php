@@ -27,6 +27,7 @@ class Cart extends CI_Controller {
             $this->session->set_userdata('shift',$this->input->post("shift"));
             $this->session->set_userdata('modal',$this->input->post("modal"));
             $this->session->set_userdata('pengeluaran',$this->input->post("pengeluaran"));
+            $this->session->set_userdata('pajak',$this->input->post("pajak"));
             
             $this->model->addPembayaran($outlet);
             $this->model->addKeterangan($outlet);

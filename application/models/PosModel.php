@@ -149,17 +149,18 @@ class PosModel extends CI_Model {
         return $this->db->get_where('kasir_dashboard_pembayaran',$datas)->result_array();
     }
 
-    function getModalList($outlet,$tanggal)
+    function getModalList($outlet,$tanggal,$shift)
     {
         $datas = array(
-            'outlet'=>$outlet
+            'outlet'=>$outlet,
+            'shift'=>$shift
         );
 
         $this->db->like('tanggal_lengkap', str_replace('-','/',$tanggal));
         return $this->db->get_where('kasir_info_kasir',$datas)->result_array();
     }
 
-    function setModalPengeluaran($outlet,$tanggal)
+    function setModalPengeluaran($outlet,$tanggal,$shift)
     {
         $info = array(
             'tanggal_lengkap' => str_replace('-','/',$tanggal),
@@ -173,7 +174,7 @@ class PosModel extends CI_Model {
             'tahun' => date('Y'),
             'jam' => date("H:i:s"),
             'outlet' => $outlet,                 
-            'shift' => '2',
+            'shift' => $shift,
             'nama' => "",
             'tanggal_lengkap' => str_replace('-','/',$tanggal)
         );

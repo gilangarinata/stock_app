@@ -4,7 +4,31 @@ class PenjualanModel extends CI_Model
 {
     function getPenjualanList()
     {
+        date_default_timezone_set('Asia/Jakarta');
+        $dateNow = date("d/m/Y");
+        $this->db->like('tanggal',$dateNow);
         return $this->db->get('kasir_dashboard_pembayaran')->result_array();
+    }
+
+    function getModalListFilter()
+    {
+        $tgl = date('d/m/Y', strtotime($this->input->post('tanggal')));
+        $this->db->like('tanggal_lengkap', $tgl);
+        return $this->db->get('kasir_info_kasir')->result_array();
+    }
+
+    function getModalList()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $dateNow = date("d/m/Y");
+        $this->db->like('tanggal_lengkap', $dateNow);
+        return $this->db->get('kasir_info_kasir')->result_array();
+    }
+
+    function getOutletList()
+    {
+
+        return $this->db->get('kasir_outlet')->result_array();
     }
 
     function getOutlet()

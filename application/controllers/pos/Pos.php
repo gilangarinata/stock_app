@@ -45,7 +45,7 @@ class Pos extends CI_Controller {
     function detailPenjualan($tanggal,$shift){
         $outlet = $this->session->userdata('outlet');
 
-        $data['modal'] = $this->model->getModalList($outlet,$tanggal);
+        $data['modal'] = $this->model->getModalList($outlet,$tanggal,$shift);
         $data['cart'] = $this->model->getCartList();
         $data['produk'] = $this->model->getDetailPenjualan($tanggal,$shift,$outlet);
 
@@ -55,7 +55,7 @@ class Pos extends CI_Controller {
         $data['jumlah_produk'] = $this->model->getJumlahProduk($outlet);
 
         if (isset($_POST['submit'])) {
-            $this->model->setModalPengeluaran($outlet,$tanggal);
+            $this->model->setModalPengeluaran($outlet,$tanggal,$shift);
             redirect('pos/pos/detailpenjualan/'.$tanggal.'/'.$shift);
         }
 

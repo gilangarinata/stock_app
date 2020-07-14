@@ -24,20 +24,98 @@
                     </div>
                 </div>
 
-                <?php $arr = array();
-                $nm = array();
-                $harga = array();
-                $jumlah = array();
-                $a = 0;
-                foreach ($cart as $cart) : ?>
-                    <?php
-                    $arr[$a] = $cart['cart_id'];
-                    $nm[$a] = $cart['nama_produk'];
-                    $harga[$a] = $cart['harga'];
-                    $jumlah[$a] = $cart['jumlah'];
-                    ?>
-                <?php $a++;
-                endforeach ?>
+
+                <?php
+                    $outlets = array();
+                    $totalPenjualanShift1 = array();
+                    $totalPenjualanShift2 = array();
+                    $modal = array();
+                    $pengeluaran = array();
+
+                    $totalModal = 0;
+                    $totalPengeluaran = 0;
+                    $pendapatan = 0;
+
+
+                    $i = 0;
+                    $j = 0;
+                    $k = 0;
+                    $tanggal_now;
+
+                    foreach($outlet as $outlet){
+                        $outlets[$i] = $outlet['outlet'];
+                        $i++;
+                    }
+
+                    for($i=0; $i<sizeof($outlets); $i++){
+                        $totalPenjualanShift1[$i] = 0;
+                        $totalPenjualanShift2[$i] = 0;
+                        foreach($produk as $prd){
+                            if(strcmp($prd["outlet"],$outlets[$i]) == 0 && $prd["shift"]=="1"){
+                                $totalPenjualanShift1[$i] = $totalPenjualanShift1[$i] + (int)$prd['grand_total'];
+                            }
+                            if(strcmp($prd["outlet"],$outlets[$i]) == 0 && $prd["shift"]=="2"){
+                                $totalPenjualanShift2[$i] = $totalPenjualanShift2[$i] + (int)$prd['grand_total'];
+                            }
+                        }                        
+                    }
+
+                    for($i=0; $i<sizeof($outlets); $i++){
+                        $modal[$i] = 0;
+                        $pengeluaran[$i] = 0;
+                        foreach($modald as $mdl){
+                            if(strcmp($mdl["outlet"],$outlets[$i]) == 0){
+                                $modal[$i] = $modal[$i] + (int)$mdl['modal'];
+                                $pengeluaran[$i] = $pengeluaran[$i] + (int)$mdl['pengeluaran'];
+                            }
+                        }
+                    }
+
+                    foreach($modald as $mdl)
+                    {
+                        $tanggal_now = $mdl['tanggal_lengkap'];
+                    }
+
+                    foreach($modald as $mdl)
+                    {
+                        $totalModal = $totalModal + (int)$mdl['modal'];
+                        $totalPengeluaran = $totalPengeluaran + (int)$mdl['pengeluaran'];
+                    }
+
+                    foreach($produk as $prd)
+                    {
+                        $pendapatan = $pendapatan + (int)$prd['grand_total'];
+                    }
+                ?>
+
+
+
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>Tanggal</td>
+                                    <td><?= $tanggal_now != null ? $tanggal_now : ""  ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Total Modal</td>
+                                    <td><?= toRupiah($totalModal) ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Total Pengeluaran</td>
+                                    <td><?= toRupiah($totalPengeluaran) ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Pendapatan</td>
+                                    <td><?= toRupiah($pendapatan) ?></td>
+                                </tr>
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
 
 
 
@@ -46,71 +124,31 @@
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Tanggal</th>
-                                    <th>Produk</th>
-                                    <th>Total</th>
-                                    <th>Jumlah Bayar</th>
-                                    <th>Kembali</th>
-                                    <th>Metode Pembayaran</th>
-                                    <th>Shift</th>
-                                    <th>Nama Kasir</th>
                                     <th>Outlet</th>
+                                    <th>Total Penjualan Shift 1</th>
+                                    <th>Total Penjualan Shift 2</th>
+                                    <th>Modal</th>
+                                    <th>Pengeluaran</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 0; $total=0; $jumlahBayar=0; $kembali=0;
-                                foreach ($produk as $produk) : $i++; 
-                                    $total = $total + (int)$produk['total'];
-                                    $jumlahBayar = $jumlahBayar + (int)$produk['jumlah_bayar'];
-                                    $kembali = $kembali + (int)$produk['kembali'];
 
-                                    $nama_produk = ""; ?>
+                            <?php $i = 0; foreach ($outlets as $outlet): ?>
 
                                     <tr class="gradeX">
-                                        <td><?= $i ?></td>
-                                        <td><?= $produk['tanggal'] ?></td>
-                                        <td>
-                                            <?php
-                                            $ty = 0;
-                                            for ($r = 0; $r < sizeof($arr); $r++) {
-                                                if ($arr[$r] == $produk['cart_id']) {
-                                                    $ty++;
-                                                    echo $ty.". ". str_replace("%20"," ",$nm[$r])  . " (" . $jumlah[$r] . ") " . $harga[$r] . "<br>";
-                                                }
-                                            }
-
-                                            ?>
-
-                                        </td>
-                                        <td><?= $produk['total'] ?></td>
-                                        <td class="center"><?= $produk['jumlah_bayar'] ?></td>
-                                        <td class="center"><?= $produk['kembali'] ?></td>
-                                        <td class="center"><?= $produk['metode_pembayaran'] ?></td>
-                                        <td class="center"><?= $produk['shift'] ?></td>
-                                        <td class="center"><?= $produk['nama'] ?></td>
-                                        <td class="center"><?= $produk['outlet'] ?></td>
+                                        <td><?= $outlet ?></td>
+                                        <td class="center"><?= $totalPenjualanShift1[$i] ?></td>
+                                        <td class="center"><?= $totalPenjualanShift2[$i] ?></td>
+                                        <td class="center"><?= $modal[$i] ?></td>
+                                        <td class="center"><?= $pengeluaran[$i] ?></td>
                                     </tr>
-                                <?php endforeach ?>
 
-                                <tr  class="gradeX">
-                                    <td><p style="color:white">100</p></td>
-                                    <td><b>Total</></td>
-                                    <td></td>
-                                    <td><b><?= toRupiah($total) ?></b></td>
-                                    <td class="center"><b><?= toRupiah($jumlahBayar) ?></b></td>
-                                    <td class="center"><b><?= toRupiah($kembali) ?></b></td>
-                                    <td class="center"></td>
-                                    <td class="center"></td>
-                                    <td class="center"></td>
-                                    <td class="center"></td>
-                                </tr>
-
+                            <?php $i++; endforeach  ?>
 
                                 <?php
                                 function toRupiah($value)
                                 {
-                                    return "" . number_format($value, 0, ".", ".");
+                                    return "Rp." . number_format($value, 0, ".", ".");
                                 }
                                 ?>
                             </tbody>
@@ -125,33 +163,9 @@
                             </div>
                         </div>
 
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
-                            <tr>
-                                <td>
-                                    <div class="radio radio-info radio-inline">
-                                        <input type="radio" id="inlineRadio1" value="1" name="shift1" checked="">
-                                        <label for="inlineRadio1"> Shift 1 </label>
-                                    </div>
-                                </td>
+                        <button type="submit" name="submit" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Submit</button>
 
-                                <td>
-
-                                </td>
-
-                                <td>
-                                    <div class="radio radio-inline">
-                                        <input type="radio" id="inlineRadio2" value="2" name="shift1">
-                                        <label for="inlineRadio2"> Shift 2 </label>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <button class="btn btn-sm btn-primary" type="submit" name="submit"><strong>Filter</strong></button>
-
-                                </td>
-                            </tr>
+                    
 
                     </form>
                     </table>

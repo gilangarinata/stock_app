@@ -15,6 +15,9 @@
   $jumlah_bayar=$details['jumlah_bayar'];
   $kembali = $details['kembali'];
   $metode = $details['metode_pembayaran'];
+  $pajak = $details['pajak'];
+  $diskon = $details['diskon'];
+  $grandtotal = $details['grand_total'];
 
   ?>
 
@@ -73,9 +76,27 @@
 <font size="28">
 <table>
   <tr>
-    <td>Grand Total </td>
+    <td>Total </td>
     <td>:</td>
     <td><?= rupiah($totals) ?></td>
+  </tr>
+
+  <tr>
+    <td>Diskon </td>
+    <td>:</td>
+    <td><?= rupiah($diskon) ?> %</td>
+  </tr>
+
+  <tr>
+    <td>Pajak </td>
+    <td>:</td>
+    <td><?= rupiah($pajak) ?> %</td>
+  </tr>
+
+  <tr>
+    <td>Grand Total </td>
+    <td>:</td>
+    <td><?= rupiah($grandtotal) ?></td>
   </tr>
 
   <tr>

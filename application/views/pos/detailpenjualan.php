@@ -55,6 +55,9 @@
                                     <th>Jumlah Bayar</th>
                                     <th>Kembali</th>
                                     <th>Metode Pembayaran</th>
+                                    <th>Diskon</th>
+                                    <th>Pajak</th>
+                                    <th>Grand Total</th>
                                     <th>Shift</th>
                                     <th>Nama Kasir</th>
                                     <th>Outlet</th>
@@ -63,7 +66,7 @@
                             <tbody>
                                 <?php $i = 0; $total=0; $jumlahBayar=0; $kembali=0;
                                 foreach ($produk as $produk) : $i++; 
-                                    $total = $total + (int)$produk['total'];
+                                    $total = $total + (int)$produk['grand_total'];
                                     $jumlahBayar = $jumlahBayar + (int)$produk['jumlah_bayar'];
                                     $kembali = $kembali + (int)$produk['kembali'];
 
@@ -89,6 +92,9 @@
                                         <td class="center"><?= $produk['jumlah_bayar'] ?></td>
                                         <td class="center"><?= $produk['kembali'] ?></td>
                                         <td class="center"><?= $produk['metode_pembayaran'] ?></td>
+                                        <td class="center"><?= $produk['diskon'] ?></td>
+                                        <td class="center"><?= $produk['pajak'] ?></td>
+                                        <td class="center"><?= $produk['grand_total'] ?></td>
                                         <td class="center"><?= $produk['shift'] ?></td>
                                         <td class="center"><?= $produk['nama'] ?></td>
                                         <td class="center"><?= $produk['outlet'] ?></td>
@@ -99,10 +105,13 @@
                                     <td><p style="color:white">100</p></td>
                                     <td><b>Total</></td>
                                     <td></td>
-                                    <td><b><?= toRupiah($total) ?></b></td>
+                                    <td></td>
                                     <td class="center"><b><?= toRupiah($jumlahBayar) ?></b></td>
                                     <td class="center"><b><?= toRupiah($kembali) ?></b></td>
                                     <td class="center"></td>
+                                    <td class="center"></td>
+                                    <td class="center"></td>
+                                    <td class="center"><b><?= toRupiah($total) ?></b></td>
                                     <td class="center"></td>
                                     <td class="center"></td>
                                     <td class="center"></td>
