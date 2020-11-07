@@ -104,7 +104,7 @@ endforeach
                     <hr />
 
                     <span>
-                        Diskon (%)
+                        Diskon (Rp)
                     </span>
                     <input id="diskon" name="diskon" type="number" onkeyup="diskonSat()" value="0" class="form-control">
 
@@ -261,7 +261,7 @@ endforeach
     }
 
     function diskonSat(){
-            var diskon = totalall*(Number($("#diskon").val()))/100
+            var diskon = (Number($("#diskon").val()))
             var pajak = totalall*(Number($("#pajak").val()))/100
             $("#grandtotal").val(totalall-diskon+pajak);
     }
