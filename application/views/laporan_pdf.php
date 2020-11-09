@@ -84,7 +84,7 @@
   <tr>
     <td>Diskon </td>
     <td>:</td>
-    <td><?= rupiah($diskon) ?> %</td>
+    <td>Rp. <?= rupiah($diskon) ?></td>
   </tr>
 
   <tr>
