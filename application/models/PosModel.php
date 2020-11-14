@@ -164,7 +164,8 @@ class PosModel extends CI_Model {
     {
         $info = array(
             'tanggal_lengkap' => str_replace('-','/',$tanggal),
-            'outlet' => $outlet,                 
+            'outlet' => $outlet,   
+            'shift' => $shift              
         );
         $datas = array(
             'modal' => $this->input->post("modal"),
