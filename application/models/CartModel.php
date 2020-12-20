@@ -87,6 +87,52 @@ function pdfGetAlamat($outlet)
     return $this->db->get_where('kasir_outlet',$info)->result_array();
 }
 
+function updateStock($cart){
+    foreach ($cart as $cart) {
+        if($cart['type']==='1'){
+            $datas = array(
+                'id'=>$cart['product_id']
+            );
+            $result = $this->db->get_where('kasir_maktam_susu',$datas)->result_array();
+            $stock=0;
+            foreach($result as $susu){
+                $stock = $susu["stock"];
+            }
+
+            $currentStock = $stock - $cart['jumlah'];
+
+            $data = array(
+                'stock'=>$currentStock
+            );
+
+            $this->db->where('id', $cart['product_id']);
+            $this->db->update('kasir_maktam_susu', $data);
+
+        }else if($cart['type']==='2'){
+            $datas = array(
+                'id'=>$cart['product_id']
+            );
+            $result = $this->db->get_where('kasir_maktam_produklain',$datas)->result_array();
+            $stock=0;
+            foreach($result as $susu){
+                $stock = $susu["stock"];
+            }
+
+            $currentStock = $stock - $cart['jumlah'];
+
+            $data = array(
+                'stock'=>$currentStock
+            );
+
+            $this->db->where('id', $cart['product_id']);
+            $this->db->update('kasir_maktam_produklain', $data);
+        }
+
+
+    }
+
+
+}
 
 
 function addPembayaran($outlet)

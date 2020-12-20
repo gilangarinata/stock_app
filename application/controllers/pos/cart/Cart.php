@@ -29,6 +29,8 @@ class Cart extends CI_Controller {
             $this->session->set_userdata('pengeluaran',$this->input->post("pengeluaran"));
             $this->session->set_userdata('pajak',$this->input->post("pajak"));
             
+
+            $this->model->updateStock($this->model->getCartList($outlet));
             $this->model->addPembayaran($outlet);
             $this->model->addKeterangan($outlet);
             $this->model->addRekapHarian($outlet);

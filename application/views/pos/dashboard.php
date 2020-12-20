@@ -21,6 +21,7 @@
                                             <th>Nama Produk</th>
                                             <th>Deskripsi</th>
                                             <th>Harga</th>
+                                            <th>Stock</th>
                                             <th>Kategori</th>
                                             <th>Gambar</th>
                                             <th>Action</th>
@@ -34,6 +35,7 @@
                                                 <td><?= $produk['nama_produk'] ?> (<?= $produk['es'] ?>)</td>
                                                 <td><?= $produk['deskripsi'] ?></td>
                                                 <td class="center"><?= $produk['harga'] ?></td>
+                                                <td class="center"><?= $produk['stock'] ?></td>
                                                 <td class="center"><?= $produk['kategori'] ?></td>
                                                 <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                 <td class="center">
@@ -64,6 +66,7 @@
                                                 <th>Nama Produk</th>
                                                 <th>Deskripsi</th>
                                                 <th>Harga</th>
+                                                <th>Stock</th>
                                                 <th>Kategori</th>
                                                 <th>Gambar</th>
                                                 <th>Action</th>
@@ -80,6 +83,7 @@
                                                         <td><?= $produk['nama_produk'] ?></td>
                                                         <td><?= $produk['deskripsi'] ?></td>
                                                         <td class="center"><?= $produk['harga'] ?></td>
+                                                        <td class="center"><?= $produk['stock'] ?></td>
                                                         <td class="center"><?= $produk['kategori'] ?></td>
                                                         <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                         <td class="center">

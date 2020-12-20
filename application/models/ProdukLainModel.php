@@ -24,6 +24,7 @@ class ProdukLainModel extends CI_Model
             'nama_produk' => $this->input->post('nama_produk', true),
             'deskripsi' => $this->input->post('deskripsi', true),
             'harga' => $this->input->post('harga', true),
+            'stock' => $this->input->post('stock', true),
             'kategori' => $this->input->post('kategori', true),
             'gambar' => $this->_uploadImage(),
             
@@ -47,6 +48,7 @@ class ProdukLainModel extends CI_Model
                 'nama_produk' => $this->input->post('nama_produk', true),
                 'deskripsi' => $this->input->post('deskripsi', true),
                 'harga' => $this->input->post('harga', true),
+                'stock' => $this->input->post('stock', true),
                 'kategori' => $this->input->post('kategori', true),
                 'gambar' => $gambar
             );
@@ -55,6 +57,7 @@ class ProdukLainModel extends CI_Model
                 'nama_produk' => $this->input->post('nama_produk', true),
                 'deskripsi' => $this->input->post('deskripsi', true),
                 'harga' => $this->input->post('harga', true),
+                'stock' => $this->input->post('stock', true),
                 'kategori' => $this->input->post('kategori', true)
             );
         }

@@ -9,6 +9,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group"><label>Harga</label> <input name="harga" type="number" placeholder="Harga" class="form-control"></div>
+                <div class="form-group"><label>Stock</label> <input name="stock" type="number" placeholder="Stock" class="form-control"></div>
                 <div class="form-group"><label>Kategori</label>
                     <select class="form-control" name="kategori">
                         <?php foreach ($kategori as $kategori) : ?>

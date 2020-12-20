@@ -19,6 +19,7 @@ class SusuModel extends CI_Model
             'nama_produk' => $this->input->post('nama_produk', true),
             'deskripsi' => $this->input->post('deskripsi', true),
             'harga' => $this->input->post('harga', true),
+            'stock' => $this->input->post('stock', true),
             'kategori' => $this->input->post('kategori', true),
             'es' => $this->input->post('es', true),
             'gambar' => $this->_uploadImage(),
@@ -54,6 +55,7 @@ class SusuModel extends CI_Model
                 'nama_produk' => $this->input->post('nama_produk', true),
                 'deskripsi' => $this->input->post('deskripsi', true),
                 'harga' => $this->input->post('harga', true),
+                'stock' => $this->input->post('stock', true),
                 'kategori' => $this->input->post('kategori', true),
                 'es' => $this->input->post('es', true),
                 'gambar' => $gambar
@@ -63,6 +65,7 @@ class SusuModel extends CI_Model
                 'nama_produk' => $this->input->post('nama_produk', true),
                 'deskripsi' => $this->input->post('deskripsi', true),
                 'harga' => $this->input->post('harga', true),
+                'stock' => $this->input->post('stock', true),
                 'kategori' => $this->input->post('kategori', true),
                 'es' => $this->input->post('es', true)
             );

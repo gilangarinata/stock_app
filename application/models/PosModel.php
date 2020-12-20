@@ -116,7 +116,9 @@ class PosModel extends CI_Model {
             'outlet' => $outlet,
             'tanggal' => date('d/m/Y'),
             'bulan' => date('m/Y'),
-            'tahun' => date('Y'),       
+            'tahun' => date('Y'),     
+            'product_id' => $id,
+            'type' => 1  
         );
 
 
@@ -269,6 +271,8 @@ class PosModel extends CI_Model {
             'tanggal' => date('d/m/Y'),
             'bulan' => date('m/Y'),
             'tahun' => date('Y'),
+            'product_id' => $id,
+            'type' => 2
         );
 
 

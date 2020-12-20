@@ -10,6 +10,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group"><label>Harga</label> <input value="<?= $produk['harga'] ?>" name="harga" type="number" placeholder="Harga" class="form-control"></div>
+                <div class="form-group"><label>Stock</label> <input value="<?=  $produk['stock'] ?>" name="stock" type="number" placeholder="Stock" class="form-control"></div>
                 <div class="form-group">
                 <select class="form-control" id="cars" name="kategori">
                         <?php foreach ($kategori as $kategori) : ?>
