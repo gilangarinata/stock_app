@@ -80,5 +80,18 @@ class Listsusu extends CI_Controller
         redirect('admin/listsusu/addcategory');
     }
 
+    public function editcategory($id)
+    {
+
+        $data['produk'] = $this->model->getEditKategori($id);
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/susu/editcategory',$data);
+        $this->load->view('admin/templates/footer');
+
+        if(isset($_POST['submit'])){
+            $this->model->editCategory();
+            redirect('admin/listsusu/addcategory');
+        }
+    }
 
 }

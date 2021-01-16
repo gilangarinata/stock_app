@@ -78,4 +78,18 @@ class Listproduklain extends CI_Controller
         $this->model->deleteKategori($id);
         redirect('admin/listproduklain/addcategory');
     }
+
+    public function editcategory($id)
+    {
+
+        $data['produk'] = $this->model->getEditKategori($id);
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/produklain/editcategory',$data);
+        $this->load->view('admin/templates/footer');
+
+        if(isset($_POST['submit'])){
+            $this->model->editCategory();
+            redirect('admin/listproduklain/addcategory');
+        }
+    }
 }

@@ -40,6 +40,19 @@ class ProdukLainModel extends CI_Model
         $this->db->insert('kasir_maktam_produklain_kategori', $data);
     }
 
+    function getEditKategori($id){
+        $this->db->where('id', $id);
+        return $this->db->get('kasir_maktam_produklain_kategori')->result_array();
+    }
+
+    function editCategory(){
+        $data = array(
+            'nama_produk' => $this->input->post('nama_produk', true)            
+        );
+        $this->db->where('id', $this->input->post('id', true));
+        $this->db->update('kasir_maktam_produklain_kategori', $data);
+    }
+
     function editProduk($id)
     {
         if (!empty($_FILES["image"]["name"])) {

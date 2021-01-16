@@ -33,6 +33,19 @@ class SusuModel extends CI_Model
         return $this->db->get('kasir_maktam_susu_kategori')->result_array();
     }
 
+    function getEditKategori($id){
+        $this->db->where('id', $id);
+        return $this->db->get('kasir_maktam_susu_kategori')->result_array();
+    }
+
+    function editCategory(){
+        $data = array(
+            'nama_produk' => $this->input->post('nama_produk', true)            
+        );
+        $this->db->where('id', $this->input->post('id', true));
+        $this->db->update('kasir_maktam_susu_kategori', $data);
+    }
+
     function tambahKategori()
     {
         $data = array(

@@ -135,7 +135,10 @@
                                     <th><?= toRupiah($total) ?></th>
                                 </tr>
                                 
-                                <?php foreach($modal as $modal): ?>
+                                <?php $i = 0; foreach($modal as $modal): 
+                                    $i++;
+                                    if($i>1) break;
+                                    ?>
                                 <tr>
                                     <th>Modal</th>
                                     <th><input name="modal" type="number" value="<?= $modal['modal']  ?>" class="form-control"></th>

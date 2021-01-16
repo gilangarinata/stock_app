@@ -29,7 +29,9 @@
                                         <td><?= $i ?></td>
                                         <td><?= $produk['nama_produk'] ?></td>
                                         <td class="center">
-                                        <a href="<?= base_url() ?>admin/listsusu/deletecategory/<?= $produk['id'] ?>"><button class="btn btn-danger btn-circle btn-outline" type="button"><i class="fa fa-trash"></i></button></a>                                        </td>
+                                        <a href="<?= base_url() ?>admin/listsusu/deletecategory/<?= $produk['id'] ?>"><button class="btn btn-danger btn-circle btn-outline" type="button"><i class="fa fa-trash"></i></button></a>                                        
+                                        <a href="<?= base_url() ?>admin/listsusu/editcategory/<?= $produk['id'] ?>"><button class="btn btn-warning btn-circle btn-outline" type="button"><i class="fa fa-edit"></i></button></a>                                        
+                                        </td>
 
                                     </tr>
                                 <?php endforeach ?>

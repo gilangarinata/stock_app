@@ -3,10 +3,10 @@
 <html>
 <body>
 
-<h1 style="text-align:center" >Susu Maktam</h1>
+<h3 style="text-align:left" >Susu Maktam</h3>
 
 <?php foreach($alamat as $alamat): ?>
-<h2 style="text-align:center" ><?= $alamat['alamat'] ?></h2>
+<p style="text-align:left" ><?= $alamat['alamat'] ?></p>
 <?php endforeach ?>
 
 <br>
@@ -21,7 +21,7 @@
 
   ?>
 
-<font size="28">
+<font size="14">
   <table>
   <tr>
     <td>Tanggal</td>
@@ -49,9 +49,9 @@
 <?php endforeach ?>
 
 
---------------------------------------------------------------
-<font size="20">
-<table style="width:100%;" >
+---------------------------------------
+<font size="14">
+<table" >
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
     <td style="text-align: center; vertical-align: middle;">Jumlah</td> 
@@ -72,8 +72,8 @@
 <br><br>
 
   </font>
---------------------------------------------------------------
-<font size="28">
+  ---------------------------------------
+<font size="14">
 <table>
   <tr>
     <td>Total </td>
