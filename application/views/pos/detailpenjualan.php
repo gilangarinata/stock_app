@@ -81,7 +81,8 @@
                                             for ($r = 0; $r < sizeof($arr); $r++) {
                                                 if ($arr[$r] == $produk['cart_id']) {
                                                     $ty++;
-                                                    echo $ty.". ". str_replace("%20"," ",$nm[$r])  . " (" . $jumlah[$r] . ") " . $harga[$r] . "<br>";
+                                                    $index = strpos($nm[$r],"(");
+                                                    echo $ty.". ". str_replace("%20"," ",substr($nm[$r],0,$index))  . " (" . $jumlah[$r] . ") " . $harga[$r] . "<br>";
                                                 }
                                             }
 

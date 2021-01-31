@@ -13,6 +13,7 @@ class PenjualanModel extends CI_Model
     function getModalListFilter()
     {
         $tgl = date('d/m/Y', strtotime($this->input->post('tanggal')));
+        $this->db->distinct();
         $this->db->like('tanggal_lengkap', $tgl);
         return $this->db->get('kasir_info_kasir')->result_array();
     }
@@ -20,6 +21,7 @@ class PenjualanModel extends CI_Model
     function getModalList()
     {
         date_default_timezone_set('Asia/Jakarta');
+        $this->db->distinct();
         $dateNow = date("d/m/Y");
         $this->db->like('tanggal_lengkap', $dateNow);
         return $this->db->get('kasir_info_kasir')->result_array();

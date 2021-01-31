@@ -1,9 +1,13 @@
 <pre>
 <!DOCTYPE html>
 <html>
-<body>
+<body style=" margin: 0; padding: 0;" >
 
 <h3 style="text-align:left" >Susu Maktam</h3>
+
+<?php
+$size = 14;
+?>
 
 <?php foreach($alamat as $alamat): ?>
 <p style="text-align:left" ><?= $alamat['alamat'] ?></p>
@@ -21,7 +25,7 @@
 
   ?>
 
-<font size="14">
+<font size="12">
   <table>
   <tr>
     <td>Tanggal</td>
@@ -50,7 +54,7 @@
 
 
 ---------------------------------------
-<font size="14">
+<font size="12">
 <table" >
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
@@ -73,7 +77,7 @@
 
   </font>
   ---------------------------------------
-<font size="14">
+<font size="12">
 <table>
   <tr>
     <td>Total </td>

@@ -60,11 +60,18 @@
                         }                        
                     }
 
+                    $array1 = [];
                     for($i=0; $i<sizeof($outlets); $i++){
                         $modal[$i] = 0;
                         $pengeluaran[$i] = 0;
                         foreach($modald as $mdl){
                             if(strcmp($mdl["outlet"],$outlets[$i]) == 0){
+                                foreach($array1 as $mdl2){
+                                    if($mdl['outlet'] == $mdl2['outlet']){
+                                        continue 2;
+                                    }
+                                }
+                                array_push($array1, $mdl);
                                 $modal[$i] = $modal[$i] + (int)$mdl['modal'];
                                 $pengeluaran[$i] = $pengeluaran[$i] + (int)$mdl['pengeluaran'];
                             }
@@ -76,8 +83,15 @@
                         $tanggal_now = $mdl['tanggal_lengkap'] != null ? $mdl['tanggal_lengkap'] : "";
                     }
 
+                    $array1 = [];
                     foreach($modald as $mdl)
                     {
+                        foreach($array1 as $mdl2){
+                            if($mdl['outlet'] == $mdl2['outlet']){
+                                continue 2;
+                            }
+                        }
+                        array_push($array1, $mdl);
                         $totalModal = $totalModal + (int)$mdl['modal'];
                         $totalPengeluaran = $totalPengeluaran + (int)$mdl['pengeluaran'];
                     }
