@@ -34,7 +34,6 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Tanggal</th>
-                                    <th>Shift</th>
                                     <th>Nama</th>
                                     <th></th>
                                 </tr>
@@ -46,7 +45,6 @@
                                         <td><?= $i ?></td>
                                         <td><?= $produk['tanggal'] ?></td>
                                     
-                                        <td><?= $produk['shift'] ?></td>
                                         <td class="center"><?= $produk['kasir'] ?></td>
                                         <td> <a href="<?= base_url() ?>pos/pos/detailpenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Detail</a> </td>
                                     </tr>
