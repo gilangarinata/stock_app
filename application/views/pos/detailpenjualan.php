@@ -65,8 +65,15 @@
                             </thead>
                             <tbody>
                                 <?php $i = 0; $total=0; $jumlahBayar=0; $kembali=0;
+
+                                $totalPajak = 0;
+
+                                $totalDiskon = 0;
+
                                 foreach ($produk as $produk) : $i++; 
                                     $total = $total + (int)$produk['grand_total'];
+                                    $totalPajak = $totalPajak + (int)$produk['pajak'];
+                                    $totalDiskon = $totalDiskon + (int)$produk['diskon'];
                                     $jumlahBayar = $jumlahBayar + (int)$produk['jumlah_bayar'];
                                     $kembali = $kembali + (int)$produk['kembali'];
 
@@ -140,6 +147,18 @@
                                     $i++;
                                     if($i>1) break;
                                     ?>
+
+                                <tr>
+                                    <th>Pajak</th>
+                                    <th><input disabled name="pajak" type="number" value="<?= $totalPajak  ?>" class="form-control"></th>
+                                </tr>
+
+                                <tr>
+                                    <th>Diskon</th>
+                                    <th><input disabled name="diskon" type="number" value="<?= $totalDiskon  ?>" class="form-control"></th>
+                                </tr>
+
+                        
                                 <tr>
                                     <th>Modal</th>
                                     <th><input name="modal" type="number" value="<?= $modal['modal']  ?>" class="form-control"></th>
@@ -151,8 +170,8 @@
                                 </tr>
 
                                 <tr>
-                                    <th>Total</th>
-                                    <th><?= toRupiah( $total + (int)$modal['modal'] - (int)$modal['pengeluaran'])  ?></th>
+                                    <th>Saldo</th>
+                                    <th><?= toRupiah( $total + (int)$modal['modal'] - (int)$modal['pengeluaran'] - (int)$totalDiskon - (int)$totalPajak)  ?></th>
                                 </tr>
 
                                 <?php endforeach ?>

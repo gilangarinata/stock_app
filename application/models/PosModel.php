@@ -136,6 +136,7 @@ class PosModel extends CI_Model {
     {
         $datas = array(
             'outlet'=>$outlet,
+            'shift'=> "1"
         );
         return $this->db->get_where('kasir_harian',$datas)->result_array();
     }
@@ -144,8 +145,7 @@ class PosModel extends CI_Model {
     {
 
         $datas = array(
-            'outlet'=>$outlet,
-            'shift'=>$shift,
+            'outlet'=>$outlet
         );
         $this->db->like('tanggal', str_replace('-','/',$tanggal));
         return $this->db->get_where('kasir_dashboard_pembayaran',$datas)->result_array();
@@ -154,8 +154,7 @@ class PosModel extends CI_Model {
     function getModalList($outlet,$tanggal,$shift)
     {
         $datas = array(
-            'outlet'=>$outlet,
-            'shift'=>$shift
+            'outlet'=>$outlet
         );
 
         $this->db->like('tanggal_lengkap', str_replace('-','/',$tanggal));
