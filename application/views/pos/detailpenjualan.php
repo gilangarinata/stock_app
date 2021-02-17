@@ -72,7 +72,7 @@
 
                                 foreach ($produk as $produk) : $i++; 
                                     $total = $total + (int)$produk['grand_total'];
-                                    $totalPajak = $totalPajak + (int)$produk['pajak'];
+                                    $totalPajak = $totalPajak + ((int)$produk['pajak'] * (int)$produk['total'] / 100);
                                     $totalDiskon = $totalDiskon + (int)$produk['diskon'];
                                     $jumlahBayar = $jumlahBayar + (int)$produk['jumlah_bayar'];
                                     $kembali = $kembali + (int)$produk['kembali'];
@@ -89,20 +89,20 @@
                                                 if ($arr[$r] == $produk['cart_id']) {
                                                     $ty++;
                                                     $index = strpos($nm[$r],"(");
-                                                    echo $ty.". ". str_replace("%20"," ",substr($nm[$r],0,$index))  . " (" . $jumlah[$r] . ") " . $harga[$r] . "<br>";
+                                                    echo $ty.". ". str_replace("%20"," ",substr($nm[$r],0,$index))  . " (" . $jumlah[$r] . ")  @" . toRupiah($harga[$r])  . "<br>";
                                                 }
                                             }
 
                                             ?>
 
                                         </td>
-                                        <td><?= $produk['total'] ?></td>
-                                        <td class="center"><?= $produk['jumlah_bayar'] ?></td>
-                                        <td class="center"><?= $produk['kembali'] ?></td>
+                                        <td><?= toRupiah($produk['total'])  ?></td>
+                                        <td class="center"><?= toRupiah($produk['jumlah_bayar'])  ?></td>
+                                        <td class="center"><?= toRupiah($produk['kembali'])  ?></td>
                                         <td class="center"><?= $produk['metode_pembayaran'] ?></td>
-                                        <td class="center"><?= $produk['diskon'] ?></td>
-                                        <td class="center"><?= $produk['pajak'] ?></td>
-                                        <td class="center"><?= $produk['grand_total'] ?></td>
+                                        <td class="center"><?= toRupiah($produk['diskon'])  ?></td>
+                                        <td class="center"><?= toRupiah(($produk['pajak'] * $produk['total'] / 100))  ?></td>
+                                        <td class="center"><?= toRupiah($produk['grand_total']) ?></td>
                                         <td class="center"><?= $produk['shift'] ?></td>
                                         <td class="center"><?= $produk['nama'] ?></td>
                                         <td class="center"><?= $produk['outlet'] ?></td>
@@ -150,12 +150,12 @@
 
                                 <tr>
                                     <th>Pajak</th>
-                                    <th><input disabled name="pajak" type="number" value="<?= $totalPajak  ?>" class="form-control"></th>
+                                    <th><input disabled name="pajak" type="number" value="<?= $totalPajak   ?>" class="form-control"></th>
                                 </tr>
 
                                 <tr>
                                     <th>Diskon</th>
-                                    <th><input disabled name="diskon" type="number" value="<?= $totalDiskon  ?>" class="form-control"></th>
+                                    <th><input disabled name="diskon" type="number" value="<?= $totalDiskon   ?>" class="form-control"></th>
                                 </tr>
 
                         

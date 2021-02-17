@@ -1,16 +1,23 @@
 <pre>
 <!DOCTYPE html>
 <html>
+<style>
+@page { margin: 5px; }
+body { margin: 5px; }
+
+</style>
+
+
 <body style=" margin: 0; padding: 0;" >
 
-<h3 style="text-align:left" >Susu Maktam</h3>
+<h5 style="text-align:left" >Susu Maktam</h5>
 
 <?php
 $size = 14;
 ?>
 
 <?php foreach($alamat as $alamat): ?>
-<p style="text-align:left" ><?= $alamat['alamat'] ?></p>
+<p style="text-align:left; font-size : 12px;" ><?= $alamat['alamat'] ?></p>
 <?php endforeach ?>
 
 <br>
@@ -26,7 +33,7 @@ $size = 14;
   ?>
 
 <font size="12">
-  <table>
+  <table style="font-size: 12px;" >
   <tr>
     <td>Tanggal</td>
     <td>:</td>
@@ -53,9 +60,9 @@ $size = 14;
 <?php endforeach ?>
 
 
----------------------------------------
+----------------------
 <font size="12">
-<table" >
+<table style="font-size: 11px;">
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
     <td style="text-align: center; vertical-align: middle;">Jumlah</td> 
@@ -76,9 +83,9 @@ $size = 14;
 <br><br>
 
   </font>
-  ---------------------------------------
+----------------------
 <font size="12">
-<table>
+<table style="font-size: 12px;">
   <tr>
     <td>Total </td>
     <td>:</td>
