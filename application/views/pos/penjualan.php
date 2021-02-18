@@ -49,9 +49,13 @@
                                     
                                         <td class="center"><?= $produk['kasir'] ?></td>
                                         <td> 
-                                            <a href="<?= base_url() ?>pos/pos/detailpenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Detail</a> 
-                                            <a href="<?= base_url() ?>pos/pos/hapusPenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Hapus</a> 
+                                            <a href="<?= base_url() ?>pos/pos/detailpenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Open</a> 
+                                         
                                             
+                                        </td>
+
+                                        <td>
+                                        <a href="<?= base_url() ?>pos/pos/hapusPenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
