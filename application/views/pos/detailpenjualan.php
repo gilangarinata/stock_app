@@ -71,7 +71,7 @@
                                 $totalDiskon = 0;
 
                                 foreach ($produk as $produk) : $i++; 
-                                    $total = $total + (int)$produk['grand_total'];
+                                    $total = $total + (int)$produk['total'];
                                     $totalPajak = $totalPajak + ((int)$produk['pajak'] * (int)$produk['total'] / 100);
                                     $totalDiskon = $totalDiskon + (int)$produk['diskon'];
                                     $jumlahBayar = $jumlahBayar + (int)$produk['jumlah_bayar'];
@@ -101,7 +101,7 @@
                                         <td class="center"><?= toRupiah($produk['kembali'])  ?></td>
                                         <td class="center"><?= $produk['metode_pembayaran'] ?></td>
                                         <td class="center"><?= toRupiah($produk['diskon'])  ?></td>
-                                        <td class="center"><?= toRupiah(($produk['pajak'] * $produk['total'] / 100))  ?></td>
+                                        <td class="center"><?= toRupiah(((int)$produk['pajak'] * (int)$produk['total'] / 100))  ?></td>
                                         <td class="center"><?= toRupiah($produk['grand_total']) ?></td>
                                         <td class="center"><?= $produk['shift'] ?></td>
                                         <td class="center"><?= $produk['nama'] ?></td>
@@ -113,13 +113,13 @@
                                     <td><p style="color:white">100</p></td>
                                     <td><b>Total</></td>
                                     <td></td>
-                                    <td></td>
+                                    <td><b><?= toRupiah($total) ?></b></td>
                                     <td class="center"><b><?= toRupiah($jumlahBayar) ?></b></td>
                                     <td class="center"><b><?= toRupiah($kembali) ?></b></td>
                                     <td class="center"></td>
+                                    <td class="center"><b><?= toRupiah($totalDiskon) ?></b></td> 
+                                    <td class="center"><b><?= toRupiah($totalPajak) ?></b></td>
                                     <td class="center"></td>
-                                    <td class="center"></td>
-                                    <td class="center"><b><?= toRupiah($total) ?></b></td>
                                     <td class="center"></td>
                                     <td class="center"></td>
                                     <td class="center"></td>
@@ -129,7 +129,7 @@
                                 <?php
                                 function toRupiah($value)
                                 {
-                                    return "Rp. " . number_format($value, 0, ".", ".");
+                                    return "Rp. " . number_format((int)$value, 0, ".", ".");
                                 }
                                 ?>
                             </tbody>
@@ -146,6 +146,7 @@
                                 <?php $i = 0; foreach($modal as $modal): 
                                     $i++;
                                     if($i>1) break;
+
                                     ?>
 
                                 <tr>
@@ -159,12 +160,12 @@
                                 </tr>
 
                         
-                                <tr>
+                                <tr  <?= $produk['shift'] == '1' ? "hidden" : "" ?>>
                                     <th>Modal</th>
                                     <th><input name="modal" type="number" value="<?= $modal['modal']  ?>" class="form-control"></th>
                                 </tr>
 
-                                <tr>
+                                <tr <?= $produk['shift'] == '1' ? "hidden" : "" ?>>
                                     <th>Pengeluaran</th>
                                     <th><input name="pengeluaran" type="number" value="<?= $modal['pengeluaran']  ?>" class="form-control"></th>
                                 </tr>
@@ -179,9 +180,9 @@
 
                     </table>
 
-                    <div class="m-t-sm">
-                    <div class="btn-group">
-                        <button type="submit" name="submit" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Simpan</button>
+                    <div class="m-t-sm" <?= $produk['shift'] == '1' ? "hidden" : "" ?> >
+                    <div class="btn-group" >
+                        <button  type="submit" name="submit" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Simpan</button>
                     </div>
                 </div>
 

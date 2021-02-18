@@ -20,7 +20,6 @@ $size = 14;
 <p style="text-align:left; font-size : 12px;" ><?= $alamat['alamat'] ?></p>
 <?php endforeach ?>
 
-<br>
 
 <?php foreach($details as $details): 
   $jumlah_bayar=$details['jumlah_bayar'];
@@ -33,7 +32,7 @@ $size = 14;
   ?>
 
 <font size="12">
-  <table style="font-size: 12px;" >
+  <table style="font-size: 10px;" >
   <tr>
     <td>Tanggal</td>
     <td>:</td>
@@ -62,7 +61,7 @@ $size = 14;
 
 ----------------------
 <font size="12">
-<table style="font-size: 11px;">
+<table style="font-size: 9px;">
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
     <td style="text-align: center; vertical-align: middle;">Jumlah</td> 
@@ -85,7 +84,7 @@ $size = 14;
   </font>
 ----------------------
 <font size="12">
-<table style="font-size: 12px;">
+<table style="font-size: 10px;">
   <tr>
     <td>Total </td>
     <td>:</td>

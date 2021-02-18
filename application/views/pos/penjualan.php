@@ -34,6 +34,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Tanggal</th>
+                                    <th>Shift</th>
                                     <th>Nama</th>
                                     <th></th>
                                 </tr>
@@ -44,9 +45,14 @@
                                     <tr class="gradeX">
                                         <td><?= $i ?></td>
                                         <td><?= $produk['tanggal'] ?></td>
+                                        <td><?= $produk['shift'] ?></td>
                                     
                                         <td class="center"><?= $produk['kasir'] ?></td>
-                                        <td> <a href="<?= base_url() ?>pos/pos/detailpenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Detail</a> </td>
+                                        <td> 
+                                            <a href="<?= base_url() ?>pos/pos/detailpenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Detail</a> 
+                                            <a href="<?= base_url() ?>pos/pos/hapusPenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Hapus</a> 
+                                            
+                                        </td>
                                     </tr>
                                 <?php endforeach ?>
              
