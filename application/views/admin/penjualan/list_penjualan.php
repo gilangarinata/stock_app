@@ -72,8 +72,9 @@
                                 //     }
                                 // }
                                 array_push($array1, $mdl);
-                                $modal[$i] = $modal[$i] + (int)$mdl['modal'];
-                                $pengeluaran[$i] = $pengeluaran[$i] + (int)$mdl['pengeluaran'];
+                                    $modal[$i] = (int)$mdl['modal'];
+                                    $pengeluaran[$i] = (int)$mdl['pengeluaran'];
+                            
                             }
                         }
                     }
