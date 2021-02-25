@@ -37,12 +37,26 @@ class Listsusu extends CI_Controller
     {
         $data['kategori'] = $this->model->getKategori();
         $data['produk'] = $this->model->getProdukById($id);
+        $data['outlet'] = $this->model->getOutletList();
         $this->load->view("admin/templates/header");
         $this->load->view("admin/susu/edit_susu", $data);
         $this->load->view("admin/templates/footer");
 
         if(isset($_POST['submit'])){
             $this->model->editProduk($id);
+            redirect('admin/listsusu');
+        }
+    }
+
+    public function editstock($idOutlet,$idProduct)
+    {
+        $data['stock'] = $this->model->getStock($idOutlet,$idProduct);
+        $this->load->view("admin/templates/header");
+        $this->load->view("admin/susu/edit_stock", $data);
+        $this->load->view("admin/templates/footer");
+
+        if(isset($_POST['submit'])){
+            $this->model->editStock($idOutlet,$idProduct);
             redirect('admin/listsusu');
         }
     }

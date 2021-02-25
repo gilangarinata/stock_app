@@ -13,9 +13,8 @@ class Pos extends CI_Controller {
 
         $outlet = $this->session->userdata('outlet');
 
-        echo $outlet;
-        
         $data['susu'] = $this->model->getSusuList();
+        $data['stock'] = $this->model->getStock();
         $data['produklain'] = $this->model->getProdukLainList();
         $data['kategoriproduklain'] = $this->model->getKategoriProdukLainList();
         $data['jumlah_produk'] = $this->model->getJumlahProduk($outlet);

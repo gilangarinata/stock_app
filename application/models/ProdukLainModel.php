@@ -2,10 +2,49 @@
 
 class ProdukLainModel extends CI_Model
 {
+
+    function getOutletList()
+    {
+
+        return $this->db->get('kasir_outlet')->result_array();
+    }
     function getProdukList()
     {
         return $this->db->get('kasir_maktam_produklain')->result_array();
     }
+
+    function getStock($idOutlet,$idProduct)
+    {
+        $this->db->where('product_id', $idProduct);
+        $this->db->where('outlet', $idOutlet);
+        $this->db->where('isSusu', 1);
+        return $this->db->get('kasir_stock_outlet')->result_array();
+    }
+
+    function editStock($idOutlet,$idProduct)
+    {
+
+        $info = array(
+            'product_id' => $idProduct,
+            'outlet' => $idOutlet
+        );
+
+        $data = array(
+            'product_id' => $idProduct,
+            'outlet' => $idOutlet,
+            'stock' => $this->input->post('stock', true),
+            'isSusu' => 1,
+        );
+
+        if($this->db->get_where('kasir_stock_outlet',$info)->num_rows()>0){
+            $this->db->where('product_id', $idProduct);
+            $this->db->where('outlet', $idOutlet);
+            $this->db->update('kasir_stock_outlet', $data);
+        }else{
+            $this->db->insert('kasir_stock_outlet', $data);
+        }
+    }
+
 
     function getKategori()
     {

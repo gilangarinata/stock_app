@@ -38,6 +38,7 @@ class Listproduklain extends CI_Controller
     {
         $data['kategori'] = $this->model->getKategori();
         $data['produk'] = $this->model->getProdukById($id);
+        $data['outlet'] = $this->model->getOutletList();
         $this->load->view("admin/templates/header");
         $this->load->view("admin/produklain/edit_produklain", $data);
         $this->load->view("admin/templates/footer");
@@ -77,6 +78,19 @@ class Listproduklain extends CI_Controller
     function deletecategory($id){
         $this->model->deleteKategori($id);
         redirect('admin/listproduklain/addcategory');
+    }
+
+    public function editstock($idOutlet,$idProduct)
+    {
+        $data['stock'] = $this->model->getStock($idOutlet,$idProduct);
+        $this->load->view("admin/templates/header");
+        $this->load->view("admin/produklain/edit_stock", $data);
+        $this->load->view("admin/templates/footer");
+
+        if(isset($_POST['submit'])){
+            $this->model->editStock($idOutlet,$idProduct);
+            redirect('admin/listproduklain');
+        }
     }
 
     public function editcategory($id)

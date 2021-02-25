@@ -1,6 +1,12 @@
 <?php
 
 class PosModel extends CI_Model {
+
+    function getStock()
+    {
+        return $this->db->get('kasir_stock_outlet')->result_array();
+    }
+
     function getSusuList()
     {
         return $this->db->get('kasir_maktam_susu')->result_array();

@@ -35,7 +35,18 @@
                                                 <td><?= $produk['nama_produk'] ?> (<?= $produk['es'] ?>)</td>
                                                 <td><?= $produk['deskripsi'] ?></td>
                                                 <td class="center"><?= $produk['harga'] ?></td>
-                                                <td class="center"><?= $produk['stock'] ?></td>
+                                                <td class="center"><?php 
+                                                    foreach ($stock as $stocky){
+                                                        $outlet = $this->session->userdata('outlet');
+                                                        if($stocky["product_id"] == $produk['id']){
+                                                            if($stocky["outlet"] == $outlet){
+                                                                if($stocky["isSusu"] == 0){
+                                                                    echo $stocky["stock"];
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ?></td>
                                                 <td class="center"><?= $produk['kategori'] ?></td>
                                                 <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                 <td class="center">
@@ -83,7 +94,18 @@
                                                         <td><?= $produk['nama_produk'] ?></td>
                                                         <td><?= $produk['deskripsi'] ?></td>
                                                         <td class="center"><?= $produk['harga'] ?></td>
-                                                        <td class="center"><?= $produk['stock'] ?></td>
+                                                        <td class="center"><?php
+                                                            foreach ($stock as $stocky){
+                                                                $outlet = $this->session->userdata('outlet');
+                                                                if($stocky["product_id"] == $produk['id']){
+                                                                    if($stocky["outlet"] == $outlet){
+                                                                        if($stocky["isSusu"] == 1){
+                                                                            echo $stocky["stock"];
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        ?></td>
                                                         <td class="center"><?= $produk['kategori'] ?></td>
                                                         <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                         <td class="center">
