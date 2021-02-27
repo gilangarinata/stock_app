@@ -91,12 +91,16 @@ function updateStock($cart){
     foreach ($cart as $cart) {
         if($cart['type']==='1'){
             $datas = array(
-                'id'=>$cart['product_id']
+                'product_id'=>$cart['product_id'],
+                'outlet'=>$this->session->userdata('outlet'),
+                'isSusu'=>0
             );
-            $result = $this->db->get_where('kasir_maktam_susu',$datas)->result_array();
+            $result = $this->db->get_where('kasir_stock_outlet',$datas)->result_array();
             $stock=0;
+            $id=0;
             foreach($result as $susu){
                 $stock = $susu["stock"];
+                $id = $susu["id"];
             }
 
             $currentStock = $stock - $cart['jumlah'];
@@ -105,17 +109,21 @@ function updateStock($cart){
                 'stock'=>$currentStock
             );
 
-            $this->db->where('id', $cart['product_id']);
-            $this->db->update('kasir_maktam_susu', $data);
+            $this->db->where('id', $id);
+            $this->db->update('kasir_stock_outlet', $data);
 
         }else if($cart['type']==='2'){
             $datas = array(
-                'id'=>$cart['product_id']
+                'product_id'=>$cart['product_id'],
+                'outlet'=>$this->session->userdata('outlet'),
+                'isSusu'=>1
             );
-            $result = $this->db->get_where('kasir_maktam_produklain',$datas)->result_array();
+            $result = $this->db->get_where('kasir_stock_outlet',$datas)->result_array();
             $stock=0;
+            $id=0;
             foreach($result as $susu){
                 $stock = $susu["stock"];
+                $id = $susu["id"];
             }
 
             $currentStock = $stock - $cart['jumlah'];
@@ -124,8 +132,8 @@ function updateStock($cart){
                 'stock'=>$currentStock
             );
 
-            $this->db->where('id', $cart['product_id']);
-            $this->db->update('kasir_maktam_produklain', $data);
+            $this->db->where('id', $id);
+            $this->db->update('kasir_stock_outlet', $data);
         }
 
 

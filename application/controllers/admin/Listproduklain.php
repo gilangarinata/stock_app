@@ -83,13 +83,11 @@ class Listproduklain extends CI_Controller
     public function editstock($idOutlet,$idProduct)
     {
         $data['stock'] = $this->model->getStock($idOutlet,$idProduct);
-        $this->load->view("admin/templates/header");
         $this->load->view("admin/produklain/edit_stock", $data);
-        $this->load->view("admin/templates/footer");
 
         if(isset($_POST['submit'])){
             $this->model->editStock($idOutlet,$idProduct);
-            redirect('admin/listproduklain');
+            redirect('pos/pos');
         }
     }
 

@@ -51,7 +51,9 @@
                                                 <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                 <td class="center">
                                                     <a href="<?= base_url() ?>pos/pos/addproduksusu/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>/<?= $produk['kategori'] ?>/<?= $produk['es'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
+                                                    <a href="<?= base_url() ?>admin/listsusu/editstock/<?= $this->session->userdata('outlet') ?>/<?= $produk['id'] ?>"><button class="btn btn-primary" type="button">Edit Stock</button></a>
                                                 </td>
+
 
                                             </tr>
                                         <?php endforeach ?>
@@ -110,6 +112,8 @@
                                                         <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                         <td class="center">
                                                             <a href="<?= base_url() ?>pos/pos/addproduklain/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>/<?= $produk['kategori'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
+                                                            <a href="<?= base_url() ?>admin/listproduklain/editstock/<?= $this->session->userdata('outlet') ?>/<?= $produk['id'] ?>"><button class="btn btn-primary" type="button">Edit Stock</button></a>
+                                          
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>
