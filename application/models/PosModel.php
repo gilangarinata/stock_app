@@ -156,7 +156,7 @@ class PosModel extends CI_Model {
 
     function hapusPembayaran($outlet,$tanggal,$shift)
     {
-        $this->db->where('tanggal', str_replace('-','/',$tanggal));
+        $this->db->like('tanggal', str_replace('-','/',$tanggal));
         $this->db->where('shift', $shift);
         $this->db->where('outlet', $outlet);
         return $this->db->delete('kasir_dashboard_pembayaran');
