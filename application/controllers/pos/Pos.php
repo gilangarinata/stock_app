@@ -43,6 +43,7 @@ class Pos extends CI_Controller {
     function hapusPenjualan($tanggal,$shift){
         $outlet = $this->session->userdata('outlet');
         $this->model->hapusPenjualan($outlet,$tanggal,$shift);
+        $this->model->hapusPembayaran($outlet,$tanggal,$shift);
         redirect('pos/pos/penjualan');
     }
 
