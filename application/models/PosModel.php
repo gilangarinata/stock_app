@@ -151,7 +151,15 @@ class PosModel extends CI_Model {
         $this->db->where('tanggal', str_replace('-','/',$tanggal));
         $this->db->where('shift', $shift);
         $this->db->where('outlet', $outlet);
+        $this->db->delete('kasir_dashboard_pembayaran');
+        $this->deleteModal($outlet,$tanggal);
         return $this->db->delete('kasir_harian');
+    }
+
+    function deleteModal($outlet,$tanggal){
+        $this->db->where('tanggal_lengkap', str_replace('-','/',$tanggal));
+        $this->db->where('outlet', $outlet);
+        return $this->db->delete('kasir_info_kasir');
     }
 
     function getDetailPenjualan($tanggal,$shift,$outlet)
