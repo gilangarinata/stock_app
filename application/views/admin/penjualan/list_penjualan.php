@@ -29,6 +29,11 @@
                     $outlets = array();
                     $totalPenjualanShift1 = array();
                     $totalPenjualanShift2 = array();
+                    $totalPajakShift1 = array();
+                    $totalPajakShift2 = array();
+                    $totalDiskonShift1 = array();
+                    $totalDiskonShift2 = array();
+
                     $modal = array();
                     $pengeluaran = array();
 
@@ -53,12 +58,21 @@
                     for($i=0; $i<sizeof($outlets); $i++){
                         $totalPenjualanShift1[$i] = 0;
                         $totalPenjualanShift2[$i] = 0;
+                        $totalPajakShift1[$i] = 0;
+                        $totalPajakShift2[$i] = 0;
+                        $totalDiskonShift1[$i] = 0;
+                        $totalDiskonShift2[$i] = 0;
+
                         foreach($produk as $prd){
                             if(strcmp($prd["outlet"],$outlets[$i]) == 0 && $prd["shift"]=="1"){
                                 $totalPenjualanShift1[$i] = $totalPenjualanShift1[$i] + (int)$prd['grand_total'];
+                                $totalPajakShift1[$i] = $totalPajakShift1[$i] + ((int)$prd['pajak'] * (int)$prd['total'] / 100);
+                                $totalDiskonShift1[$i] = $totalDiskonShift1[$i] + (int)$prd['diskon'];
                             }
                             if(strcmp($prd["outlet"],$outlets[$i]) == 0 && $prd["shift"]=="2"){
                                 $totalPenjualanShift2[$i] = $totalPenjualanShift2[$i] + (int)$prd['grand_total'];
+                                $totalPajakShift2[$i] = $totalPajakShift2[$i] + ((int)$prd['pajak'] * (int)$prd['total'] / 100 );
+                                $totalDiskonShift2[$i] = $totalDiskonShift2[$i] + (int)$prd['diskon'];
                             }
                         }                        
                     }
@@ -119,7 +133,7 @@
                                     <td><?= $tanggal_now != null ? $tanggal_now : ""  ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Total Penjualan</td>
+                                    <td>Grand Total Penjualan</td>
                                     <td><?= toRupiah($pendapatan) ?></td>
                                 </tr>
                                 <tr>
@@ -140,7 +154,7 @@
                                 </tr>
                                 <tr>
                                     <td>Pendapatan</td>
-                                    <td><?= toRupiah($pendapatan + $totalModal - $totalPajak - $totalDiskon ) ?></td>
+                                    <td><?= toRupiah($pendapatan + $totalModal - $totalPengeluaran - $totalPajak - $totalDiskon ) ?></td>
                                 </tr>
                             </tbody>
 
@@ -157,10 +171,13 @@
                             <thead>
                                 <tr>
                                     <th>Outlet</th>
-                                    <th>Total Penjualan Shift 1</th>
-                                    <th>Total Penjualan Shift 2</th>
+                                    <th>Grand Total Shift 1</th>
+                                    <th>grand Total Shift 2</th>
                                     <th>Modal</th>
                                     <th>Pengeluaran</th>
+                                    <th>Pajak</th>
+                                    <th>Diskon</th>
+                                    <th>Pendapatan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -169,10 +186,13 @@
 
                                     <tr class="gradeX">
                                         <td><?= $outlet ?></td>
-                                        <td class="center"><?= $totalPenjualanShift1[$i] ?></td>
-                                        <td class="center"><?= $totalPenjualanShift2[$i] ?></td>
-                                        <td class="center"><?= $modal[$i] ?></td>
-                                        <td class="center"><?= $pengeluaran[$i] ?></td>
+                                        <td class="center"><?= toRupiah( $totalPenjualanShift1[$i]) ?></td>
+                                        <td class="center"><?= toRupiah( $totalPenjualanShift2[$i]) ?></td>
+                                        <td class="center"><?= toRupiah($modal[$i]) ?></td>
+                                        <td class="center"><?= toRupiah($pengeluaran[$i]) ?></td>
+                                        <td class="center"><?= toRupiah((int)$totalPajakShift1[$i] + (int)$totalPajakShift2[$i]) ?></td>
+                                        <td class="center"><?= toRupiah((int)$totalDiskonShift1[$i] + (int)$totalDiskonShift2[$i]) ?></td>
+                                        <td class="center"><?= toRupiah($totalPenjualanShift1[$i] + $totalPenjualanShift2[$i] +  $modal[$i] - $pengeluaran[$i] - (int)$totalDiskonShift1[$i] + (int)$totalDiskonShift2[$i] - (int)$totalPajakShift1[$i] - (int)$totalPajakShift2[$i]) ?></td>
                                     </tr>
 
                             <?php $i++; endforeach  ?>

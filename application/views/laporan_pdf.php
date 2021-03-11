@@ -53,6 +53,11 @@ $size = 14;
     <td>:</td>
     <td><?= $details['shift'] ?></td>
   </tr>
+  <tr>
+    <td>Catatan</td>
+    <td>:</td>
+    <td><?= $details['catatan'] ?></td>
+  </tr>
 </table>
 
 </font>

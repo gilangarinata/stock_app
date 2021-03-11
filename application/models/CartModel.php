@@ -170,7 +170,8 @@ function addPembayaran($outlet)
         'nama' => $this->input->post("nama"),
         'diskon' => $this->input->post("diskon"),
         'pajak' => $this->input->post("pajak"),
-        'grand_total' => $this->input->post("grand_total")       
+        'grand_total' => $this->input->post("grand_total"),     
+        'catatan' => $this->input->post("catatan")       
     );
 
     $this->db->insert("kasir_dashboard_pembayaran",$data);

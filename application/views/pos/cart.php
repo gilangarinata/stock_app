@@ -174,6 +174,12 @@ endforeach
 
                     <hr />
 
+                    <span>
+                        Catatan
+                    </span>
+                    <input name="catatan" type="text" onkeyup="" value="" class="form-control">
+
+                    <hr />
                     <div id="modals">
                     <span>
                         Modal

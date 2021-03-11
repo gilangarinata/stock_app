@@ -142,7 +142,7 @@
                     <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>Penjualan</th>
+                                    <th>Grand Total</th>
                                     <th><?= toRupiah($total) ?></th>
                                 </tr>
                                 
@@ -196,12 +196,8 @@
                 </div>
             </div>
         </div>
-
-    
 </div>
     <!-- Mainly scripts -->
-
-
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function() {
