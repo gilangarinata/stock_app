@@ -70,9 +70,11 @@
                                 $totalPajak = 0;
 
                                 $totalDiskon = 0;
+                                $totalGrandTotal = 0;
 
                                 foreach ($produk as $produk) : $i++; 
                                     $total = $total + (int)$produk['total'];
+                                    $totalGrandTotal = $totalGrandTotal + (int)$produk['grand_total'];
                                     $totalPajak = $totalPajak + ((int)$produk['pajak'] * (int)$produk['total'] / 100);
                                     $totalDiskon = $totalDiskon + (int)$produk['diskon'];
                                     $jumlahBayar = $jumlahBayar + (int)$produk['jumlah_bayar'];
@@ -143,7 +145,7 @@
                             <thead>
                                 <tr>
                                     <th>Grand Total</th>
-                                    <th><?= toRupiah($total) ?></th>
+                                    <th><?= toRupiah($totalGrandTotal) ?></th>
                                 </tr>
                                 
                                 <?php $i = 0; foreach($modal as $modal): 
