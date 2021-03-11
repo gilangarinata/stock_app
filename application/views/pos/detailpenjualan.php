@@ -177,7 +177,7 @@
 
                                 <tr>
                                     <th>Saldo</th>
-                                    <th><?= toRupiah( $total + ($shift == "2" ? (int)$modal['modal'] : 0)  -  ($shift == "2" ? (int)$modal['pengeluaran'] : 0) - (int)$totalDiskon - (int)$totalPajak)  ?></th>
+                                    <th><?= toRupiah( $totalGrandTotal + ($shift == "2" ? (int)$modal['modal'] : 0)  -  ($shift == "2" ? (int)$modal['pengeluaran'] : 0) - (int)$totalDiskon - (int)$totalPajak)  ?></th>
                                 </tr>
 
 
