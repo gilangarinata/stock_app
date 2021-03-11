@@ -27,6 +27,7 @@
                 $nm = array();
                 $harga = array();
                 $jumlah = array();
+                $shift;
                 $a = 0;
                 foreach ($cart as $cart) : ?>
                     <?php
@@ -76,7 +77,7 @@
                                     $totalDiskon = $totalDiskon + (int)$produk['diskon'];
                                     $jumlahBayar = $jumlahBayar + (int)$produk['jumlah_bayar'];
                                     $kembali = $kembali + (int)$produk['kembali'];
-
+                                    $shift = $produk['shift'];
                                     $nama_produk = ""; ?>
 
                                     <tr class="gradeX">
@@ -107,6 +108,8 @@
                                         <td class="center"><?= $produk['nama'] ?></td>
                                         <td class="center"><?= $produk['outlet'] ?></td>
                                     </tr>
+
+
                                 <?php endforeach ?>
 
                                 <tr  class="gradeX">
@@ -172,26 +175,9 @@
 
                                 <tr>
                                     <th>Saldo</th>
-                                    <th><?= toRupiah( $total + (int)$modal['modal'] - (int)$modal['pengeluaran'] - (int)$totalDiskon - (int)$totalPajak)  ?></th>
+                                    <th><?= toRupiah( $total + ($shift == "2" ? (int)$modal['modal'] : 0)  -  ($shift == "2" ? (int)$modal['pengeluaran'] : 0) - (int)$totalDiskon - (int)$totalPajak)  ?></th>
                                 </tr>
 
-                                <tr>
-                                    <th>EE</th>
-                                    <th><?php 
-
-                                        echo $total;
-                                        echo "<br>";
-                                        echo (int)$modal['modal'];
-                                        echo "<br>";
-                                        echo (int)$modal['pengeluaran'];
-                                        echo "<br>";
-                                        echo $totalDiskon;
-                                        echo "<br>";
-                                        echo $totalPajak;
-                                        
-                                    
-                                    ?></th>
-                                </tr>
 
                                 <?php endforeach ?>
                             </thead>
