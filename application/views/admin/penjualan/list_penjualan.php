@@ -36,6 +36,9 @@
                     $totalPengeluaran = 0;
                     $pendapatan = 0;
 
+                    $totalPajak = 0;
+                    $totalDiskon = 0;
+
 
                     $i = 0;
                     $j = 0;
@@ -100,6 +103,8 @@
                     foreach($produk as $prd)
                     {
                         $pendapatan = $pendapatan + (int)$prd['grand_total'];
+                        $totalDiskon = $totalDiskon + (int)$prd['diskon'];
+                        $totalPajak = $totalPajak + ((int)$prd['pajak'] / 100 * (int)$prd['total']);
                     }
                 ?>
 
@@ -114,6 +119,10 @@
                                     <td><?= $tanggal_now != null ? $tanggal_now : ""  ?></td>
                                 </tr>
                                 <tr>
+                                    <td>Total Penjualan</td>
+                                    <td><?= toRupiah($pendapatan) ?></td>
+                                </tr>
+                                <tr>
                                     <td>Total Modal</td>
                                     <td><?= toRupiah($totalModal) ?></td>
                                 </tr>
@@ -122,8 +131,16 @@
                                     <td><?= toRupiah($totalPengeluaran) ?></td>
                                 </tr>
                                 <tr>
+                                    <td>Total Pajak</td>
+                                    <td><?= toRupiah($totalPajak) ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Total Diskon</td>
+                                    <td><?= toRupiah($totalDiskon) ?></td>
+                                </tr>
+                                <tr>
                                     <td>Pendapatan</td>
-                                    <td><?= toRupiah($pendapatan) ?></td>
+                                    <td><?= toRupiah($pendapatan + $totalModal - $totalPajak - $totalDiskon ) ?></td>
                                 </tr>
                             </tbody>
 
