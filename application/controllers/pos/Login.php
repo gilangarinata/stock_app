@@ -19,10 +19,11 @@ class Login extends CI_Controller{
         $username = $this->input->post("username");
         $password = $this->input->post("password");
 
-        $isLogin = $this->model->authProcess($username,$password);
+        $isLogin = $this->model->authProcess($username,$password)[0];
+        $outs = $this->model->authProcess($username,$password)[1];
 
         if($isLogin){
-            $this->session->set_userdata('outlet',$username);
+            $this->session->set_userdata('outlet',$outs);
             redirect('pos/pos');
         }else{
             $this->session->set_flashdata('message', "Username atau password salah");

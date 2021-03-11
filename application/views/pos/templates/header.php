@@ -28,6 +28,8 @@
 </head>
 
 <?php
+                                                                        $outlet = $this->session->userdata('outlet');
+                                                                        echo $outlet;
 $jml = 0;
 foreach ($jumlah_produk as $jumlah) :
     $jml = $jml + $jumlah['jumlah'];

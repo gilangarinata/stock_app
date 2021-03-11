@@ -175,6 +175,24 @@
                                     <th><?= toRupiah( $total + (int)$modal['modal'] - (int)$modal['pengeluaran'] - (int)$totalDiskon - (int)$totalPajak)  ?></th>
                                 </tr>
 
+                                <tr>
+                                    <th>EE</th>
+                                    <th><?php 
+
+                                        echo $total;
+                                        echo "<br>";
+                                        echo (int)$modal['modal'];
+                                        echo "<br>";
+                                        echo (int)$modal['pengeluaran'];
+                                        echo "<br>";
+                                        echo $totalDiskon;
+                                        echo "<br>";
+                                        echo $totalPajak;
+                                        
+                                    
+                                    ?></th>
+                                </tr>
+
                                 <?php endforeach ?>
                             </thead>
 

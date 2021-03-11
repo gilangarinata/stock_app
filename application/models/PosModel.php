@@ -45,6 +45,10 @@ class PosModel extends CI_Model {
         return $this->db->get_where('kasir_dashboard_keranjang',$info)->result_array();
     }
 
+    function prety($val){
+        echo '<pre>' . var_export($val, true) . '</pre>';
+    }
+
     function authProcess($username,$password)
     {
         $data = array(
@@ -52,11 +56,16 @@ class PosModel extends CI_Model {
             'password' => $password
         );
 
+        $this->db->like('outlet', $username);
+        $this->db->like('password', $password);
+
+        $outs = "";
         $state = false;
-        if($this->db->get_where('kasir_outlet',$data)->num_rows()>0){
+        if($this->db->get('kasir_outlet')->num_rows()>0){
             $state = true;
+            $outs = $this->db->get('kasir_outlet')->row()->outlet;
         }
-        return $state;
+        return array($state,$outs);
     }
 
     function addproduksusu($id,$nama,$harga,$outlet)
