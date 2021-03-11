@@ -59,12 +59,15 @@ class PosModel extends CI_Model {
         $this->db->like('outlet', $username);
         $this->db->like('password', $password);
 
+        $row = $this->db->get('kasir_outlet')->row();
+
         $outs = "";
         $state = false;
-        if($this->db->get('kasir_outlet')->num_rows()>0){
+        if($row != NULL){
             $state = true;
-            $outs = $this->db->get('kasir_outlet')->row()->outlet;
+            $outs = $row->outlet;
         }
+
         return array($state,$outs);
     }
 

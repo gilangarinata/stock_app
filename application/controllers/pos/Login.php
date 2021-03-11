@@ -19,10 +19,11 @@ class Login extends CI_Controller{
         $username = $this->input->post("username");
         $password = $this->input->post("password");
 
+    
         $isLogin = $this->model->authProcess($username,$password)[0];
-        $outs = $this->model->authProcess($username,$password)[1];
 
         if($isLogin){
+            $outs = $this->model->authProcess($username,$password)[1];
             $this->session->set_userdata('outlet',$outs);
             redirect('pos/pos');
         }else{
