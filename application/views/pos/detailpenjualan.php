@@ -183,7 +183,16 @@
                                 <tr>
                                     <th></th>
                                     <th>
-                                    
+                                        <?php
+                                            echo $totalGrandTotal;
+                                            echo "<br>";
+                                            echo $totalDiskon;
+                                            echo "<br>";
+                                            echo $totalDiskon;
+                                            echo "<br>";
+                                            
+
+                                        ?>  
                                     </th>
                                 </tr>
 
