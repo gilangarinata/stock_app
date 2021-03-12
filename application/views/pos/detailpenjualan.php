@@ -186,7 +186,7 @@
                                         <?php
                                             echo $totalGrandTotal;
                                             echo "<br>";
-                                            echo $totalDiskon;
+                                            echo $totalPajak;
                                             echo "<br>";
                                             echo $totalDiskon;
                                             echo "<br>";
