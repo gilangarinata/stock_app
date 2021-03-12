@@ -177,24 +177,24 @@
 
                                 <tr>
                                     <th>Saldo</th>
-                                    <th><?= toRupiah( $totalGrandTotal - (int)$totalDiskon - (int)$totalPajak + (($shift == "2" ? (int)$modal['modal'] : 0)  -  ($shift == "2" ? (int)$modal['pengeluaran'] : 0)))   ?></th>
+                                    <th><?= toRupiah( $totalGrandTotal - ((int)$totalDiskon - (int)$totalPajak) + (($shift == "2" ? (int)$modal['modal'] : 0)  -  ($shift == "2" ? (int)$modal['pengeluaran'] : 0)))   ?></th>
                                 </tr>
 
-                                <tr>
+                                <!-- <tr>
                                     <th></th>
                                     <th>
                                         <?php
-                                            echo $totalGrandTotal;
-                                            echo "<br>";
-                                            echo $totalPajak;
-                                            echo "<br>";
-                                            echo $totalDiskon;
-                                            echo "<br>";
+                                            // echo $totalGrandTotal;
+                                            // echo "<br>";
+                                            // echo $totalPajak;
+                                            // echo "<br>";
+                                            // echo $totalDiskon;
+                                            // echo "<br>";
                                             
 
                                         ?>  
                                     </th>
-                                </tr>
+                                </tr> -->
 
 
                                 <?php endforeach ?>
