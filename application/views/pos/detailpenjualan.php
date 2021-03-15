@@ -27,6 +27,7 @@
                 $nm = array();
                 $harga = array();
                 $jumlah = array();
+                $outlets = array();
                 $shift;
                 $a = 0;
                 foreach ($cart as $cart) : ?>
@@ -35,6 +36,7 @@
                     $nm[$a] = $cart['nama_produk'];
                     $harga[$a] = $cart['harga'];
                     $jumlah[$a] = $cart['jumlah'];
+                    $outlets[$a] = $cart['outlet'];
                     ?>
                 <?php $a++;
                 endforeach ?>
@@ -90,9 +92,11 @@
                                             $ty = 0;
                                             for ($r = 0; $r < sizeof($arr); $r++) {
                                                 if ($arr[$r] == $produk['cart_id']) {
-                                                    $ty++;
-                                                    $index = strpos($nm[$r],"(");
-                                                    echo $ty.". ". str_replace("%20"," ",substr($nm[$r],0,$index))  . " (" . $jumlah[$r] . ")  @" . toRupiah($harga[$r])  . "<br>";
+                                                    if($outlets[$r] == $this->session->userdata('outlet')){
+                                                        $ty++;
+                                                        $index = strpos($nm[$r],"(");
+                                                        echo $ty.". ". str_replace("%20"," ",substr($nm[$r],0,$index))  . " (" . $jumlah[$r] . ")  @" . toRupiah($harga[$r])  . "<br>";
+                                                    }
                                                 }
                                             }
 
