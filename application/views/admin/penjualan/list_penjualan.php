@@ -194,8 +194,8 @@
                                         <td class="center"><?= toRupiah((int)$totalDiskonShift1[$i] + (int)$totalDiskonShift2[$i]) ?></td>
                                         <?php
                                             $totalPenjualan = ($totalPenjualanShift1[$i] + $totalPenjualanShift2[$i]);
-                                            $totalPajak = ((int)$totalPajakShift1[$i] + (int)$totalPajakShift2[$i]);
-                                            $totalDiskon = (int)$totalDiskonShift1[$i] + (int)$totalDiskonShift2[$i]);
+                                            $totalPajak = (int)$totalPajakShift1[$i] + (int)$totalPajakShift2[$i];
+                                            $totalDiskon = (int)$totalDiskonShift1[$i] + (int)$totalDiskonShift2[$i];
                                         ?>
 
                                         <td class="center"><?= toRupiah( $totalPenjualan - ($totalPajak - $totalDiskon) + $modal[$i] - $pengeluaran[$i] ) ?></td>
