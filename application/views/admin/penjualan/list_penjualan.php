@@ -154,7 +154,7 @@
                                 </tr>
                                 <tr>
                                     <td>Pendapatan</td>
-                                    <td><?= toRupiah($pendapatan + $totalModal - $totalPengeluaran - $totalPajak - $totalDiskon ) ?></td>
+                                    <td><?= toRupiah($pendapatan - ($totalPajak - $totalDiskon) + $totalModal - $totalPengeluaran ) ?></td>
                                 </tr>
                             </tbody>
 
