@@ -212,7 +212,8 @@ class PosModel extends CI_Model {
             'outlet' => $outlet,                 
             'shift' => $shift,
             'nama' => "",
-            'tanggal_lengkap' => str_replace('-','/',$tanggal)
+            'tanggal_lengkap' => str_replace('-','/',$tanggal),
+            'catatan' => $this->input->post("catatan") 
         );
 
 

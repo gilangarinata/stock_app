@@ -179,6 +179,11 @@
                                     <th><input name="pengeluaran" type="number" value="<?= $modal['pengeluaran']  ?>" class="form-control"></th>
                                 </tr>
 
+                                <tr <?= $produk['shift'] == '1' ? "hidden" : "" ?>>
+                                    <th>Catatan</th>
+                                    <th><input name="catatan" type="number" value="<?= $modal['catatan']  ?>" class="form-control"></th>
+                                </tr>
+
                                 <tr>
                                     <th>Saldo</th>
                                     <th><?= toRupiah( $totalGrandTotal - ((int)$totalPajak - (int)$totalDiskon) + (($shift == "2" ? (int)$modal['modal'] : 0)  -  ($shift == "2" ? (int)$modal['pengeluaran'] : 0)))   ?></th>
