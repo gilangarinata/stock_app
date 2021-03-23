@@ -181,7 +181,7 @@
 
                                 <tr <?= $produk['shift'] == '1' ? "hidden" : "" ?>>
                                     <th>Catatan</th>
-                                    <th><input name="catatan" type="number" value="<?= $modal['catatan']  ?>" class="form-control"></th>
+                                    <th><input name="catatan" type="text" value="<?= $modal['catatan']  ?>" class="form-control"></th>
                                 </tr>
 
                                 <tr>
