@@ -84,12 +84,9 @@ $size = 14;
   </tr>
   <?php endforeach ?>
 </table>
-<br><br>
 
-  </font>
-----------------------
-<font size="9">
-<table style="font-size: 10px;">
+
+<table style="font-size: 10px; margin-top:5px">
   <tr>
     <td>Total </td>
     <td>:</td>
