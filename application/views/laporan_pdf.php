@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <style>
-@page { margin: 5px; }
+@page { margin: 13px; }
 body { margin: 5px; }
 
 </style>
