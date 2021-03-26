@@ -65,7 +65,7 @@ $size = 14;
 
 
 ----------------------
-<font size="12">
+<font size="9">
 <table style="font-size: 11px;">
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
@@ -88,7 +88,7 @@ $size = 14;
 
   </font>
 ----------------------
-<font size="12">
+<font size="9">
 <table style="font-size: 10px;">
   <tr>
     <td>Total </td>
