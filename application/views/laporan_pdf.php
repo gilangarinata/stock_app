@@ -66,7 +66,7 @@ $size = 14;
 
 ----------------------
 <font size="12">
-<table style="font-size: 9px;">
+<table style="font-size: 11px;">
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
     <td style="text-align: center; vertical-align: middle;">Jumlah</td> 
@@ -77,10 +77,10 @@ $size = 14;
     $totals = $totals + $data['total'];
     ?>
   <tr>
-    <td style="text-align: center; vertical-align: middle;"><?= str_replace("%20"," ",$data['nama_produk']) ?></td>
-    <td style="text-align: center; vertical-align: middle;"><?= $data['jumlah'] ?></td>
-    <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['harga']) ?></td>
-    <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['total']) ?></td>
+    <td style="text-align: left; vertical-align: middle;"><?= str_replace("%20"," ",$data['nama_produk']) ?></td>
+    <td style="text-align: left; vertical-align: middle;"><?= $data['jumlah'] ?></td>
+    <td style="text-align: left; vertical-align: middle;"><?= rupiah($data['harga']) ?></td>
+    <td style="text-align: left; vertical-align: middle;"><?= rupiah($data['total']) ?></td>
   </tr>
   <?php endforeach ?>
 </table>
