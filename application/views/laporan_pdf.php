@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <style>
-@page { margin: 16px; }
+@page { margin: 20px; }
 body { margin: 5px; }
 
 </style>
@@ -78,7 +78,7 @@ $size = 14;
     ?>
   <tr>
     <td style="text-align: left; vertical-align: middle;"><?= str_replace("%20"," ",$data['nama_produk']) ?></td>
-    <td style="text-align: center; vertical-align: middle;"><?= $data['jumlah'] ?></td>
+    <td style="text-align: center; vertical-align: middle;"><?=$data['jumlah'] ?></td>
     <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['harga']) ?></td>
     <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['total']) ?></td>
   </tr>
