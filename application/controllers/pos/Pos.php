@@ -93,18 +93,18 @@ class Pos extends CI_Controller {
         $this->load->view("pos/templates/footer");
     }
 
-    function addproduksusu($id,$nama,$harga,$kategori,$es){
+    function addproduksusu($id,$nama,$harga,$kategori,$es,$i){
         $nama = $nama." ".$es." <br>(".$kategori.")";
         $outlet = $this->session->userdata('outlet');
         $this->model->addproduksusu($id,$nama,$harga,$outlet);
-        redirect('pos/pos');
+        redirect("pos/pos?c=".$i);
     }
 
-    function addproduklain($id,$nama,$harga,$kategori){
+    function addproduklain($id,$nama,$harga,$kategori,$i){
         $nama = $nama." <br>(".$kategori.")";
         $outlet = $this->session->userdata('outlet');
         $this->model->addProdukLain($id,$nama,$harga,$outlet);
-        redirect('pos/pos');
+        redirect('pos/pos?c='.$i);
     }
 
 

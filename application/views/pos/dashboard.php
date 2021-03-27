@@ -50,7 +50,7 @@
                                                 <td class="center"><?= $produk['kategori'] ?></td>
                                                 <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                 <td class="center">
-                                                    <a href="<?= base_url() ?>pos/pos/addproduksusu/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>/<?= $produk['kategori'] ?>/<?= $produk['es'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
+                                                    <a href="<?= base_url() ?>pos/pos/addproduksusu/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>/<?= $produk['kategori'] ?>/<?= $produk['es'] ?>/0"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
                                                     <a href="<?= base_url() ?>admin/listsusu/editstock/<?= $this->session->userdata('outlet') ?>/<?= $produk['id'] ?>"><button class="btn btn-primary" type="button">Edit Stock</button></a>
                                                 </td>
 
@@ -111,7 +111,7 @@
                                                         <td class="center"><?= $produk['kategori'] ?></td>
                                                         <td class="center"><img src="<?= base_url('assets/upload/product/') ?><?= $produk['gambar'] ?>" height="50" width="50" /></td>
                                                         <td class="center">
-                                                            <a href="<?= base_url() ?>pos/pos/addproduklain/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>/<?= $produk['kategori'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
+                                                            <a href="<?= base_url() ?>pos/pos/addproduklain/<?= $produk['id'] ?>/<?= $produk['nama_produk'] ?>/<?= $produk['harga'] ?>/<?= $produk['kategori'] ?>/<?= $j ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih Produk</button></a>
                                                             <a href="<?= base_url() ?>admin/listproduklain/editstock/<?= $this->session->userdata('outlet') ?>/<?= $produk['id'] ?>"><button class="btn btn-primary" type="button">Edit Stock</button></a>
                                           
                                                         </td>
@@ -159,7 +159,23 @@
 
 <!-- Page-Level Scripts -->
 <script>
+
+function activaTab(tab){
+  $('.nav-tabs a[href="#tab-' + tab + '"]').tab('show');
+};
+
+var url_string = window.location.href;
+var url = new URL(url_string);
+var c = url.searchParams.get("c");
+
+console.log(c);
+activaTab(c);
+
+
     $(document).ready(function() {
+
+
+
         var error = "<?php echo $this->session->flashdata("state") ?>";
 
         if (error != null) {
