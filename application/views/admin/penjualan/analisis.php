@@ -66,7 +66,7 @@
                                 <?php for ($i = 0; $i < sizeof($produk[0]); $i++) : ?>
                                     <tr class="gradeX">
                                         <td><?= $i + 1 ?></td>
-                                        <td class="center"><?= $produk[0][$i] ?></td>
+                                        <td class="center"><?= str_replace($produk[0][$i],"%20", " ")  ?></td>
                                         <td class="center"><?= $produk[1][$i] ?></td>
                                     </tr>
                                 <?php endfor ?>

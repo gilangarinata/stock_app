@@ -22,7 +22,25 @@ class Cart extends CI_Controller {
         $this->load->view("pos/cart",$data);
         $this->load->view("pos/templates/footer");
 
-        if(isset($_POST['submit'])){
+        // if(isset($_POST['submit'])){
+        //     $this->session->set_userdata('nama',$this->input->post("nama"));
+        //     $this->session->set_userdata('shift',$this->input->post("shift"));
+        //     $this->session->set_userdata('modal',$this->input->post("modal"));
+        //     $this->session->set_userdata('pengeluaran',$this->input->post("pengeluaran"));
+        //     $this->session->set_userdata('pajak',$this->input->post("pajak"));
+            
+
+        //     $this->model->updateStock($this->model->getCartList($outlet));
+        //     $this->model->addPembayaran($outlet);
+        //     $this->model->addKeterangan($outlet);
+        //     $this->model->addRekapHarian($outlet);
+
+        //     redirect('pos/cart/cart/laporan_pdf/'.$outlet);
+        // }
+    }
+
+    public function addcart(){
+            $outlet = $this->session->userdata('outlet');
             $this->session->set_userdata('nama',$this->input->post("nama"));
             $this->session->set_userdata('shift',$this->input->post("shift"));
             $this->session->set_userdata('modal',$this->input->post("modal"));
@@ -36,7 +54,6 @@ class Cart extends CI_Controller {
             $this->model->addRekapHarian($outlet);
 
             redirect('pos/cart/cart/laporan_pdf/'.$outlet);
-        }
     }
 
 
@@ -49,12 +66,14 @@ class Cart extends CI_Controller {
         $data['data'] = $this->model->pdfGetProduk($outlet);   
         $data['details'] = $this->model->pdfGetDetails($outlet);   
         $data['alamat'] = $this->model->pdfGetAlamat($outlet);   
+
     
         $this->load->library('pdf');
     
         $this->pdf->setPaper('A5', 'potrait');
         $this->pdf->filename = "laporan.pdf";
-        $this->pdf->load_view('laporan_pdf', $data);    
+        $this->pdf->load_view('laporan_pdf', $data);   
+        
     }
 
 

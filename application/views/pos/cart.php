@@ -76,7 +76,7 @@ endforeach
 
     </div>
     <div class="col-md-3">
-    <form method="post" enctype="multipart/form-data">
+    <form action="<?= base_url('pos/cart/cart/addcart') ?>" method="post" enctype="multipart/form-data">
 
         <div class="ibox">
             <div class="ibox-title">
