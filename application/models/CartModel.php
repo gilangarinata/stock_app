@@ -207,8 +207,23 @@ function addRekapHarian($outlet)
         'outlet' => $outlet
     );
 
-    $this->db->replace('kasir_harian', $data);
+    // $this->db->replace('kasir_harian', $data);
 
+    $sql = 'INSERT INTO kasir_harian (null, kasir, tanggal, shift, outlet)
+        VALUES (?, ?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE 
+            kasir=VALUES(kasir), 
+            tanggal=VALUES(tanggal), 
+            shift=VALUES(shift),
+            outlet=VALUES(outlet)'
+            ;
+
+$query = $this->db->query($sql, array( null, 
+                                       $$this->input->post("nama"), 
+                                       substr($this->input->post("tanggal"),0,10), 
+                                       $this->input->post("shift"),
+                                       $outlet
+                                      ));
 
     // if($this->db->get_where('kasir_harian',$data1)->num_rows() > 0 ) {
     //     $this->db->where($where);
