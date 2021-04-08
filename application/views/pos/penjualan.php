@@ -37,6 +37,7 @@
                                     <th>Shift</th>
                                     <th>Nama</th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
