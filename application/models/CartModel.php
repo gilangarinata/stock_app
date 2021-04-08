@@ -207,11 +207,15 @@ function addRekapHarian($outlet)
         'outlet' => $outlet
     );
 
+    $sql = $this->db->insert_string('table', $data) . ' ON DUPLICATE KEY UPDATE duplicate=LAST_INSERT_ID(duplicate)';
+$this->db->query($sql);
+$id = $this->db->insert_id();
+
     // $this->db->replace('kasir_harian', $data);
 
-    $sql = $this->db->insert_string('kasir_harian', $data) . ' ON DUPLICATE KEY UPDATE ' .
-    implode(', ', $data);
-    $this->db->query($sql);
+    // $sql = $this->db->insert_string('kasir_harian', $data) . ' ON DUPLICATE KEY UPDATE ' .
+    // implode(', ', $data);
+    // $this->db->query($sql);
 
     // if($this->db->get_where('kasir_harian',$data1)->num_rows() > 0 ) {
     //     $this->db->where($where);
