@@ -207,7 +207,7 @@ function addRekapHarian($outlet)
         'outlet' => $outlet
     );
 
-    $sql = $this->db->insert_string('kasir_harian', $data) . ' ON DUPLICATE KEY UPDATE kasir=VALUES('.$this->input->post("nama").'), tanggal=VALUES('.substr($this->input->post("tanggal"),0,10).'), shift=VALUES('.$this->input->post("shift").'), outlet=VALUES('.$outlet.')';
+    $sql = $this->db->insert_string('kasir_harian', $data) . ' ON DUPLICATE KEY UPDATE kasir=VALUES(kasir), tanggal=VALUES(tanggal),shift=VALUES(shift),outlet=VALUES(outlet)';
     $this->db->query($sql);
 
     // $this->db->replace('kasir_harian', $data);
