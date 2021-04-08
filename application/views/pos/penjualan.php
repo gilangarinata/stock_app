@@ -52,10 +52,10 @@
                                         }
                                     }
                                     
-                                    if(count > 1){
-                                        isEqual = true;
+                                    if($count > 1){
+                                        $isEqual = true;
                                     }else{
-                                        isEqual = false;
+                                        $isEqual = false;
                                     }
 
                                     return $isEqual;
