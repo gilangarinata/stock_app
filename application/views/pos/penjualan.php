@@ -37,11 +37,37 @@
                                     <th>Shift</th>
                                     <th>Nama</th>
                                     <th></th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i=0; foreach ($produk as $produk) : $i++;?>
+                                <?php 
+                                function checkEquals($currentProduk){
+                                    $isEqual = false;
+                                    $count = 0;
+                                    foreach ($produk as $produk){
+                                        if($produk['tanggal'] == $currentProduk['tanggal']){
+                                            if($produk['shift'] == $currentProduk['shift']){
+                                                $count++;
+                                            }
+                                        }
+                                    }
+                                    
+                                    if(count > 1){
+                                        isEqual = true;
+                                    }else{
+                                        isEqual = false;
+                                    }
+
+                                    return $isEqual;
+                                }
+                                
+                                
+                                $i=0; foreach ($produk as $produk) : 
+                                    if(checkEquals($produk)){
+                                        continue;
+                                    }
+                                    
+                                $i++;?>
 
                                     <tr class="gradeX">
                                         <td><?= $i ?></td>
