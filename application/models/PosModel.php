@@ -158,6 +158,7 @@ class PosModel extends CI_Model {
         $this->db->distinct();
         $this->db->select('tanggal');
         $this->db->select('shift');
+        $this->db->select('kasir');
         $data = $this->db->get_where('kasir_harian',$datas)->result_array();
 
         return $data;
