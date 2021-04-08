@@ -207,7 +207,7 @@ function addRekapHarian($outlet)
         'outlet' => $outlet
     );
 
-    $sql = $this->db->insert_string('table', $data) . ' ON DUPLICATE KEY UPDATE duplicate=LAST_INSERT_ID(duplicate)';
+    $sql = $this->db->insert_string('kasir_harian', $data) . ' ON DUPLICATE KEY UPDATE duplicate=LAST_INSERT_ID(duplicate)';
 $this->db->query($sql);
 $id = $this->db->insert_id();
 
