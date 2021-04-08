@@ -155,8 +155,12 @@ class PosModel extends CI_Model {
         $datas = array(
             'outlet'=>$outlet
         );
-        return $this->db->get_where('kasir_harian',$datas)->result_array();
+
+        $data = $this->db->get_where('kasir_harian',$datas)->result_array();
+
+        return $data;
     }
+
 
     function hapusPenjualan($outlet,$tanggal,$shift)
     {

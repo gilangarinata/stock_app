@@ -40,33 +40,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                function checkEquals($currentProduk){
-                                    $isEqual = false;
-                                    $count = 0;
-                                    foreach ($produk as $c){
-                                        if($c['tanggal'] == $currentProduk['tanggal']){
-                                            if($c['shift'] == $currentProduk['shift']){
-                                                $count++;
-                                            }
-                                        }
-                                    }
-                                    
-                                    if($count > 1){
-                                        $isEqual = true;
-                                    }else{
-                                        $isEqual = false;
-                                    }
-
-                                    return $isEqual;
-                                }
+                                <?php                                 
                                 
-                                
-                                $i=0; foreach ($produk as $produk) : 
-                                    if(checkEquals($produk)){
-                                        continue;
-                                    }
-                                    
+                                $i=0; foreach ($produk as $produk) :                                     
                                 $i++;?>
 
                                     <tr class="gradeX">
