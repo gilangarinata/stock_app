@@ -44,9 +44,9 @@
                                 function checkEquals($currentProduk){
                                     $isEqual = false;
                                     $count = 0;
-                                    foreach ($produk as $produk){
-                                        if($produk['tanggal'] == $currentProduk['tanggal']){
-                                            if($produk['shift'] == $currentProduk['shift']){
+                                    foreach ($produk as $c){
+                                        if($c['tanggal'] == $currentProduk['tanggal']){
+                                            if($c['shift'] == $currentProduk['shift']){
                                                 $count++;
                                             }
                                         }
