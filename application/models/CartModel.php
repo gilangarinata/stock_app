@@ -207,8 +207,8 @@ function addRekapHarian($outlet)
         'outlet' => $outlet
     );
 
-    $sql = $this->db->insert_string('kasir_harian', $data) . ' ON DUPLICATE KEY UPDATE kasir=VALUES(kasir), tanggal=VALUES(tanggal),shift=VALUES(shift),outlet=VALUES(outlet)';
-    $this->db->query($sql);
+    // $sql = $this->db->insert_string('kasir_harian', $data) . ' ON DUPLICATE KEY UPDATE kasir=VALUES(kasir), tanggal=VALUES(tanggal),shift=VALUES(shift),outlet=VALUES(outlet)';
+    // $this->db->query($sql);
 
     // $this->db->replace('kasir_harian', $data);
 
@@ -216,12 +216,12 @@ function addRekapHarian($outlet)
     // implode(', ', $data);
     // $this->db->query($sql);
 
-    // if($this->db->get_where('kasir_harian',$data1)->num_rows() > 0 ) {
-    //     $this->db->where($where);
-    //     $this->db->update('kasir_harian',$data);
-    // }else{
-    //     $this->db->insert('kasir_harian',$data);
-    // }
+    if($this->db->get_where('kasir_harian',$data1)->num_rows() > 0 ) {
+        $this->db->where($where);
+        $this->db->update('kasir_harian',$data);
+    }else{
+        $this->db->insert('kasir_harian',$data);
+    }
 }
 
 function addKeterangan($outlet){
