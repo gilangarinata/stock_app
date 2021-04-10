@@ -168,12 +168,10 @@ class PosModel extends CI_Model {
         $takenDate = array();
         $takenShift = array();
         foreach($items as $key => $item) {
-            if(!in_array(substr($item['tanggal'],0,10) , $takenDate)) {
-                if(!in_array($item['shift'],$takenShift)) {
-                    $takenDate[] = substr($item['tanggal'],0,10);
-                    $takenShift[] = $item['shift'];
-                    array_push($newArr, $item);
-                }
+            if(!in_array(substr($item['tanggal'],0,10) , $takenDate) && !in_array($item['shift'],$takenShift)) {
+                $takenDate[] = substr($item['tanggal'],0,10);
+                $takenShift[] = $item['shift'];
+                array_push($newArr, $item);
             } else {
                 unset($items[$key]);
             }
