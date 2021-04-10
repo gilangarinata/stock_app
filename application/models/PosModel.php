@@ -174,7 +174,7 @@ class PosModel extends CI_Model {
                     $ct++;
                 }
             }
-            if($ct > 1){
+            if($ct > 2){
                 continue;
             }
 
