@@ -222,7 +222,7 @@ function addRekapHarian($outlet)
     // }else{
     //     $this->db->insert('kasir_harian',$data);
     // }
-            $this->db->insert('kasir_harian',$data);
+            // $this->db->insert('kasir_harian',$data);
 }
 
 function addKeterangan($outlet){

@@ -48,18 +48,18 @@
 
                                     <tr class="gradeX">
                                         <td><?= $i ?></td>
-                                        <td><?= $produk['tanggal'] ?></td>
+                                        <td><?= substr($produk['tanggal'], 0, 10) ?></td>
                                         <td><?= $produk['shift'] ?></td>
                                     
-                                        <td class="center"><?= $produk['kasir'] ?></td>
+                                        <td class="center"><?= $produk['nama'] ?></td>
                                         <td> 
-                                            <a href="<?= base_url() ?>pos/pos/detailpenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Open</a> 
+                                            <a href="<?= base_url() ?>pos/pos/detailpenjualan/<?= str_replace('/','-',substr($produk['tanggal'], 0, 10)) ?>/<?= $produk['shift'] ?>">Open</a> 
                                          
-                                            
+                                    
                                         </td>
 
                                         <td>
-                                        <a href="<?= base_url() ?>pos/pos/hapusPenjualan/<?= str_replace('/','-',$produk['tanggal']) ?>/<?= $produk['shift'] ?>">Delete</a>
+                                        <a href="<?= base_url() ?>pos/pos/hapusPenjualan/<?= str_replace('/','-',substr($produk['tanggal'], 0, 10)) ?>/<?= $produk['shift'] ?>">Delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
