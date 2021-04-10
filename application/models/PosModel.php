@@ -160,8 +160,19 @@ class PosModel extends CI_Model {
         $this->db->select('shift');
         $this->db->select('nama');
         $data = $this->db->get_where('kasir_dashboard_pembayaran',$datas)->result_array();
+        return $this->filter($data);
+    }
 
-        return $data;
+    function filter($items){
+        $taken = array();
+        foreach($items as $key => $item) {
+            if(!in_array($item['tanggal'], $taken) && !in_array($item['shift'], $taken)) {
+                array_push($taken, $item);
+            } else {
+                unset($items[$key]);
+            }
+        }
+        return $taken;
     }
 
 
