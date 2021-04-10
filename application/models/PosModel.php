@@ -169,12 +169,12 @@ class PosModel extends CI_Model {
         $takenShift = array();
         foreach($items as $key => $item) {
             $ct = 0;
-            foreach($items as $key2 => $item2){
+            foreach($newArr as $key2 => $item2){
                 if(substr($item['tanggal'],0,10) == substr($item2['tanggal'],0,10) && $item['shift'] == $item2['shift']){
                     $ct++;
                 }
             }
-            if($ct > 2){
+            if($ct > 0){
                 continue;
             }
 
