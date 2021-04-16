@@ -17,7 +17,7 @@ $size = 14;
 ?>
 
 <?php foreach($alamat as $alamat): ?>
-<p style="text-align:left; font-size : 12px;" ><?= $alamat['alamat'] ?></p>
+<p style="text-align:left; font-weight: bold; font-size : 12px;" ><?= $alamat['alamat'] ?></p>
 <?php endforeach ?>
 
 
@@ -32,7 +32,7 @@ $size = 14;
   ?>
 
 <font size="12">
-  <table style="font-size: 10px;" >
+  <table style="font-size: 10px; font-weight: bold;" >
   <tr>
     <td>Tanggal</td>
     <td>:</td>
@@ -66,7 +66,7 @@ $size = 14;
 
 ----------------------
 <font size="9">
-<table style="font-size: 9px;">
+<table style="font-size: 9px; font-weight: bold;">
   <tr>
     <td style="text-align: center; vertical-align: middle;">Nama Barang</td>
     <td style="text-align: center; vertical-align: middle;">Jumlah</td> 
@@ -77,16 +77,16 @@ $size = 14;
     $totals = $totals + $data['total'];
     ?>
   <tr>
-    <td style="text-align: left; vertical-align: middle;"><?= str_replace("%20"," ",$data['nama_produk']) ?></td>
-    <td style="text-align: center; vertical-align: middle;"><?=$data['jumlah'] ?></td>
-    <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['harga']) ?></td>
-    <td style="text-align: center; vertical-align: middle;"><?= rupiah($data['total']) ?></td>
+    <td style="text-align: left; font-weight: bold; vertical-align: middle;"><?= str_replace("%20"," ",$data['nama_produk']) ?></td>
+    <td style="text-align: center; font-weight: bold; vertical-align: middle;"><?=$data['jumlah'] ?></td>
+    <td style="text-align: center; font-weight: bold; vertical-align: middle;"><?= rupiah($data['harga']) ?></td>
+    <td style="text-align: center; font-weight: bold; vertical-align: middle;"><?= rupiah($data['total']) ?></td>
   </tr>
   <?php endforeach ?>
 </table>
 
 
-<table style="font-size: 10px; margin-top:5px">
+<table style="font-size: 10px; font-weight: bold; margin-top:5px">
   <tr>
     <td>Total </td>
     <td>:</td>
