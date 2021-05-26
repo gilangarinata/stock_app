@@ -60,6 +60,10 @@
                     <li>
                         <a href="<?= base_url() ?>admin/outlet/"><i class="fa fa-user-circle"></i> <span class="nav-label">Outlet</span></a>
                     </li>
+
+                    <!-- <li>
+                        <a href="<?= base_url() ?>admin/login/changepassword/"><i class="fa fa-key"></i> <span class="nav-label">Ganti Password</span></a>
+                    </li> -->
                     
 
                 </ul>

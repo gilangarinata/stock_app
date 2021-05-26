@@ -29,6 +29,19 @@ class OutletModel extends CI_Model
         $this->db->insert('kasir_helper_idcart', $data2);
     }
 
+    function login($username,$password)
+    {
+        $data = array(
+            'outlet' => $username,
+            'password' => $password
+        );
+        if($username == 'admin'){
+            return $this->db->get_where('kasir_outlet', $data)->num_rows()>0 ;
+        }else{
+            return false;
+        }
+    }
+
     function editOutlet($id)
     {
         $data = array(
