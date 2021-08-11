@@ -119,6 +119,15 @@ class Dashboard extends CI_Controller{
         }
     }
 
+    function gallery(){
+        $id = $this->input->get('product_id', 1);
+        $product = $this->model->getProductById($id);
+        $data['product'] = $product;
+        $this->load->view("templates/header");
+        $this->load->view("gallery",$data);
+        $this->load->view("templates/footer");    
+    }
+
     function cancel(){
         redirect('dashboard');
     }

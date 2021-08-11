@@ -43,7 +43,9 @@
                                                 <td class="center"><?= $produk['address'] ?></td>
                                                 <td class="center"><?= $produk['sold'] . " " . $produk['stock_type'] ?></td>
                                                 <td class="center">
-                                                <img src="<?= base_url() . $produk['images1'] ?>" width="50px" height="50">
+                                                    <a href="<?= base_url() ?>dashboard/gallery?product_id=<?= $produk['id'] ?>">
+                                                        <img src="<?= base_url() . $produk['images1'] ?>" width="50px" height="50">
+                                                    </a>
                                                 </td>
                                                 <td class="center">
                                                     <a href="<?= base_url() ?>dashboard/select_product?id=<?= $produk['id'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih</button></a>
