@@ -21,9 +21,10 @@
                                             <th>Nama Produk</th>
                                             <th>Harga</th>
                                             <th>Harga Jual</th>
-                                            <th>Stock</th>
+                                            <th>Stok</th>
+                                            <th></th>
                                             <th>Distributor</th>
-                                            <th>Alamat</th>
+                                            <th>Lokasi Barang</th>
                                             <th>Terjual</th>
                                             <th>Foto</th>
                                             <th>Action</th>
@@ -38,13 +39,14 @@
                                                 <td><?= $produk['name'] ?></td>
                                                 <td><?= toRupiah($produk['price']) ?></td>
                                                 <td class="center"><?= toRupiah($produk['sellPrice']) ?></td>
-                                                <td class="center"><?= $produk['stock'] . " " . $produk['stock_type'] ?></td>
+                                                <td class="center"><?= $produk['stock'] ?></td>
+                                                <td class="center"><?= $produk['stock_type'] ?></td>
                                                 <td class="center"><?= $produk['distributor'] ?></td>
                                                 <td class="center"><?= $produk['address'] ?></td>
-                                                <td class="center"><?= $produk['sold'] . " " . $produk['stock_type'] ?></td>
+                                                <td class="center"><?= $produk['sold']?></td>
                                                 <td class="center">
                                                     <a href="<?= base_url() ?>dashboard/gallery?product_id=<?= $produk['id'] ?>">
-                                                        <img src="<?= base_url() . $produk['images1'] ?>" width="50px" height="50">
+                                                        <img src="<?= base_url() . $produk['images1'] ?>" width="30px" height="50">
                                                     </a>
                                                 </td>
                                                 <td class="center">
@@ -69,7 +71,7 @@
             <?php
                 function toRupiah($value)
                 {
-                    return "Rp. " . number_format($value, 0, ".", ".");
+                    return number_format($value, 0, ",", ",");
                 }
             ?>
 
@@ -153,6 +155,7 @@ activaTab(c);
         $('.dataTables-example').DataTable({
             pageLength: 25,
             responsive: true,
+            ordering: true,
             dom: '<"html5buttons"B>lTfgitp',
             buttons: [{
                     extend: 'copy'

@@ -11,10 +11,13 @@ class Dashboard extends CI_Controller{
 
     public function index()
     {
+        $minute_cache = 5;
         $data['products'] = $this->model->getProductList();
         $this->load->view("templates/header",$data);
         $this->load->view("dashboard",$data);
         $this->load->view("templates/footer");
+        $this->output->cache($minute_cache);
+
     }
 
     function delete_product($id)
@@ -126,6 +129,11 @@ class Dashboard extends CI_Controller{
         $this->load->view("templates/header");
         $this->load->view("gallery",$data);
         $this->load->view("templates/footer");    
+    }
+    
+
+    function insert_dummy(){
+        $this->model->add_dummies();
     }
 
     function cancel(){

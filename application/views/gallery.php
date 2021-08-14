@@ -40,7 +40,7 @@
                             <div class="carousel slide" id="carousel1">
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img alt="image" class="img-responsive" src="<?= base_url() . $product['images1'] ?>">
+                                        <img alt="image" class="img-responsive" src="<?= base_url() . $product['images1'] ?> ">
                                     </div>
                                     <div class="item">
                                         <img alt="image"  class="img-responsive" src="<?= base_url() . $product['images2'] ?>">

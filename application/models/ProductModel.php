@@ -21,6 +21,28 @@ class ProductModel extends CI_Model
         return $this->db->delete('product');
     }
 
+    function add_dummies(){
+        for($i = 0; $i < 2000; $i++){
+            $data = array(
+                'name' => "Product " . $i,
+                'code' => "B982-" . $i,
+                'price' => 10 * $i,
+                'sellPrice' => 12 * $i,
+                'distributor' => "PT. BURUH CITRA" . $i,
+                'address' => "Jalan Subakti No " . $i,
+                'images1' => "",
+                'images2' => "",                 
+                'images3' => "",
+                'images4' => "",                 
+                'sold' => "",
+                'stock' => 2 * $i,
+                'stock_type' => "PCS"      
+            );
+    
+            $this->db->insert("product",$data);
+        }    
+    }
+
     function add_product(){
         $images1 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "1","myimage");
         $images2 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "2","myimage2");
@@ -110,7 +132,7 @@ class ProductModel extends CI_Model
 
         $productName = $this->getProductById($id)["name"];
         $currentSold = $this->getProductById($id)["sold"];
-        $price = $this->getProductById($id)["price"];
+        $price = $this->getProductById($id)["sellPrice"];
         $currentStock = $this->getProductById($id)["stock"];
         $stock = $currentStock - $this->input->post("sold");
         $sold = $currentSold + $this->input->post("sold");
