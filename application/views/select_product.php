@@ -100,21 +100,21 @@ activaTab(c);
     $(document).ready(function() {
 
 
-        var error = "<?php echo $this->session->flashdata("state") ?>";
+        // var error = "<?php echo $this->session->flashdata("state") ?>";
 
-        if (error != null) {
-            if (error) {
-                setTimeout(function() {
-                    toastr.options = {
-                        closeButton: true,
-                        progressBar: true,
-                        showMethod: 'slideDown',
-                        timeOut: 4000
-                    };
-                    toastr.success('Berhasil Hapus Data');
-                }, 900);
-            }
-        }
+        // if (error != null) {
+        //     if (error) {
+        //         setTimeout(function() {
+        //             toastr.options = {
+        //                 closeButton: true,
+        //                 progressBar: true,
+        //                 showMethod: 'slideDown',
+        //                 timeOut: 4000
+        //             };
+        //             toastr.success('Berhasil Hapus Data');
+        //         }, 900);
+        //     }
+        // }
 
         $('.dataTables-example').DataTable({
             pageLength: 25,
