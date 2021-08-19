@@ -48,7 +48,7 @@
     </li>
 
     <li>
-        <a style="color: #ffffff;" href="<?= base_url() ?>pos/login">
+        <a style="color: #ffffff;" href="<?= base_url() ?>dashboard/logout">
             <i class="fa fa-sign-out" style="color: #ffffff;"></i> Log out
         </a>
     </li>
