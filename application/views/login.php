@@ -32,7 +32,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
-            <h2><?= $this->session->flashdata("message") ?></h2>
+
         </div>
     </div>
 
