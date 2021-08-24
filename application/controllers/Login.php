@@ -19,11 +19,16 @@ class Login extends CI_Controller{
         $username = $this->input->post("username");
         $password = $this->input->post("password");
         
-        if($this->model->login($username,$password)){
+        if($username == 'admin' && $password == 'admin123'){
+            $this->session->set_userdata('username',$username);
             redirect(base_url('dashboard'));
         }else{
-            $this->session->set_flashdata('message', "Username atau password salah");
-            redirect(base_url('login'));
+            if($username == 'karyawan' && $password == 'karyawan'){
+                $this->session->set_userdata('username',$username);
+                redirect(base_url('dashboard'));
+            }else{
+                redirect(base_url('login'));
+            }
         }
     }
 }

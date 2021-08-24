@@ -131,6 +131,7 @@ class ProductModel extends CI_Model
         date_default_timezone_set('Asia/Jakarta');
 
         $productName = $this->getProductById($id)["name"];
+        $productCode = $this->getProductById($id)["code"];
         $currentSold = $this->getProductById($id)["sold"];
         $price = $this->getProductById($id)["sellPrice"];
         $currentStock = $this->getProductById($id)["stock"];
@@ -146,6 +147,7 @@ class ProductModel extends CI_Model
         $totalPrice = $this->input->post("sold") * $price;
         $dataSelling = array(                
             'product_id' => $id,
+            'product_code' => $productCode,
             'product_name' => $productName,
             'date' => date('d-m-Y H:i:s'),
             'date_s' => date('d'),
