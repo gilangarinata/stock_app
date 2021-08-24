@@ -25,6 +25,7 @@
                                             <th>No</th>
                                             <th>Tanggal</th>
                                             <th>Nama Barang</th>
+                                            <th>Kode Barang</th>
                                             <th>Terjual</th>
                                             <th>Total Harga</th>
                                         </tr>
@@ -36,6 +37,7 @@
                                                 <td><?= $i ?></td>
                                                 <td><?= $selling['date'] ?></td>
                                                 <td><?= $selling['product_name'] ?></td>
+                                                <td><?= $selling['product_code'] ?></td>
                                                 <td><?= $selling['totalSold'] ?></td>
                                                 <td><?= toRupiahs($selling['totalPrice']) ?></td>
                                             </tr>

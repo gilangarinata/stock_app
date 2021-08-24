@@ -35,7 +35,8 @@
                                     <table class="table table-striped table-bordered table-hover dataTables-example">
                                         <thead>
                                             <tr>
-                                                <th>Produk</th>
+                                                <th>Barang</th>
+                                                <th>Kode</th>
                                                 <th>Bulan</th>
                                                 <th>M1</th>
                                                 <th>M2</th>
@@ -58,6 +59,7 @@
                                             $omset = $omset + $selling['totalPrice'];
                                             $terjual = $terjual + $selling['totalSold'];
                                             $name = $selling['product_name'];
+                                            $productCode = $selling['product_code'];
                                             $bulan = $selling['month_s'] . "-" . $selling['year_s'];
                                             $date = $selling['date_s'];
                                             if($date > 0 && $date <= 7){
@@ -73,6 +75,7 @@
                                         <?php endforeach ?>
                                         <tr class="gradeX">
                                                 <td><?= $name ?></td>
+                                                <td><?= $productCode ?></td>
                                                 <td><?= $bulan ?></td>
                                                 <td><?= $w1 ?></td>
                                                 <td><?= $w2 ?></td>
