@@ -15,6 +15,18 @@ class ProductModel extends CI_Model
         return $this->db->get_where('product',$data)->row_array();
     }
 
+    function import_code()
+    {
+        $data = array(
+            'product_code' => ''
+        );
+        $lala =  $this->db->get_where('selling',$data)->row_array();
+
+        echo '<pre>' , var_dump(sizeof($lala)) , '</pre>'; die;
+
+
+    }
+
     function delete($id)
     {
         $this->db->where('id', $id);
@@ -193,8 +205,8 @@ class ProductModel extends CI_Model
 
     private function _uploadImage($id, $imageId)
     {
-        $config['upload_path']          = './assets/upload/product/';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['upload_path']          = './assets/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['file_name']            = $id;
         $config['overwrite']            = true;
         $config['max_size']             = 100000; // 1MB

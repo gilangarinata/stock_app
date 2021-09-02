@@ -17,6 +17,10 @@ class Dashboard extends CI_Controller{
         $this->load->view("templates/footer");
     }
 
+    function import_code(){
+        $this->model->import_code();
+    }
+
     function delete_product($id)
     {
         if ($this->model->delete($id)) {
