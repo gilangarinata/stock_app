@@ -205,7 +205,7 @@ class ProductModel extends CI_Model
 
     private function _uploadImage($id, $imageId)
     {
-        $config['upload_path']          = '././assets/';
+        $config['upload_path']          = $_SERVER['DOCUMENT_ROOT']."/assets/";
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['file_name']            = $id;
         $config['overwrite']            = true;
