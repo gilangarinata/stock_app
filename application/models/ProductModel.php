@@ -205,7 +205,7 @@ class ProductModel extends CI_Model
 
     private function _uploadImage($id, $imageId)
     {
-        $config['upload_path']          = './assets/';
+        $config['upload_path']          = '././assets/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['file_name']            = $id;
         $config['overwrite']            = true;
@@ -216,7 +216,7 @@ class ProductModel extends CI_Model
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
-        $prefix = "assets/upload/product/";
+        $prefix = "assets/";
 
         if ($this->upload->do_upload($imageId)) {
             return $prefix . $this->upload->data("file_name");
