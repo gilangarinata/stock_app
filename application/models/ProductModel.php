@@ -221,7 +221,7 @@ class ProductModel extends CI_Model
         if ($this->upload->do_upload($imageId)) {
             return $prefix . $this->upload->data("file_name");
         }else{
-            return "ERROR" . $this->upload->display_errors();
+            return "ERROR allala" . $this->upload->display_errors();
         }
     }
 }
