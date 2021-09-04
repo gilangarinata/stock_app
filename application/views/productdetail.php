@@ -59,6 +59,7 @@
                                             $omset = $omset + $selling['totalPrice'];
                                             $terjual = $terjual + $selling['totalSold'];
                                             $name = $selling['product_name'];
+                                            $productCode = "";
                                             $productCode = $selling['product_code'];
                                             $bulan = $selling['month_s'] . "-" . $selling['year_s'];
                                             $date = $selling['date_s'];
