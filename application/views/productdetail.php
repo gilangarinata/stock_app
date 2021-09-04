@@ -55,11 +55,11 @@
                                                 $w2 = 0;
                                                 $w3 = 0;
                                                 $w4 = 0;
+                                                $productCode = "";
                                         foreach ($monthly as $selling) : $i++; 
                                             $omset = $omset + $selling['totalPrice'];
                                             $terjual = $terjual + $selling['totalSold'];
                                             $name = $selling['product_name'];
-                                            $productCode = "";
                                             $productCode = $selling['product_code'];
                                             $bulan = $selling['month_s'] . "-" . $selling['year_s'];
                                             $date = $selling['date_s'];
