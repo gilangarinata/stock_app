@@ -7,6 +7,11 @@
             <div class="tab-content">
                 <div id="tab-0" class="tab-pane active">
                     <div class="panel-body">
+                    <div class="input-group">
+                        
+                    <input id="search" type="text" class="form-control"> <span class="input-group-btn"> <button type="button" Onclick="setUrl(); return false;" class="btn btn-primary">Cari Barang
+                                        </button> 
+                                    </span></div>
                     <div>
                     <a href="<?= base_url() ?>dashboard/add_product"><button class="btn btn-primary" type="button"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah Product</button></a>
                     </div>
@@ -112,6 +117,12 @@
 
 <!-- Page-Level Scripts -->
 <script>
+        function setUrl() {
+            window.location.href = 'https://localhost/stock/dashboard?q=' + document.getElementById('search').value;
+        };
+
+
+
 function requestFullScreen(element) {
     // Supports most browsers and their versions.
     var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
@@ -141,24 +152,19 @@ var c = url.searchParams.get("c");
 console.log(c);
 activaTab(c);
 
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
     $(document).ready(function() {
 
-        // var error = "<?php echo $this->session->flashdata("state") ?>";
+        document.getElementById('search').value = getParameterByName('q');
 
-        // if (error != null) {
-        //     if (error) {
-        //         setTimeout(function() {
-        //             toastr.options = {
-        //                 closeButton: true,
-        //                 progressBar: true,
-        //                 showMethod: 'slideDown',
-        //                 timeOut: 4000
-        //             };
-        //             toastr.success('Berhasil Hapus Data');
-        //         }, 900);
-        //     }
-        // }
 
         $('.dataTables-example').DataTable({
             pageLength: 25,

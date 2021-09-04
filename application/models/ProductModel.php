@@ -4,7 +4,15 @@ class ProductModel extends CI_Model
 {
     function getProductList()
     {
-        return $this->db->get_where('product')->result_array();
+        $query = $this->input->get("q");
+        if($query == NULL){
+            $this->db->limit(400);
+            return $this->db->get_where('product')->result_array();
+        }else{
+            $this->db->like('name', $query);
+            $this->db->limit(100);
+            return $this->db->get_where('product')->result_array();
+        }
     }
 
     function getProductById($id)
@@ -17,14 +25,22 @@ class ProductModel extends CI_Model
 
     function import_code()
     {
-        $data = array(
-            'product_code' => ''
-        );
-        $lala =  $this->db->get_where('selling',$data)->row_array();
+        $lala =  $this->db->get('selling')->result_array();
+        for($i = 0; $i < sizeof($lala); $i++){
+            $productId = $lala[$i]["product_id"];
+            $id = $lala[$i]["id"];
 
-        echo '<pre>' , var_dump(sizeof($lala)) , '</pre>'; die;
+            $currentProduct = $this->getProductById($productId);
+            $code = $currentProduct["code"];
 
-
+            
+            $data = array(
+                'product_code' => $code
+            );
+        
+            $this->db->where('id', $id);
+            $this->db->update("selling",$data);
+        }
     }
 
     function delete($id)
