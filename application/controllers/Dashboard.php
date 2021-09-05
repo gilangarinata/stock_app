@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller{
         $this->load->view("templates/header",$data);
         $this->load->view("dashboard",$data);
         $this->load->view("templates/footer");
+        $this->session->set_userdata('referred_from', current_url() . "?q=" . $this->input->get("q"));
     }
 
     function import_code(){
@@ -26,11 +27,14 @@ class Dashboard extends CI_Controller{
         if ($this->model->delete($id)) {
             $this->session->set_flashdata('message', "Berhasil Hapus Data!!");
             $this->session->set_flashdata('state', true);
-            redirect('dashboard');
+            $referred_from = $this->session->userdata('referred_from');
+            redirect($referred_from, 'refresh');
         } else {
             $this->session->set_flashdata('message', "Gagal Hapus Data!");
             $this->session->set_flashdata('state', false);
-            redirect('dashboard');
+            $referred_from = $this->session->userdata('referred_from');
+            redirect($referred_from, 'refresh');
+
         }
     }
 
@@ -47,7 +51,8 @@ class Dashboard extends CI_Controller{
 
         if(isset($_POST['submit'])){
             $this->model->add_product();
-            redirect('dashboard');
+            $referred_from = $this->session->userdata('referred_from');
+            redirect($referred_from, 'refresh');
         }
     }
 
@@ -62,7 +67,8 @@ class Dashboard extends CI_Controller{
 
         if(isset($_POST['submit'])){
             $this->model->update_product($id);
-            redirect('dashboard');
+            $referred_from = $this->session->userdata('referred_from');
+            redirect($referred_from, 'refresh');
         }
     }
 
@@ -76,7 +82,8 @@ class Dashboard extends CI_Controller{
 
         if(isset($_POST['submit'])){
             $this->model->sell_product($id);
-            redirect('dashboard');
+            $referred_from = $this->session->userdata('referred_from');
+            redirect($referred_from, 'refresh');
         }
     }
 
@@ -143,6 +150,7 @@ class Dashboard extends CI_Controller{
     }
 
     function cancel(){
-        redirect('dashboard');
+        $referred_from = $this->session->userdata('referred_from');
+        redirect($referred_from, 'refresh');
     }
 }

@@ -78,7 +78,7 @@
                                 <div" class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
                                         <a href="<?= base_url() ?>dashboard/cancel"><button class="btn btn-white" type="button">Batal</button></a>
-                                        <button class="btn btn-primary" type="submit" name="submit">Simpan</button>
+                                        <button class="btn btn-primary" type="submit" onclick="javascript:history.back(1)" name="submit">Simpan</button>
                                     </div>
                                 </div>
                             </form>
