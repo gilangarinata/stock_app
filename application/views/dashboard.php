@@ -137,6 +137,12 @@ function requestFullScreen(element) {
     }
 }
 
+document.querySelector('#search').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        setUrl()
+    }
+});
+
 // var elem = document.getElementById("lalala"); // Make the body go full screen.
 // requestFullScreen(elem);
 

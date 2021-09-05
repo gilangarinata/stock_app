@@ -10,6 +10,11 @@ class ProductModel extends CI_Model
             return $this->db->get_where('product')->result_array();
         }else{
             $this->db->like('name', $query);
+            $this->db->or_like('code', $query);
+            $this->db->or_like('price', $query);
+            $this->db->or_like('sellPrice', $query);
+            $this->db->or_like('distributor', $query);
+            $this->db->or_like('address', $query);
             $this->db->limit(100);
             return $this->db->get_where('product')->result_array();
         }
