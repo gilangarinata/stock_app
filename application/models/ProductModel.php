@@ -77,10 +77,10 @@ class ProductModel extends CI_Model
     }
 
     function add_product(){
-        $images1 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "1","myimage");
-        $images2 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "2","myimage2");
-        $images3 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "3","myimage3");
-        $images4 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "4","myimage4");
+        $images1 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")). "1","myimage");
+        $images2 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")). "2","myimage2");
+        $images3 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")). "3","myimage3");
+        $images4 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")). "4","myimage4");
         $data = array(
             'name' => $this->input->post("name"),
             'code' => $this->input->post("code"),
@@ -101,10 +101,10 @@ class ProductModel extends CI_Model
     }
 
     function update_product($id){
-        $images1 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "1","myimage");
-        $images2 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "2","myimage2");
-        $images3 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "3","myimage3");
-        $images4 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . date('Y-m-d--H:i:s') . "4","myimage4");
+        $images1 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . "1","myimage");
+        $images2 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . "2","myimage2");
+        $images3 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . "3","myimage3");
+        $images4 = $this->_uploadImage(str_replace(" ","-",$this->input->post("name")) . "4","myimage4");
 
         $isImgErr1 = substr($images1,0,5);
         $isImgErr2 = substr($images2,0,5); 
