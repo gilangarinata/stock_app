@@ -241,11 +241,11 @@ class ProductModel extends CI_Model
         $prefix = "assets/";
 
         if ($this->upload->do_upload($imageId)) {
-            var_dump("success");die;
+
             return $prefix . $this->upload->data("file_name");
         }else{
 
-            var_dump($this->upload->display_errors());die;
+
             return "ERROR allala" . $this->upload->display_errors();
         }
     }
