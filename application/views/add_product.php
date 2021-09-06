@@ -126,7 +126,6 @@ var loadFile = function(event) {
   y.width = '200';
   };
 
-
 function activaTab(tab){
   $('.nav-tabs a[href="#tab-' + tab + '"]').tab('show');
 };
