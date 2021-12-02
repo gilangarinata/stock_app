@@ -8,6 +8,12 @@
                 <div id="tab-0" class="tab-pane active">
                     <div class="panel-body">
                     <div class="input-group">
+
+                    <button type="button" Onclick="setUrlDesc(); return false;" class="btn btn-primary">Tampilkan Descending
+                                        </button> 
+
+                                        <button type="button" Onclick="setUrlAsc(); return false;" class="btn btn-primary">Tampilkan Ascending
+                                        </button> 
                         
                     <input id="search" type="text" class="form-control"> <span class="input-group-btn"> <button type="button" Onclick="setUrl(); return false;" class="btn btn-primary">Cari Barang
                                         </button> 
@@ -121,6 +127,13 @@
             window.location.href = 'https://localhost/stock/dashboard?q=' + document.getElementById('search').value;
         };
 
+        function setUrlDesc() {
+            window.location.href = 'https://localhost/stock/dashboard?desc=true';
+        };
+
+        function setUrlAsc() {
+            window.location.href = 'https://localhost/stock/dashboard?desc=false';
+        };
 
 
 function requestFullScreen(element) {

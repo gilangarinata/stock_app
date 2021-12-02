@@ -5,8 +5,16 @@ class ProductModel extends CI_Model
     function getProductList()
     {
         $query = $this->input->get("q");
+        $desc = $this->input->get("desc");
         if($query == NULL){
-            $this->db->limit(400);
+            if($desc != NULL){
+                if($desc === "true"){
+                    $this->db->order_by('id', "DESC");
+                }else{
+                    $this->db->order_by('id', "ASC");
+                }
+            }
+            $this->db->limit(600);
             return $this->db->get_where('product')->result_array();
         }else{
             $this->db->like('name', $query);
