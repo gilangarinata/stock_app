@@ -63,7 +63,7 @@
                                                 <td class="center">
                                                     <a href="<?= base_url() ?>dashboard/select_product?id=<?= $produk['id'] ?>"><button class="btn btn-primary" type="button"><i class="fa fa-money"></i>&nbsp;&nbsp;Pilih</button></a>
                                                     <a href="<?= base_url() ?>dashboard/edit_product?id=<?= $produk['id'] ?>"><button class="btn btn-warning" type="button"><i class="fa fa-edit"></i></button></a>
-                                                    <a href="<?= base_url() ?>dashboard/delete_product/<?= $produk['id'] ?>"><button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button></a>
+                                                    <a href="<?= base_url() ?>dashboard/delete_product/<?= $produk['id'] ?>"><button class="btn btn-danger" onclick="return confirm('Apakah yakin ingin menghapus?');" type="button"><i class="fa fa-trash"></i></button></a>
                                                     <a <?php 
             $username = $this->session->get_userdata('username');
             
@@ -133,6 +133,10 @@
 
         function setUrlAsc() {
             window.location.href = 'https://localhost/stock/dashboard?desc=false';
+        };
+
+        function showDeleteDialog() {
+
         };
 
 
